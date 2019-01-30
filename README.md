@@ -1,7 +1,9 @@
 # WRENCH #
 
 A project by [Matt Tuchfarber](https://github.com/tuchfarber)
+
 Contributions by [James Atkinson](https://github.com/Spartan-196) and [Kevin Cook](https://github.com/PowershellWithPassion) 
+
 Current Maintainer: [James Atkinson](https://github.com/Spartan-196)
 
 ## About ##
