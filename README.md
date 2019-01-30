@@ -1,4 +1,4 @@
-# WRENCH #
+# WRENCH
 
 A project by [Matt Tuchfarber](https://github.com/tuchfarber)
 
@@ -6,235 +6,189 @@ Contributions by [James Atkinson](https://github.com/Spartan-196) and [Kevin Coo
 
 Current Maintainer: [James Atkinson](https://github.com/Spartan-196)
 
-## About ##
+## About
 
-Wrench is a tool written in PowerShell to help minimize the number of tools needed by a PC Support team, while also providing all the information in a quickly viewable, easy application. Its primary tools for gathering information are the Active Directory tools in Powershell, and WMI calls to SCCM, and Windows clients.
+Wrench is a tool written in PowerShell to help minimize the number of tools needed by a PC Support team, while also providing all the information in a quickly viewable, easy application. Its primary tools for gathering information are the Active Directory tools in Powershell, WMI calls to SCCM, and Windows clients.
 
-## Running Wrench ##
-Run the wrench.ps1 file, in my environment with separate user and admin accounts this had to be run in an elevated state to do this it a section of code by [Ben Armstrong on MSDN](https://blogs.msdn.microsoft.com/virtual_pc_guy/2010/09/23/a-self-elevating-powershell-script/) at the top of the was added to auto elevate the script to admin, this behavior can be commented out if you do not needed.
- 
+## Running Wrench
+Run the wrench.ps1 file. 
 
-IF a team of people will be using this it can be stored on a network share and creating a shortcut to the wrench.bat file with an updated UNC in it. You can then place it on your desktop or add a custom toolbar to the taskbar to the folder on the network.
+**Note**: In an environment with separate user and admin accounts, this has to be ran in an elevated state. This is done automatically by running a snippet of code by [Ben Armstrong on MSDN](https://blogs.msdn.microsoft.com/virtual_pc_guy/2010/09/23/a-self-elevating-powershell-script/) at application load. This behavior can be commented out if you do not need it.
 
+If you're looking to deploy this to multiple users, we've found it easiest to keep their copy up to date by storing the `wrench.bat` file in a network location and creating a desktop shortcut to the file that can be optionally be added onto the taskbar. 
 
-The computer Wrench is being ran on also must be running PowerShell 3.0 or greater, as some of the array functionality will break on Powershell 2. There is also a hotfix needed to allow unlocking of accounts on a Windows 7 PC, as the Powershell unlocking call is different than the standard Windows one. One or Both of these may be needed, they are KB2506143, [KB2577917](https://support.microsoft.com/en-us/help/2577917/unlocking-a-user-account-fails-when-using-adac-or-the-unlock-adaccount)
+### Requirements
+The computer Wrench is being ran on also must be running PowerShell 3.0 or greater, as some of the array functionality will break on Powershell 2. 
 
-## The Main Screen ##
+There is also a hotfix needed to allow unlocking of accounts on a Windows 7 PC, as the Powershell unlocking call is different than the standard Windows one. One or both of these may be needed, they are KB2506143, [KB2577917](https://support.microsoft.com/en-us/help/2577917/unlocking-a-user-account-fails-when-using-adac-or-the-unlock-adaccount)
 
-This is the main form of the application below will identify and explain all the elements on it. 
+## Using Wrench
 
-#### Four search bars ####
-- Searching one item populates everything else on the form. For more information on searching, look for "Searching" below. 
-- Requirements: None
+### Searching
 
-<details><summary> Searching Details </summary>
+#### Details
+* Searching one field populates the rest of the fields in the application
+* If any search returns multiple values, a dialog will appear allowing you to select the correct one
+* Searching any field immediately clears all existing data before pulling new information 
+* Each field found will continue to traverse it's adjacent fields (per the relationships below) until all the data is populated.
+![search field relationship model](docs/search_data_model.png?raw=true "Search field relationship model")
 
-###### If multiple items match Name, User name, or PC Name, a pop up list of items will appear, allowing you to select the correct one ######
+#### Editable Fields:
+* **Name**
+	- `Name` property of user in Active Directory
+	- Search formats:
+		- "Lastname, Firstname"
+		- "Firstname Lastname"
+		- "Lastname"
+		- "Firstname"
+	- Allows partial and no character limit searches
+* **User ID**
+	- `SAMAccountName` property of user in Active Directory
+	- Allows partial and no character limit searches
+* **PC Name**
+	- `Name` property of computer in Active Directory
+	- Allows partial and no character limit searches
+* **IP Address**
+	- Gets hostname of IP via DNS
+	- IP will be [+GREEN+] if it responds to a `Test-Connection`, otherwise it will be [-RED-].
+	- **[-Red-] does not always mean offline**
 
-###### Clicking the search button next to any field will only search that field and erase all the others until they are repopulated with new information ######
-
-#### By Name ####
-- Search in "Lastname, Firstname", "Firstname Lastname", "Lastname", "Firstname" format
-- Matches to Name property of user in Active Directory
-- Allows partial searches
-- No character limits in search
-
-- Finds (in order):
-	1. ID by Name
-	2. Phone by ID
-	3. PC by ID
-	4. IP by PC Name 
-	5. Lockout by ID
-	6. H Drive by ID
-	7. OU by ID
-
-#### By User ID ####
-- Matches to SAMAccountName property of user in Active Directory
-- Allows partial Searches
-- No character limit in search 
-
-- Finds (in order):
-	1. Name by ID
-	2. PC by ID
-	3. IP by PC
-	4. Lockout by ID
-	5. Phone by ID
-	6. H Drive by ID
-	7. OU by ID
-
-#### By PC Name ####
-- Matches to Name property of computer in Active Directory
-- Allows partial searches
-- No character limits in search
-
-- Finds (in order):
-	1. ID by PC 
-		- Finds user device affinity from SCCM and returns the user tied to PC
-		- #1 *known bug of not getting SAM account of user returned*
-	2. Name by ID
-	3. IP by PC
-	4. Lockout by ID
-	5. Phone by ID
-	6. H Drive by ID
-	7. OU by ID
-
-#### By IP Address ####
-- Tests if IP address is valid IP address
-- Attempts to get hostname of IP address using DNS 
-- IP is in [+GREEN+] if the IP responds to Test-Connection, [-RED-] if it is not. **[-Red-] does not always mean offline**
-
-- Finds (in order):
-	1. PC by IP
-	2. ID by PC
-	3. Name by ID
-	4. Lockout by ID
-	5. Phone by ID
-	6. H Drive by ID
-	7. OU by ID
+#### Read Only Fields:
+* **Phone**
+	- `Phone` property of the user in Active Directory.
+	- Returns the first of the fields: `Pager`, `ipPhone`, `OfficePhone`, `MobilePhone`.
+* **Lockout**
+	- If the searched user account is locked, a button will appear to unlock the account. 
+	- If it won't let you unlock the account, look into the hotfix noted in the "Running Wrench" section
+* **H Drive**
+	- `HomeDirectory` property of user in Active Directory. 
+* **User OU**
+	- `CanonicalName` property of user in Active Directory.
 </Details>
 
-#### Phone ####
-- This is pulled from the Phone property of the user in Active Directory.
-- In order it searches following AD propertry fields: Pager, ipPhone, OfficePhone, MobilePhone and returns the first one matched
-- Requirements: User ID
+### Actions
 
-#### Lockout ####
-- If the user is unlocked it will say "Not Locked". 
-- If the user is locked out, it will say "Locked" and a button will appear to unlock the account. 
-- If it won't let you unlock the account, look into the hotfix noted in the "Running Wrench" section
-- Requirements: User ID
-- *Additional Requirements on Windows 7: KB2506143, KB2577917* 
-
-#### H Drive ####
-- Pulled from HomeDirectory property of user in Active Directory. 
-- Requirements: User ID
-
-#### User OU ####
-- Pulled from CanonicalName property of user in Active Directory.
-- Requirements: User ID
-
-#### Connect Via SCCM Remote Control ####
-- Uses the SCCM viewer found Defined in the wrench_env.ps1 file location for $SCCMRemoteLocation
-- Connects using the IP address
-- Requirements: IP Address
-
-#### User details ####
-- Checks if the user account is enabled (Enabled property)
-- Checks when account is expired (AccountExpirationDate property)
-- Checks if Password never expires (PasswordNeverExpires property)
-- Checks bad password count (BadPwdCount property)
-- Checks created time (whenCreated property)
-- Checks modified time (whenChanged property)
-- Checks password age (PasswordLastSet property)
-- Checks issued certificates (Certificates property)
-- Checks department (Department property)
-- Checks description (Description property)
-- Requirements: User ID
-
-#### User Groups ####
-- Displays groups that user is currently in, alphabetical sort.
-- Add user to groups (See "Adding to Groups")
-- Remove user from group (See "Removing from Groups")
-- Requirements: User ID
-
-#### Change Password ####
-- Asks for new password, confirmed password (Set-ADAccountPassword) 
-- Optional check box if it should be changed at next login (Set-ADUser -ChangePasswordAtLogon to true)
-- Requirements: User ID, permissions to modify passwords
-
-#### PC Details ####
-- Checks if PC account is enabled (Enabled property)
-- Checks OU of PC (CanonicalName property)
-- Checks last date the computer was logged into (LastLoginDate property)
-- Checks OS version (OperatingSystem and OperatingSystemServicePack property)
-- Checks created time (whenCreated property)
-- Checks modified time (whenChanged property)
-- Can individually check:
-	- Logged in user (WMI query)
-	- PC type with Bios release date (WMI query)
-	- MAC addresses of PC (getmac command)
-	- Installed RAM (WMI) Displayed in GB with speed in MHz
-	- Used, total, percent used of disk space (WMI win32_logicaldisk, Displayed in GB, with percentage used)
-- Check Uptime, software versions of IE, Java, and Flash (Makes us of Sysinterals sysinfo and pulls selected information.)
-- View Last update of Endpoint protection, or windows defender if running windows 10 (Remote Registry query)
-- View Disk Health (PSexec of smartmontools)
-- Requirements: PC Name, ***DNS must resolve correctly***
-
-#### PC Groups ####
-- Displays groups that computer is currently in, alphabetical sort.
-- Adds computer to groups (See "Adding to Groups")
-- Removes computer from groups (See "Removing from Groups")
-- Requirements: PC Name
-
-
-<details><summary> Adding to Groups </summary>
-- To add a user or computer to a group, first click the (User/PC) Groups button
-- Check if the (user/PC) is already in the group in the list box 
-- If the (user/PC) is not in the list, click "Add to Group"
-- A new pop up will appear allowing you to search for a group
-	- Partial searches are enabled, though the unfiltered list is quite long
-	- Search will be all groups that match the string entered ($string)
-- After the list box populates, double click the item or press `ENTER` while it is selected to add to the group
-- The form will exit after the addition has been made.
-
-## Removing from a Group ##
-- To remove a user or computer from a group, first click the (User/PC) Groups button
-- Check that the (user/PC) is in the group you wish to remove it from first 
-- If the (user/PC) is in the group, click "Remove (User/PC) from Group"
-- Double click the name or press `ENTER` while it is selected to remove the (user/computer) from that group
-- The form will exit after the removal has been made.
-</Details>
-
-#### Manage PC ####
-- Pulls up Computer Managements window of remote PC
-- If it can't connect, it will pull up Computer Management of current PC
-- Requirements: PC Name, ***DNS must resolve correctly***
-
-#### Rename PC ####
-- Runs the Rename PC script currently written to run as a cscript for a vbs or vbe file  looking to make this more module.
-- Requirements: Permissions to scripts directory, and to execute commands in said script
- 
-
-#### View C: ####
-- Opens Windows Explorer to C$ of computer
+* **Connect Via SCCM Remote Control**
+	- Connects to the IP address using the SCCM viewer found at `$SCCMRemoteLocation` as defined in `wrench_env.ps1`
+	- Requires IP Address
+* **Change Password**
+	- Sets user's password to the password supplied in the prompt (`Set-ADAccountPassword`)
+	- Can optionally set the password to be changed at next login via checkbox (`Set-ADUser -ChangePasswordAtLogon $TRUE`)
+	- Requires UserID and permission to modify passwords
+* **Manage PC**
+	- Opens Computer Management (`compmgmt.msc`) window linked to remote PC
+	- If connection fails, will open local PC's management 
+	- Requires PC Name and ***correctly resolving DNS***
+* **Rename PC**
+	- Runs a renaming script which is currently written as a cscript for a vbs or vbe file
+	- This script is not currently provided and therefore this functionality will not work out of the box
+	- We are looking into make this a module
+	- Requires permissions to the scripts directory and to execute the commands in the script
+* **View C:**
+	- Opens Exporer to `C$` of remote computer
 	- Currently **does not work with Windows 10** using Microsoft SCM baseline policies.
-	- Microsoft SCM baseline policy has `LocalAccountTokenFilterPolicy` set to `0` this effectivly disables being able to navigate to C$ of Windows 10 sysetems. A work around you must map a drive as "another user"
-- Requirements: IP Address 
+	- Microsoft SCM baseline policy has `LocalAccountTokenFilterPolicy` set to `0` this effectivly disables being able to navigate to `C$` of Windows 10 systems. The work around being that you must map a drive as "another user"
+	- Requires and IP address
+* **PS Remote**
+	- Opens Remote PowerShell session to the PC
+	- Requires PC name and ***correctly resolving DNS***
+* **RDP**
+	- Remote Desktop into the PC
+	- Requires PC Name and ***correctly resolving DNS***
+* **Telnet**
+	- Opens telnet session to PC
+	- Requires IP address and telnet client feature installed on support PC
+* **Client Center**
+	- Launches [Client Center for Configuration Manager](https://github.com/rzander/sccmclictr) from the location found at `$ClientCenterLocation` as defined in `wrench_env.ps1`
+	- Used for running client side SCCM actions on a PC.
+		- Most used toolbar buttons
+			- SW Inv > Delta 
+			- Machine Policy
+			- User Policy 
+			- App mgmt> Global and machine eval.
+		- Commonly used area Software distribution and Inventory.
+	- Requires PC Name, PSSession, and ***correctly resolving DNS***
 
-#### PS Remote ####
-- Opens Remote PowerShell session to PC
-- Requirements: PC Name ***DNS must resolve correctly***
+### Addtional Detail Dialogs
 
-#### RDP ####
-- Remote Desktop into the PC
-- Requirements: PC Name ***DNS must resolve correctly***
+* **User details**
+	<details>
+	<summary> User details </summary>
 
-#### Keep Wrench on Top ####
-- Will keep Wrench as the topmost item in Windows, covering up anything else.
-- Useful if you wish to keep wrench docked on the side of the screen
-	- **Warning**: If check box is checked and wrench is in the middle of the screen, it will cover the pop up windows in the program and may result in **unclickable** windows
-- Requirements: None
+	- Checks if the user account is enabled (`Enabled` property)
+	- Checks when account is expired (`AccountExpirationDate` property)
+	- Checks if Password never expires (`PasswordNeverExpires` property)
+	- Checks bad password count (`BadPwdCount` property)
+	- Checks created time (`whenCreated` property)
+	- Checks modified time (`whenChanged` property)
+	- Checks password age (`PasswordLastSet` property)
+	- Checks issued certificates (`Certificates` property)
+	- Checks department (`Department` property)
+	- Checks description (`Description` property)
+	- Requires User ID
+	</details>
 
-## Expanding the Draw ##
-- To expand the draw/side tray/lesser use buttons simply click the `>` button in the bottom right of the form
-- Buttons available:
-	- Check Group Policy
-	- Telnet (See Telnet section)
-	- Rename PC (See rename PC section)
-	- SCCM Client Center (See Client Center section)
+* **PC Details**
+	<details>
+	<summary> PC Details </summary>
 
-#### Telnet ####
-- Opens telnet session to PC
-- Requirements: Telnet client feature installed on support PC, IP Address
+	- Checks if PC account is enabled (`Enabled` property)
+	- Checks OU of PC (`CanonicalName` property)
+	- Checks last date the computer was logged into (`LastLoginDate` property)
+	- Checks OS version (`OperatingSystem` and `OperatingSystemServicePack` property)
+	- Checks created time (`whenCreated` property)
+	- Checks modified time (`whenChanged` property)
+	- Can individually check:
+		- Logged in user (WMI query)
+		- PC type with Bios release date (WMI query)
+		- MAC addresses of PC (`getmac` command)
+		- Installed RAM (WMI) Displayed in GB with speed in MHz
+		- Used, total, percent used of disk space (WMI `win32_logicaldisk`, Displayed in GB, with percentage used)
+	- Checks uptime and software versions of IE, Java, and Flash (Makes us of Sysinterals `sysinfo` and pulls selected information.)
+	- View last update of Endpoint Protection, or Windows Defender if running Windows 10 (Remote Registry query)
+	- View Disk Health (PSexec of smartmontools)
+	- Requires PC Name and ***correctly resolving DNS***
+	</details>
 
-#### Client Center ####
-- Launches [Client Center for Configuration Manager](https://github.com/rzander/sccmclictr) from the location defined by $ClientCenterLocation
-- Used for running client side SCCM actions on a PC.
-	- Most used toolbar buttons
-		- SW Inv > Delta 
-		- Machine Policy
-		- User Policy 
-		- App mgmt> Global and machine eval.
-	- Commonly used area Software distribution and Inventory.
-- Requirements: PC Name ***DNS must resolve correctly*** utilizes PSSession
+### Groups 
 
+#### Type of Groups
+* **User Groups**
+	- Displays groups that user is currently in in alphabetical order.
+	- Can add [add](#Adding-to-Groups) or [remove](#Removing-from-Groups) user from groups
+	- Requires User ID
+* **PC Groups**
+	- Displays groups that computer is currently in in alphabetical order.
+	- Can add [add](#Adding-to-Groups) or [remove](#Removing-from-Groups) computer from groups
+	- Requires PC Name
+
+
+#### Adding to Groups
+1. To add a user or computer to a group, first click the (user/PC) Groups button
+2. Verify the (user/PC) isn't already in the group via the list 
+3. If the (user/PC) isn't in the list, click "Add to Group"
+4. A new dialog will appear allowing you to search for a group
+	- Partial searches are enabled, though the unfiltered list can be quite long
+5. After searching, double click the group or highlight and press `ENTER` to add the (user/PC) to the group
+6. The dialog will close after the addition has been made.
+
+#### Removing from Groups
+1. To remove a user or computer from a group, first click the (User/PC) Groups button
+2. Verify the (user/PC) is in the group you wish to remove it from
+3. If the (user/PC) is in the group, click "Remove (User/PC) from Group"
+4. double click the group or highlight and press `ENTER` to remove the (user/computer) from that group
+- The dialog will close after the removal has been made.
+
+
+### Additional Features
+* **Keep Wrench on Top**
+	- Will keep Wrench as the topmost item in Windows, covering up anything else.
+	- Useful if you wish to keep wrench docked on the side of the screen
+	- **Warning**: If checked and wrench is located in the middle of the screen, it will cover the pop up dialogs and may result in **unclickable** windows
+* **Expanding the Drawer**
+	- The bottom right corner has a `>` button which, if clicked, will expand to show lesser used buttons
+	- Buttons currently available:
+		- Check Group Policy
+		- Telnet (See Telnet section)
+		- Rename PC (See rename PC section)
+		- SCCM Client Center (See Client Center section)
