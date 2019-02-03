@@ -723,12 +723,8 @@ if ($correctPSVersion -eq $true -AND $rsatInstalled -eq $true){
 	}
 	function PCNameByUserID{
 		$variantid = "$UserID" + "*"
-		$pcnames = @((Get-WmiObject -Class SMS_UserMachineRelationship -namespace "root\sms\$SCCMNameSpace" -computer $SCCMSiteServer -filter "UniqueUserName='na\\$global:UserID' and Types='1' and IsActive='1' and Sources='4'").ResourceName)
-		
-		#Verbose (Get-WmiObject -Class SMS_UserMachineRelationship -namespace "root\sms\$SCCMNameSpace" -computer $SCCMSiteServer -filter "UniqueUserName='na\\$global:UserID' and Types='1' and IsActive='1' and Sources='4'" | select ResourceName, UniqueUserName, CreationTime)
-		
-		#Former PC name match on UserID @((Get-ADComputer -Filter {SamAccountName -like $variantid}).Name)
-		
+		$pcnames = @((Get-WmiObject -Class SMS_UserMachineRelationship -namespace "root\sms\$SCCMNameSpace" -computer $SCCMSiteServer -filter "UniqueUserName LIKE '%$global:UserID' and Types='1' and IsActive='1' and Sources='4'").ResourceName)
+				
 		if ($pcnames.length -eq 1){
 			$global:PCName = $pcnames[0]
 			$true
@@ -820,9 +816,10 @@ if ($correctPSVersion -eq $true -AND $rsatInstalled -eq $true){
 				$returnval = $false
 				MakeClickList ([ref]$global:UserID) $UserName ([ref]$returnval)
 				if(!$returnval){$false}else{$true}
-				$UserIDBox.Text = $global:UserID
+				
 			}
 		}
+		$UserIDBox.Text = $global:UserID	
 	}
 	function PCNameByIP{
 		$hostname = ([System.Net.Dns]::GetHostByAddress($IP)).HostName
