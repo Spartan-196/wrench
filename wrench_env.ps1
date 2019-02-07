@@ -9,5 +9,6 @@ $VPNSiteUrl	= "" #Url on Cisco ASA for use with a username that has privlidge le
 				#Filer on ASA command line: show vpn-sessiondb detail {yourdb name} sort name | i Username|Assigned IP|
 $ClientCenterLocation = "" #Path to SCCMCliCtrWPF.exe either local or UNC Share, utility from https://github.com/rzander/sccmclictr/releases
 $SCCMSiteDataFile = "${env:ProgramFiles(x86)}\Microsoft Configuration Manager\AdminConsole\bin\ConfigurationManager\ConfigurationManager.psd1"
-$SCCMSiteServer="" #Hostname for SCCM Primary
-$SCCMNameSpace="" #sms site name such as site_xx to buld WMI name space of root\sms\$sitename
+$SCCMSiteServer = "" #Hostname for SCCM Primary
+$SCCMNameSpace = "" #sms site name such as site_xx to buld WMI name space of root\sms\$sitename
+$Domain = "" #Windows domain goes here so it can be excluded from resolved UserIDs in some functions
