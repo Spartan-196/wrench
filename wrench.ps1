@@ -736,9 +736,8 @@ if ($correctPSVersion -eq $true -AND $rsatInstalled -eq $true){
 		if ($global:PCName.length -lt 2){
 			$global:PCName = "-"
 			$PCBox.Text = "-"
-		}else{
-			$PCBox.Text = $global:PCName
 		}
+			$PCBox.Text = $global:PCName
 
 	}
 	function getIP{
@@ -805,9 +804,9 @@ if ($correctPSVersion -eq $true -AND $rsatInstalled -eq $true){
 		}else{
 			$variantID = ($global:PCName).Substring(0,7)
 			$variantname = "$variantID" + "*"
-			$UserName = @(((Get-WmiObject -Class SMS_UserMachineRelationship -namespace "root\sms\$SCCMNameSpace" -computer $SCCMSiteServer -filter "ResourceName='$global:PCName' and Types='1' and IsActive='1' and Sources='4'").UniqueUserName).substring(3))
-			$SamAccounts=foreach ($name in $UserName){@(get-aduser -f {SamAccountName -like $name})}
-			$UNP=foreach ($name in $UserNames){@((get-aduser -f {SamAccountName -like $name}).UserPrincipalName)}
+			$UserName = @(((Get-WmiObject -Class SMS_UserMachineRelationship -namespace "root\sms\$SCCMNameSpace" -computer $SCCMSiteServer -filter "ResourceName='$global:PCName' and Types='1' and IsActive='1' and Sources='4'").UniqueUserName).substring($Domain.length+1))
+			$SamAccounts=foreach ($name in $UserName){@((get-aduser -f {SamAccountName -like $name}).SamAccountName)}
+			$UPN= foreach ($Account in $SamAccounts){@((get-aduser -f {SamAccountName -like $name}).UserPrincipalName)}
 			
 			if ($UserName.length -eq 1){
 				$global:UserID = $UserName[0]
