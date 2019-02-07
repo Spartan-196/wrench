@@ -811,6 +811,9 @@ if ($correctPSVersion -eq $true -AND $rsatInstalled -eq $true){
 			if ($UserName.length -eq 1){
 				$global:UserID = $UserName[0]
 				$true
+			}elseif($UserName.length -eq 0 ){
+				$global:UserID = "-"
+				$true
 			}else{
 				$returnval = $false
 				MakeClickList ([ref]$global:UserID) $UserName ([ref]$returnval)
