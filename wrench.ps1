@@ -771,24 +771,30 @@ if ($correctPSVersion -eq $true -AND $rsatInstalled -eq $true){
 			
 	}
 	function PhoneByUserID{
-		if ($global:UserID -ne "-"){
-			$global:Phone = (Get-ADUser  $global:UserID -properties Pager).Pager #5 digit extension stored in pager property
-		}else{
-			$global:Phone = (Get-ADUser  $global:UserID -properties ipPhone).ipPhone
-		}else{
-			$global:Phone = (Get-ADUser  $global:UserID -properties OfficePhone).OfficePhone #full 10 digit or longer phone
-		}else{
-			$global:Phone = (Get-ADUser  $global:UserID -properties MobilePhone).MobilePhone
-		}else{
-			$global:Phone = "-"
-		}
+				if ($global:UserID -ne "-"){
+					$UserPhoneNumber = Get-ADUser  $global:UserID -properties Pager, ipPhone, OfficePhone, MobilePhone
+					If (-not([string]::IsNullOrWhiteSpace(($UserPhoneNumber).Pager)))  # If the value is NOT $null, Empty string "" , or any number of spaces "       " this equals true
+					{ 
+						$global:Phone = $UserPhoneNumber.Pager
+					}
+					Elseif (-not([string]::IsNullOrWhiteSpace($UserPhoneNumber.ipPhone)))
+					{
+						$global:Phone = $UserPhoneNumber.ipPhone
+					} 
+					Elseif (-not([string]::IsNullOrWhiteSpace($UserPhoneNumber.OfficePhone)))
+					{
+						$global:Phone = $UserPhoneNumber.OfficePhone
+					} 
+					Elseif (-not([string]::IsNullOrWhiteSpace($UserPhoneNumber.MobilePhone)))
+					{
+						$global:Phone = $UserPhoneNumber.MobilePhone
+					} 
+					Else {$global:Phone = '-'} # There is no phone number in AD. 		
+				}
+				Else {$global:Phone = '-'}  # The UserName field has a "-" in it.
 		
-		$PhoneBox.Text = $global:Phone
-		
-		
-
-	}
-	function NameByUserID{
+				$PhoneBox.Text = $global:Phone
+}			}	function NameByUserID{
 		if ($global:UserID -ne "-"){
 			$global:Name = (Get-ADUser $global:UserID).Name
 		}else{
@@ -796,7 +802,6 @@ if ($correctPSVersion -eq $true -AND $rsatInstalled -eq $true){
 		}	
 
 		$NameBox.Text = $global:Name
-
 	}
 	function UserIDByPCName{
 		if($global:PCName.length -lt 7){
