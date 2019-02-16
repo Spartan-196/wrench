@@ -794,8 +794,7 @@ if ($correctPSVersion -eq $true -AND $rsatInstalled -eq $true){
 				Else {$global:Phone = '-'}  # The UserName field has a "-" in it.
 		
 				$PhoneBox.Text = $global:Phone
-			}			
-	}	
+			}
 
 	function NameByUserID{
 		if ($global:UserID -ne "-"){
