@@ -145,7 +145,7 @@ $UserIDLbl.Font                   	  = 'Microsoft Sans Serif,8.25'
 $UserIDBox                             = New-Object system.Windows.Forms.TextBox
 $UserIDBox.width                       = 130
 $UserIDBox.height                      = 20
-$UserIDBox.location                    = New-Object System.Drawing.Point(10,25)
+$UserIDBox.location                    = New-Object System.Drawing.Point(70,55)
 $UserIDBox.Font                        = 'Microsoft Sans Serif,8.25'
 #$UserIDBox.MaxLength = 15
 
@@ -213,17 +213,17 @@ $IPBox.MaxLength = 15
 #	$IPBox.MaxLength = 15
 
 $IPButton                         = New-Object system.Windows.Forms.Button
-$IPButton.text                    = "button"
+$IPButton.text                    = "Search"
 $IPButton.width                   = 60
 $IPButton.height                  = 20
-$IPButton.location                = New-Object System.Drawing.Point(210,25)
+$IPButton.location                = New-Object System.Drawing.Point(210,115)
 $IPButton.Font                    = 'Microsoft Sans Serif,8.25'
 $IPButton.TabStop = $False  # Why is Tabstop set to $False
 $IPButton.Add_Click({ searchByIP })
 #Ph
 #$IPButton = createItem "Button" 210 115 60 20 "Search" $mainForm
 	
-	one Info
+#PHone Info
 $PhoneLbl                            = New-Object system.Windows.Forms.Label
 $PhoneLbl.text                       = "Phone:"
 $PhoneLbl.width                      = 60
@@ -234,7 +234,7 @@ $PhoneLbl.Font                       = 'Microsoft Sans Serif,8.25'
 $PhoneBox                        = New-Object system.Windows.Forms.TextBox
 $PhoneBox.width                  = 200
 $PhoneBox.height                 = 20
-$PhoneBox.location               = New-Object System.Drawing.Point70,145)
+$PhoneBox.location               = New-Object System.Drawing.Point(70,145)
 $PhoneBox.Font                   = 'Microsoft Sans Serif,8.25'
 $PhoneBox.ReadOnly = $True
 $PhoneBox.TabStop = $False	# Why is Tabstop set to $False
@@ -261,7 +261,7 @@ $LockoutButton                         = New-Object system.Windows.Forms.Button
 $LockoutButton.Text                   = "Unlock"
 $LockoutButton.width                   = 60
 $LockoutButton.height                  = 20
-$LockoutButton.location                = New-Object System.Drawing.Point(210,25)
+$LockoutButton.location                = New-Object System.Drawing.Point(210,175)
 $LockoutButton.Font                    = 'Microsoft Sans Serif,8.25'
 $LockoutButton.TabStop                 = $False	# Why is Tabstop set to $False
 $LockoutButton.Visible                 = $False # Hide button if useraccount is not locked out in AD.
@@ -282,10 +282,9 @@ $HDriveBox.width                  = 200
 $HDriveBox.height                 = 20
 $HDriveBox.location               = New-Object System.Drawing.Point(70,208)
 $HDriveBox.Font                   = 'Microsoft Sans Serif,8.25'
-
-#$HDriveBox = createItem "Textbox" 70 208 200 20 "" $mainForm
-$HDriveBox.ReadOnly = $True
+$HDriveBox.ReadOnly                 = $True
 $HDriveBox.TabStop = $False	# Why is Tabstop set to $False
+#$HDriveBox = createItem "Textbox" 70 208 200 20 "" $mainForm
 
 #OU Info
 $OULbl                              = New-Object system.Windows.Forms.Label
@@ -304,28 +303,100 @@ $OUBox.ReadOnly = $True
 $OUBox.TabStop = $False # Why is Tabstop set to $False
 #$OUBox = createItem "Textbox" 70 235 200 20 "" $mainForm
 #Buttons
-$RVButton = createItem "Button" 10 265 259 20 "Connect Via SCCM Remote Control" $mainForm
-	$RVButton.Add_Click({ runRemoteViewer })		
-$UserFactsButton = createItem "Button" 10 295 122 20 "User Details" $mainForm
-	$UserFactsButton.Add_Click({ runUserFacts })
-$UserGroupButton = createItem "Button" 10 325 122 20 "User Groups" $mainForm
-	$UserGroupButton.Add_Click({ runUserGroups })
-$ChangePWButton = createItem "Button" 10 355 122 20 "Change Password" $mainForm
-	$ChangePWButton.Add_Click({newUserPassword})
-$PCFactsButton = createItem "Button" 147 295 122 20 "PC Details" $mainForm
-	$PCFactsButton.Add_Click({ runPCFacts })
-$PCGroupButton = createItem "Button" 147 325 122 20 "PC Groups" $mainForm
-	$PCGroupButton.Add_Click({ runPCGroups })
-$PCManageButton = createItem "Button" 147 355 122 20 "Manage PC" $mainForm
-	$PCManageButton.Add_Click({ runManagePC })
-$ViewCButton = createItem "Button" 147 385 122 20 "View C:" $mainForm
-	$ViewCButton.Add_Click({ runViewC })
-$RDPButton = createItem "Button" 147 415 122 20 "RDP" $mainForm
-	$RDPButton.Add_Click({ runRDP })
-$PSSessionBtn = createItem "Button" 147 445 122 20 "PS Remote" $mainForm
-	$PSSessionBtn.Add_Click({connectPSSession})
-$OnTopCheck = createItem "Checkbox" 30 410 100 35 "Keep Wrench on Top" $mainForm
-	$OnTopCheck.Add_Click({ runOnTop })
+
+$RVButton                         = New-Object system.Windows.Forms.Button
+$RVButton.text                    = "Connect Via SCCM Remote Control"
+$RVButton.width                   = 259
+$RVButton.height                  = 20
+$RVButton.location                = New-Object System.Drawing.Point(10,265)
+$RVButton.Font                    = 'Microsoft Sans Serif,8.25'
+$RVButton.Add_Click({ runRemoteViewer })
+
+# $RVButton = createItem "Button" 10 265 259 20 "Connect Via SCCM Remote Control" $mainForm
+$UserFactsButton                         = New-Object system.Windows.Forms.Button
+$UserFactsButton.text                    = "User Details"
+$UserFactsButton.width                   = 122
+$UserFactsButton.height                  = 20
+$UserFactsButton.location                = New-Object System.Drawing.Point(10,295)
+$UserFactsButton.Font                    = 'Microsoft Sans Serif,8.25'
+$UserFactsButton.Add_Click({ runUserFacts })
+# $UserFactsButton = createItem "Button" 10 295 122 20 "User Details" $mainForm
+
+$UserGroupButton                         = New-Object system.Windows.Forms.Button
+$UserGroupButton.text                    = "User Groups"
+$UserGroupButton.width                   = 122
+$UserGroupButton.height                  = 20
+$UserGroupButton.location                = New-Object System.Drawing.Point(10,325)
+$UserGroupButton.Font                    = 'Microsoft Sans Serif,8.25'
+$UserGroupButton.Add_Click({ runUserGroups })
+#$UserGroupButton = createItem "Button" 10 325 122 20 "User Groups" $mainForm
+$ChangePWButton                         = New-Object system.Windows.Forms.Button
+$ChangePWButton.text                    = "Change Password"
+$ChangePWButton.width                   = 122
+$ChangePWButton.height                  = 20
+$ChangePWButton.location                = New-Object System.Drawing.Point(10,355)
+$ChangePWButton.Font                    = 'Microsoft Sans Serif,8.25'
+$ChangePWButton.Add_Click({newUserPassword})
+# $ChangePWButton = createItem "Button" 10 355 122 20 "Change Password" $mainForm
+$PCFactsButton                         = New-Object system.Windows.Forms.Button
+$PCFactsButton.text                    = "PC Details"
+$PCFactsButton.width                   = 122
+$PCFactsButton.height                  = 20
+$PCFactsButton.location                = New-Object System.Drawing.Point(147,295)
+$PCFactsButton.Font                    = 'Microsoft Sans Serif,8.25'
+$PCFactsButton.Add_Click({ runPCFacts })
+# $PCFactsButton = createItem "Button" 147 295 122 20 "PC Details" $mainForm
+$PCGroupButton                         = New-Object system.Windows.Forms.Button
+$PCGroupButton.text                    = "PC Groups"
+$PCGroupButton.width                   = 122
+$PCGroupButton.height                  = 20
+$PCGroupButton.location                = New-Object System.Drawing.Point(147,325)
+$PCGroupButton.Font                    = 'Microsoft Sans Serif,8.25'
+$PCGroupButton.Add_Click({ runPCGroups })	
+#$PCGroupButton = createItem "Button" 147 325 122 20 "PC Groups" $mainForm
+$PCManageButton                         = New-Object system.Windows.Forms.Button
+$PCManageButton.text                    = "Manage PC"
+$PCManageButton.width                   = 122
+$PCManageButton.height                  = 20
+$PCManageButton.location                = New-Object System.Drawing.Point(147,355)
+$PCManageButton.Font                    = 'Microsoft Sans Serif,8.25'
+$PCManageButton.Add_Click({ runManagePC })
+#$PCManageButton = createItem "Button" 147 355 122 20 "Manage PC" $mainForm
+$ViewCButton                         = New-Object system.Windows.Forms.Button
+$ViewCButton.text                    = "View C:"
+$ViewCButton.width                   = 122
+$ViewCButton.height                  = 20
+$ViewCButton.location                = New-Object System.Drawing.Point(147,385)
+$ViewCButton.Font                    = 'Microsoft Sans Serif,8.25'
+$ViewCButton.Add_Click({ runViewC })
+#$ViewCButton = createItem "Button" 147 385 122 20 "View C:" $mainForm
+$RDPButton                         = New-Object system.Windows.Forms.Button
+$RDPButton.text                    = "RDP"
+$RDPButton.width                   = 122
+$RDPButton.height                  = 20
+$RDPButton.location                = New-Object System.Drawing.Point(147,415)
+$RDPButton.Font                    = 'Microsoft Sans Serif,8.25'
+$RDPButton.Add_Click({ runRDP })
+#$RDPButton = createItem "Button" 147 415 122 20 "RDP" $mainForm
+$PSSessionBtn                         = New-Object system.Windows.Forms.Button
+$PSSessionBtn.text                    = "PS Remote"
+$PSSessionBtn.width                   = 122
+$PSSessionBtn.height                  = 20
+$PSSessionBtn.location                = New-Object System.Drawing.Point(147,445)
+$PSSessionBtn.Font                    = 'Microsoft Sans Serif,8.25'	
+$PSSessionBtn.Add_Click({connectPSSession})
+#$PSSessionBtn = createItem "Button" 147 445 122 20 "PS Remote" $mainForm
+
+
+$OnTopCheck                       = New-Object system.Windows.Forms.CheckBox
+$OnTopCheck.text                  = "Keep Wrench on Top"
+$OnTopCheck.AutoSize              = $false
+$OnTopCheck.width                 = 100
+$OnTopCheck.height                = 35
+$OnTopCheck.location              = New-Object System.Drawing.Point(30,410)
+$OnTopCheck.Font                  = 'Microsoft Sans Serif,8.25'
+$OnTopCheck.Add_Click({ runOnTop })
+#$OnTopCheck = createItem "Checkbox" 30 410 100 35 "Keep Wrench on Top" $mainForm
 
 $NewPSLbl                          = New-Object system.Windows.Forms.Label
 $NewPSLbl.text                     = "Name: "
@@ -335,6 +406,7 @@ $NewPSLbl.location                 = New-Object System.Drawing.Point(80,578)
 $NewPSLbl.Font                     = 'Microsoft Sans Serif,8.25'
 $NewPSLbl.Add_Click({ Start-Process "powershell.exe" })
 #$NewPSLbl = createItem "Label" 80 578 150 15 "New Powershell Window" $mainForm
+
 $PingTimer = New-Object System.Windows.Forms.Timer
 $PingTimer.Interval = 1000
 $PingTimer.add_tick({ checkPing })
@@ -348,16 +420,35 @@ $logo.Image = [System.Drawing.Image]::Fromfile((get-item $LogoLocation));
 $mainForm.controls.add($logo)
 
 #Expand Button
-$ExpandButton = createItem "Button" 264 577 15 15 ">" $mainForm
-	$ExpandButton.Add_Click({ expandForm })
-	$ExpandButton.Visible = $true
+$ExpandButton                         = New-Object system.Windows.Forms.Button
+$ExpandButton.text                    = ">"
+$ExpandButton.width                   = 15
+$ExpandButton.height                  = 15
+$ExpandButton.location                = New-Object System.Drawing.Point(264,577)
+$ExpandButton.Font                    = 'Microsoft Sans Serif,8.25'
+$ExpandButton.Visible 				 = $true #this is not needed.  The default for button is visible
+$ExpandButton.Add_Click({ expandForm })
+#$ExpandButton = createItem "Button" 264 577 15 15 ">" $mainForm
 
 # Add Labels to MainForm
 $mainForm.controls.AddRange(@($Namelbl,$UserIDLbl,$IPLbl,$PCLbl,$IPSourceLbl,$PhoneLbl,$LockoutLbl,$HDriveLbl,$OULbl,$NewPSLbl))
-# Add Textboxes to MainForm $UserIDBox
-$mainForm.controls.AddRange(@($NameBox,$IPBox,$PCBox,$OUBox,$UserIDBox)) 
+# Add Textboxes to MainForm 
+$mainForm.controls.AddRange(@($NameBox,$IPBox,$PCBox,$OUBox,$UserIDBox,$PhoneLbl,$PhoneBox,$HDriveBox,$LockoutBox)) 
 # Add Buttons to MainForm
-$mainForm.controls.AddRange(@($NameButton))
+$mainForm.controls.AddRange(@($NameButton,$UserIDButton,$IPButton,
+$LockoutButton,$RVButton,$UserFactsButton,$UserGroupButton,$ChangePWButton,
+$PSSessionBtn,$RDPButton,$ExpandButton,$PCButton,$PCFactsButton,
+$PCGroupButton,$PCManageButton,$RenameButton,$SCCMClientCenterButton,$TelnetPCButton,
+$ViewCButton,$ViewCButton,$GPBtn))
+
+
+
+
+
+
+
+# Add Other Controls that are not defined above
+$mainForm.controls.AddRange(@($OnTopCheck))
 ####### EXPANDED FORM GUI #######
 
 #Draw Seperator
