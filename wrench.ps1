@@ -113,7 +113,7 @@ $mainForm = createForm "Wrench" 300 635 "CenterScreen" "Fixed3D" $true $false $t
 #Name Info
 $Namelbl                              = New-Object system.Windows.Forms.Label
 $Namelbl.text                         = "Name: "
-$Namelbl.width                        = 130
+$Namelbl.width                        = 55
 $Namelbl.height                       = 20
 $Namelbl.location                     = New-Object System.Drawing.Point(11,28)
 $Namelbl.Font                         = 'Microsoft Sans Serif,8.25'
@@ -150,7 +150,13 @@ $PCLbl.height                         = 20
 $PCLbl.location                       = New-Object System.Drawing.Point(10,88)
 $PCLbl.Font                           = 'Microsoft Sans Serif,8.25'
 
-$PCBox = createItem "TextBox" 70 85 130 20 "" $mainForm
+$PCBox                       	      = New-Object system.Windows.Forms.TextBox
+$PCBox.width                          = 130
+$PCBox.height                         = 20
+$PCBox.location                       = New-Object System.Drawing.Point(70,85)
+$PCBox.Font                           = 'Microsoft Sans Serif,8.25'
+
+#$PCBox = createItem "TextBox" 70 85 130 20 "" $mainForm
 	$PCBox.MaxLength = 15
 $PCButton = createItem "Button" 210 85 60 20 "Search" $mainForm
 	$PCButton.TabStop = $False
@@ -158,7 +164,7 @@ $PCButton = createItem "Button" 210 85 60 20 "Search" $mainForm
 #IP Info
 $IPLbl                                = New-Object system.Windows.Forms.Label
 $IPLbl.text                           = "IP: "
-$IPLbl.width                          = 60
+$IPLbl.width                          = 18
 $IPLbl.height                         = 20
 $IPLbl.location                       = New-Object System.Drawing.Point(10,118)
 $IPLbl.Font                           = 'Microsoft Sans Serif,8.25'
@@ -166,18 +172,18 @@ $IPLbl.Font                           = 'Microsoft Sans Serif,8.25'
 # IP Source Info
 $IPSourceLbl                          = New-Object system.Windows.Forms.Label
 $IPSourceLbl.text                     = "" # Starts Empty
-$IPSourceLbl.width                    = 130
+$IPSourceLbl.width                    = 40
 $IPSourceLbl.height                   = 20
-$IPSourceLbl.location                 = New-Object System.Drawing.Point(70,115)
+$IPSourceLbl.location                 = New-Object System.Drawing.Point(28,118)
 $IPSourceLbl.Font                     = 'Microsoft Sans Serif,8.25'
 
 $IPBox                        	      = New-Object system.Windows.Forms.TextBox
 $IPBox.width                          = 130
 $IPBox.height                         = 20
-$IPBox.location                       = New-Object System.Drawing.Point(70,130)
+$IPBox.location                       = New-Object System.Drawing.Point(70,115)
 $IPBox.Font                           = 'Microsoft Sans Serif,8.25'
 
-$IPBox = createItem "Textbox" 70 115 130 20 "" $mainForm
+# $IPBox = createItem "Textbox" 70 115 130 20 "" $mainForm
 	$IPBox.MaxLength = 15
 $IPButton = createItem "Button" 210 115 60 20 "Search" $mainForm
 	$IPButton.TabStop = $False
@@ -217,8 +223,9 @@ $HDriveLbl.location                 = New-Object System.Drawing.Point(10,208)
 $HDriveLbl.Font                     = 'Microsoft Sans Serif,8.25'
 
 $HDriveBox = createItem "Textbox" 70 208 200 20 "" $mainForm
-	$HDriveBox.ReadOnly = $True
-	$HDriveBox.TabStop = $False
+$HDriveBox.ReadOnly = $True
+$HDriveBox.TabStop = $False
+
 #OU Info
 $OULbl                              = New-Object system.Windows.Forms.Label
 $OULbl.text                         = "User OU:"
@@ -227,9 +234,14 @@ $OULbl.height                       = 20
 $OULbl.location                     = New-Object System.Drawing.Point(10,238)
 $OULbl.Font                         = 'Microsoft Sans Serif,8.25'
 
-$OUBox = createItem "Textbox" 70 235 200 20 "" $mainForm
-	$OUBox.ReadOnly = $True
-	$OUBox.TabStop = $False
+$OUBox                              = New-Object system.Windows.Forms.TextBox
+$OUBox.width                        = 200
+$OUBox.height                       = 20
+$OUBox.location                     = New-Object System.Drawing.Point(70,235)
+$OUBox.Font                         = 'Microsoft Sans Serif,8.25'
+$OUBox.ReadOnly = $True
+$OUBox.TabStop = $False
+#$OUBox = createItem "Textbox" 70 235 200 20 "" $mainForm
 #Buttons
 $RVButton = createItem "Button" 10 265 259 20 "Connect Via SCCM Remote Control" $mainForm
 	$RVButton.Add_Click({ runRemoteViewer })		
@@ -253,12 +265,18 @@ $PSSessionBtn = createItem "Button" 147 445 122 20 "PS Remote" $mainForm
 	$PSSessionBtn.Add_Click({connectPSSession})
 $OnTopCheck = createItem "Checkbox" 30 410 100 35 "Keep Wrench on Top" $mainForm
 	$OnTopCheck.Add_Click({ runOnTop })
-$NewPSLbl = createItem "Label" 80 578 150 15 "New Powershell Window" $mainForm
-	$NewPSLbl.ForeColor = "Blue"
-	$NewPSLbl.Add_Click({ Start-Process "powershell.exe" })
+
+$NewPSLbl                          = New-Object system.Windows.Forms.Label
+$NewPSLbl.text                     = "Name: "
+$NewPSLbl.width                    = 150
+$NewPSLbl.height                   = 15
+$NewPSLbl.location                 = New-Object System.Drawing.Point(80,578)
+$NewPSLbl.Font                     = 'Microsoft Sans Serif,8.25'
+$NewPSLbl.Add_Click({ Start-Process "powershell.exe" })
+#$NewPSLbl = createItem "Label" 80 578 150 15 "New Powershell Window" $mainForm
 $PingTimer = New-Object System.Windows.Forms.Timer
-	$PingTimer.Interval = 1000
-	$PingTimer.add_tick({ checkPing })
+$PingTimer.Interval = 1000
+$PingTimer.add_tick({ checkPing })
 
 #Logo Image
 $logo = new-object Windows.Forms.PictureBox
@@ -273,8 +291,11 @@ $ExpandButton = createItem "Button" 264 577 15 15 ">" $mainForm
 	$ExpandButton.Add_Click({ expandForm })
 	$ExpandButton.Visible = $true
 
-# Add ControlsToForm
-$mainForm.controls.AddRange(@($Namelbl,$UserIDLbl,$IPLbl,$PCLbl,$IPSourceLbl,$PhoneLbl,$LockoutLbl,$HDriveLbl,$OULbl))
+# Add Labels to MainForm
+$mainForm.controls.AddRange(@($Namelbl,$UserIDLbl,$IPLbl,$PCLbl,$IPSourceLbl,$PhoneLbl,$LockoutLbl,$HDriveLbl,$OULbl,$NewPSLbl))
+# Add Buttons to MainForm
+$mainForm.controls.AddRange(@($NameBox,$NameButton,$IPBox,$PCBox,$OUBox))
+
 ####### EXPANDED FORM GUI #######
 
 #Draw Seperator
