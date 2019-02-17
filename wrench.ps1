@@ -118,8 +118,19 @@ $Namelbl.height                       = 20
 $Namelbl.location                     = New-Object System.Drawing.Point(11,28)
 $Namelbl.Font                         = 'Microsoft Sans Serif,8.25'
 
-$NameBox = createItem "TextBox" 70 25 130 20 "" $mainForm
-$NameButton = createItem "Button" 210 25 60 20 "Search" $mainForm
+$NameBox                        	  = New-Object system.Windows.Forms.TextBox
+$NameBox.width                       = 130
+$NameBox.height                      = 20
+$NameBox.location                    = New-Object System.Drawing.Point(70,25)
+$NameBox.Font                        = 'Microsoft Sans Serif,8.25'
+
+# $NameBox = createItem "TextBox" 70 25 130 20 "" $mainForm
+$NameButton                        = New-Object system.Windows.Forms.TextBox
+$NameButton.width                  = 60
+$NameButton.height                 = 20
+$NameButton.location               = New-Object System.Drawing.Point(210,25)
+$NameButton.Font                   = 'Microsoft Sans Serif,8.25'
+#$NameButton = createItem "Button" 210 25 60 20 "Search" $mainForm
 	$NameButton.TabStop = $False
 	$NameButton.Add_Click({	searchByName })
 
@@ -142,7 +153,7 @@ $PCLbl.width                          = 60
 $PCLbl.height                         = 20
 $PCLbl.location                       = New-Object System.Drawing.Point(10,88)
 $PCLbl.Font                           = 'Microsoft Sans Serif,8.25'
-# $PCLbl = createItem "Label" 10 88 60 20 "PC Name: " $mainForm
+
 $PCBox = createItem "TextBox" 70 85 130 20 "" $mainForm
 	$PCBox.MaxLength = 15
 $PCButton = createItem "Button" 210 85 60 20 "Search" $mainForm
