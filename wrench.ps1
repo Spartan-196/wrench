@@ -115,7 +115,7 @@ $Namelbl.text                     = "Name: "
 $Namelbl.width                    = 130
 $Namelbl.height                   = 20
 $Namelbl.location                 = New-Object System.Drawing.Point(11,28)
-$Namelbl.Font                     = 'Microsoft Sans Serif,9'
+$Namelbl.Font                     = 'Microsoft Sans Serif,8.25'
 
 
 # $NameLbl = createItem "Label" 10 28 60 20 "Name: " $mainForm
@@ -130,7 +130,7 @@ $UserIDLbl.text                     = "User ID: "
 $UserIDLbl.width                    = 60
 $UserIDLbl.height                   = 20
 $UserIDLbl.location                 = New-Object System.Drawing.Point(10,58)
-$UserIDLbl.Font                     = 'Microsoft Sans Serif,9'
+$UserIDLbl.Font                     = 'Microsoft Sans Serif,8.25'
 #$UserIDLbl = createItem "Label" 10 58 60 20 "User ID: " $mainForm
 $UserIDBox = createItem "TextBox" 70 55 130 20 "" $mainForm
 	#$UserIDBox.MaxLength = 15
@@ -138,32 +138,33 @@ $UserIDButton = createItem "Button" 210 55 60 20 "Search" $mainForm
 	$UserIDButton.TabStop = $False
 	$UserIDButton.Add_Click({ searchByUserID })
 #PC Name Info
-$PCLbl                          = New-Object system.Windows.Forms.Label
-$PCLbl.text                     = "PC Name: "
-$PCLbl.width                    = 60
-$PCLbl.height                   = 20
-$PCLbl.location                 = New-Object System.Drawing.Point(10,88)
-$PCLbl.Font                     = 'Microsoft Sans Serif,9'
+$PCLbl                                = New-Object system.Windows.Forms.Label
+$PCLbl.text                           = "PC Name: "
+$PCLbl.width                          = 60
+$PCLbl.height                         = 20
+$PCLbl.location                       = New-Object System.Drawing.Point(10,88)
+$PCLbl.Font                           = 'Microsoft Sans Serif,8.25'
 # $PCLbl = createItem "Label" 10 88 60 20 "PC Name: " $mainForm
 $PCBox = createItem "TextBox" 70 85 130 20 "" $mainForm
 	$PCBox.MaxLength = 15
+	$PCBOx.Text = $($PCBOx.Font)
 $PCButton = createItem "Button" 210 85 60 20 "Search" $mainForm
 	$PCButton.TabStop = $False
 	$PCButton.Add_Click({ searchByPCName })
 #IP Info
-$IPLbl                          = New-Object system.Windows.Forms.Label
-$IPLbl.text                     = "Name: "
-$IPLbl.width                    = 60
-$IPLbl.height                   = 20
-$IPLbl.location                 = New-Object System.Drawing.Point(10,118)
-$IPLbl.Font                     = 'Microsoft Sans Serif,9'
+$IPLbl                                = New-Object system.Windows.Forms.Label
+$IPLbl.text                           = "Name: "
+$IPLbl.width                          = 60
+$IPLbl.height                         = 20
+$IPLbl.location                       = New-Object System.Drawing.Point(10,118)
+$IPLbl.Font                           = 'Microsoft Sans Serif,8.25'
 # $IPLbl = createItem "Label" 10 118 18 20 "IP: " $mainForm
 $IPSourceLbl                          = New-Object system.Windows.Forms.Label
 $IPSourceLbl.text                     = "Name: "
 $IPSourceLbl.width                    = 130
 $IPSourceLbl.height                   = 20
 $IPSourceLbl.location                 = New-Object System.Drawing.Point(70,115)
-$IPSourceLbl.Font                     = 'Microsoft Sans Serif,9'
+$IPSourceLbl.Font                     = 'Microsoft Sans Serif,8.25'
 # $IPSourceLbl = createItem "Label" 28 118 40 20 "" $mainForm
 $IPBox = createItem "Textbox" 70 115 130 20 "" $mainForm
 	$IPBox.MaxLength = 15
@@ -171,23 +172,23 @@ $IPButton = createItem "Button" 210 115 60 20 "Search" $mainForm
 	$IPButton.TabStop = $False
 	$IPButton.Add_Click({ searchByIP })
 #Phone Info
-$PhoneLbl                          = New-Object system.Windows.Forms.Label
-$PhoneLbl.text                     = "Name: "
-$PhoneLbl.width                    = 60
-$PhoneLbl.height                   = 20
-$PhoneLbl.location                 = New-Object System.Drawing.Point(10,148)
-$PhoneLbl.Font                     = 'Microsoft Sans Serif,9'
+$PhoneLbl                            = New-Object system.Windows.Forms.Label
+$PhoneLbl.text                       = "Phone:"
+$PhoneLbl.width                      = 60
+$PhoneLbl.height                     = 20
+$PhoneLbl.location                   = New-Object System.Drawing.Point(10,148)
+$PhoneLbl.Font                       = 'Microsoft Sans Serif,8.25'
 #$PhoneLbl = createItem "Label" 10 148 60 20 "Phone:" $mainForm
 $PhoneBox = createItem "Textbox" 70 145 200 20 "" $mainForm
 	$PhoneBox.ReadOnly = $True
 	$PhoneBox.TabStop = $False
 #Lockout Info
 $LockoutLbl                          = New-Object system.Windows.Forms.Label
-$LockoutLbl.text                     = "Name: "
+$LockoutLbl.text                     = "Lockout:"
 $LockoutLbl.width                    = 60
 $LockoutLbl.height                   = 20
 $LockoutLbl.location                 = New-Object System.Drawing.Point(10,178)
-$LockoutLbl.Font                     = 'Microsoft Sans Serif,9'
+$LockoutLbl.Font                     = 'Microsoft Sans Serif,8.25'
 # $LockoutLbl = createItem "Label" 10 178 60 20 "Lockout:" $mainForm
 $LockoutBox = createItem "Textbox" 70 175 130 20 "" $mainForm
 	$LockoutBox.ReadOnly = $True
@@ -198,17 +199,23 @@ $LockoutButton = createItem "Button" 210 175 60 20 "Unlock" $mainForm
 	$LockoutButton.Add_Click({ unlockAccount })
 #H Drive Info
 $HDriveLbl                          = New-Object system.Windows.Forms.Label
-$HDriveLbl.text                     = "Name: "
+$HDriveLbl.text                     = "H Drive:"
 $HDriveLbl.width                    = 60
 $HDriveLbl.height                   = 20
 $HDriveLbl.location                 = New-Object System.Drawing.Point(10,208)
-$HDriveLbl.Font                     = 'Microsoft Sans Serif,9'
+$HDriveLbl.Font                     = 'Microsoft Sans Serif,8.25'
 # $HDriveLbl = createItem "Label" 10 208 60 20 "H Drive:" $mainForm
 $HDriveBox = createItem "Textbox" 70 208 200 20 "" $mainForm
 	$HDriveBox.ReadOnly = $True
 	$HDriveBox.TabStop = $False
 #OU Info
-$OULbl = createItem "Label" 10 238 60 20 "User OU:" $mainForm
+$OULbl                              = New-Object system.Windows.Forms.Label
+$OULbl.text                         = "User OU:"
+$OULbl.width                        = 60
+$OULbl.height                       = 20
+$OULbl.location                     = New-Object System.Drawing.Point(10,238)
+$OULbl.Font                         = 'Microsoft Sans Serif,8.25'
+#$OULbl = createItem "Label" 10 238 60 20 "User OU:" $mainForm
 $OUBox = createItem "Textbox" 70 235 200 20 "" $mainForm
 	$OUBox.ReadOnly = $True
 	$OUBox.TabStop = $False
@@ -256,7 +263,7 @@ $ExpandButton = createItem "Button" 264 577 15 15 ">" $mainForm
 	$ExpandButton.Visible = $true
 
 # Add ControlsToForm
-$mainForm.controls.AddRange(@($Namelbl,$UserIDLbl))
+$mainForm.controls.AddRange(@($Namelbl,$UserIDLbl,$IPLbl,$PCLbl,$IPSourceLbl,$PhoneLbl,$LockoutLbl,$HDriveLbl,$OULbl))
 ####### EXPANDED FORM GUI #######
 
 #Draw Seperator
