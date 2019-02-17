@@ -813,9 +813,27 @@ function IDByLastName{
 	
 	$UserIDBox.Text = $global:UserID
 }
+
 function PCNameByUserID{
+	
+	# Check if $SCCMSiteCode is undefined. Get Site Code from local machine
+	If (([string]::IsNullOrWhiteSpace($($SCCMSiteCode)))){
+		$SCCMSiteCode = ([wmiclass]"ROOT\ccm:SMS_Client").GetAssignedSite().sSiteCode
+		If (([string]::IsNullOrWhiteSpace($($SCCMSiteCode)))) {
+			[System.Windows.MessageBox]::Show("Missing Variable $SCCMSiteServer`nAdd The name of the SCCM Server to Wrench_env.ps1")
+		}
+	}
+	# Check if $SCCMSiteServer is undefined. Get SCCM Site Server from local machine
+	If (([string]::IsNullOrWhiteSpace($($SCCMSiteServer)))){
+		$SCCMSiteServer =  ([wmi]"ROOT\ccm:SMS_Authority.Name='SMS:$SCCMSiteCode'").CurrentManagementPoint # If the SCCMSiteServer is not in config file get it for the local machine.
+		If (([string]::IsNullOrWhiteSpace($($SCCMSiteServer)))) {
+			[System.Windows.MessageBox]::Show('Missing Variable $SCCMSiteServer`nAdd The name of the SCCM Server to Wrench_env.ps1')
+			# future update give the user a textbox to update $SCCMSiteServer
+		}
+		
+	}
 	$variantid = "$UserID" + "*"
-	$pcnames = @((Get-WmiObject -Class SMS_UserMachineRelationship -namespace "root\sms\$SCCMNameSpace" -computer $SCCMSiteServer -filter "UniqueUserName LIKE '%$global:UserID' and Types='1' and IsActive='1' and Sources='4'").ResourceName)
+	$pcnames = @((Get-WmiObject -Class SMS_UserMachineRelationship -namespace "root\sms\site_$SCCMSiteCode" -computer $SCCMSiteServer -filter "UniqueUserName LIKE '%$global:UserID' and Types='1' and IsActive='1' and Sources='4'").ResourceName)
 			
 	if ($pcnames.length -eq 1){
 		$global:PCName = $pcnames[0]
@@ -830,8 +848,8 @@ function PCNameByUserID{
 		$PCBox.Text = "-"
 	}
 		$PCBox.Text = $global:PCName
-
 }
+
 function getIP{
 	if($global:PCName -eq "-"){
 		$global:IP = "-"
