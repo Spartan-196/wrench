@@ -197,7 +197,13 @@ $LockoutButton = createItem "Button" 210 175 60 20 "Unlock" $mainForm
 	$LockoutButton.Visible = $False
 	$LockoutButton.Add_Click({ unlockAccount })
 #H Drive Info
-$HDriveLbl = createItem "Label" 10 208 60 20 "H Drive:" $mainForm
+$HDriveLbl                          = New-Object system.Windows.Forms.Label
+$HDriveLbl.text                     = "Name: "
+$HDriveLbl.width                    = 60
+$HDriveLbl.height                   = 20
+$HDriveLbl.location                 = New-Object System.Drawing.Point(10,208)
+$HDriveLbl.Font                     = 'Microsoft Sans Serif,9'
+# $HDriveLbl = createItem "Label" 10 208 60 20 "H Drive:" $mainForm
 $HDriveBox = createItem "Textbox" 70 208 200 20 "" $mainForm
 	$HDriveBox.ReadOnly = $True
 	$HDriveBox.TabStop = $False
