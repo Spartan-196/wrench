@@ -112,7 +112,6 @@ $mainForm = createForm "Wrench" 300 635 "CenterScreen" "Fixed3D" $true $false $t
 #Name Info
 $Namelbl                          = New-Object system.Windows.Forms.Label
 $Namelbl.text                     = "Name: "
-$Namelbl.AutoSize                 = $true
 $Namelbl.width                    = 130
 $Namelbl.height                   = 20
 $Namelbl.location                 = New-Object System.Drawing.Point(11,28)
@@ -120,12 +119,19 @@ $Namelbl.Font                     = 'Microsoft Sans Serif,9'
 
 
 # $NameLbl = createItem "Label" 10 28 60 20 "Name: " $mainForm
+
 $NameBox = createItem "TextBox" 70 25 130 20 "" $mainForm
 $NameButton = createItem "Button" 210 25 60 20 "Search" $mainForm
 	$NameButton.TabStop = $False
 	$NameButton.Add_Click({	searchByName })
 #UserID Info
-$UserIDLbl = createItem "Label" 10 58 60 20 "User ID: " $mainForm
+$UserIDLbl                          = New-Object system.Windows.Forms.Label
+$UserIDLbl.text                     = "User ID: "
+$UserIDLbl.width                    = 60
+$UserIDLbl.height                   = 20
+$UserIDLbl.location                 = New-Object System.Drawing.Point(10,58)
+$UserIDLbl.Font                     = 'Microsoft Sans Serif,9'
+#$UserIDLbl = createItem "Label" 10 58 60 20 "User ID: " $mainForm
 $UserIDBox = createItem "TextBox" 70 55 130 20 "" $mainForm
 	#$UserIDBox.MaxLength = 15
 $UserIDButton = createItem "Button" 210 55 60 20 "Search" $mainForm
@@ -212,8 +218,9 @@ $mainForm.controls.add($logo)
 $ExpandButton = createItem "Button" 264 577 15 15 ">" $mainForm
 	$ExpandButton.Add_Click({ expandForm })
 	$ExpandButton.Visible = $true
-
-$mainForm.controls.AddRange(@($Namelbl))
+	
+# Add ControlsToForm
+$mainForm.controls.AddRange(@($Namelbl,$UserIDLbl))
 ####### EXPANDED FORM GUI #######
 
 #Draw Seperator
