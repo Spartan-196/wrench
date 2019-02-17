@@ -171,7 +171,13 @@ $IPButton = createItem "Button" 210 115 60 20 "Search" $mainForm
 	$IPButton.TabStop = $False
 	$IPButton.Add_Click({ searchByIP })
 #Phone Info
-$PhoneLbl = createItem "Label" 10 148 60 20 "Phone:" $mainForm
+$PhoneLbl                          = New-Object system.Windows.Forms.Label
+$PhoneLbl.text                     = "Name: "
+$PhoneLbl.width                    = 60
+$PhoneLbl.height                   = 20
+$PhoneLbl.location                 = New-Object System.Drawing.Point(10,148)
+$PhoneLbl.Font                     = 'Microsoft Sans Serif,9'
+#$PhoneLbl = createItem "Label" 10 148 60 20 "Phone:" $mainForm
 $PhoneBox = createItem "Textbox" 70 145 200 20 "" $mainForm
 	$PhoneBox.ReadOnly = $True
 	$PhoneBox.TabStop = $False
