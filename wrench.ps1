@@ -138,14 +138,26 @@ $UserIDButton = createItem "Button" 210 55 60 20 "Search" $mainForm
 	$UserIDButton.TabStop = $False
 	$UserIDButton.Add_Click({ searchByUserID })
 #PC Name Info
-$PCLbl = createItem "Label" 10 88 60 20 "PC Name: " $mainForm
+$PCLbl                          = New-Object system.Windows.Forms.Label
+$PCLbl.text                     = "PC Name: "
+$PCLbl.width                    = 60
+$PCLbl.height                   = 20
+$PCLbl.location                 = New-Object System.Drawing.Point(10,88)
+$PCLbl.Font                     = 'Microsoft Sans Serif,9'
+# $PCLbl = createItem "Label" 10 88 60 20 "PC Name: " $mainForm
 $PCBox = createItem "TextBox" 70 85 130 20 "" $mainForm
 	$PCBox.MaxLength = 15
 $PCButton = createItem "Button" 210 85 60 20 "Search" $mainForm
 	$PCButton.TabStop = $False
 	$PCButton.Add_Click({ searchByPCName })
 #IP Info
-$IPLbl = createItem "Label" 10 118 18 20 "IP: " $mainForm
+$IPLbl                          = New-Object system.Windows.Forms.Label
+$IPLbl.text                     = "Name: "
+$IPLbl.width                    = 60
+$IPLbl.height                   = 20
+$IPLbl.location                 = New-Object System.Drawing.Point(10,118)
+$IPLbl.Font                     = 'Microsoft Sans Serif,9'
+# $IPLbl = createItem "Label" 10 118 18 20 "IP: " $mainForm
 $IPSourceLbl = createItem "Label" 28 118 40 20 "" $mainForm
 $IPBox = createItem "Textbox" 70 115 130 20 "" $mainForm
 	$IPBox.MaxLength = 15
@@ -218,7 +230,7 @@ $mainForm.controls.add($logo)
 $ExpandButton = createItem "Button" 264 577 15 15 ">" $mainForm
 	$ExpandButton.Add_Click({ expandForm })
 	$ExpandButton.Visible = $true
-	
+
 # Add ControlsToForm
 $mainForm.controls.AddRange(@($Namelbl,$UserIDLbl))
 ####### EXPANDED FORM GUI #######
