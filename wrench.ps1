@@ -151,10 +151,16 @@ $UserIDBox.Font                        = 'Microsoft Sans Serif,8.25'
 
 #$UserIDBox = createItem "TextBox" 70 55 130 20 "" $mainForm
 
+$UserIDButton                         = New-Object system.Windows.Forms.Button
+$UserIDButton.text                    = "Search"
+$UserIDButton.width                   = 60
+$UserIDButton.height                  = 20
+$UserIDButton.location                = New-Object System.Drawing.Point(210,55)
+$UserIDButton.Font                    = 'Microsoft Sans Serif,8.25'
+$UserIDButton.TabStop = $False
+$UserIDButton.Add_Click({ searchByUserID })
+$UserIDButton = createItem "Button" 210 55 60 20 "Search" $mainForm
 
-#$UserIDButton = createItem "Button" 210 55 60 20 "Search" $mainForm
-	$UserIDButton.TabStop = $False
-	$UserIDButton.Add_Click({ searchByUserID })
 #PC Name Info
 $PCLbl                                = New-Object system.Windows.Forms.Label
 $PCLbl.text                           = "PC Name: "
