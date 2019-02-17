@@ -159,7 +159,7 @@ $UserIDButton.location                = New-Object System.Drawing.Point(210,55)
 $UserIDButton.Font                    = 'Microsoft Sans Serif,8.25'
 $UserIDButton.TabStop = $False
 $UserIDButton.Add_Click({ searchByUserID })
-$UserIDButton = createItem "Button" 210 55 60 20 "Search" $mainForm
+#$UserIDButton = createItem "Button" 210 55 60 20 "Search" $mainForm
 
 #PC Name Info
 $PCLbl                                = New-Object system.Windows.Forms.Label
@@ -174,12 +174,19 @@ $PCBox.width                          = 130
 $PCBox.height                         = 20
 $PCBox.location                       = New-Object System.Drawing.Point(70,85)
 $PCBox.Font                           = 'Microsoft Sans Serif,8.25'
-
+$PCBox.MaxLength = 15
 #$PCBox = createItem "TextBox" 70 85 130 20 "" $mainForm
-	$PCBox.MaxLength = 15
-$PCButton = createItem "Button" 210 85 60 20 "Search" $mainForm
-	$PCButton.TabStop = $False
-	$PCButton.Add_Click({ searchByPCName })
+
+$PCButton                             = New-Object system.Windows.Forms.Button
+$PCButton.text                        = "Search"
+$PCButton.width                       = 60
+$PCButton.height                      = 20
+$PCButton.location                    = New-Object System.Drawing.Point(210,85)
+$PCButton.Font                        = 'Microsoft Sans Serif,8.25'
+$PCButton.TabStop = $False
+$PCButton.Add_Click({ searchByPCName })
+
+#$PCButton = createItem "Button" 210 85 60 20 "Search" $mainForm
 #IP Info
 $IPLbl                               = New-Object system.Windows.Forms.Label
 $IPLbl.text                          = "IP: "
@@ -201,11 +208,20 @@ $IPBox.width                         = 130
 $IPBox.height                        = 20
 $IPBox.location                      = New-Object System.Drawing.Point(70,115)
 $IPBox.Font                          = 'Microsoft Sans Serif,8.25'
-
+$IPBox.MaxLength = 15
 # $IPBox = createItem "Textbox" 70 115 130 20 "" $mainForm
-	$IPBox.MaxLength = 15
-$IPButton = createItem "Button" 210 115 60 20 "Search" $mainForm
-	$IPButton.TabStop = $False
+#	$IPBox.MaxLength = 15
+
+$IPButton                         = New-Object system.Windows.Forms.Button
+$IPButton.text                    = "button"
+$IPButton.width                   = 60
+$IPButton.height                  = 20
+$IPButton.location                = New-Object System.Drawing.Point(210,25)
+$IPButton.Font                    = 'Microsoft Sans Serif,8.25'
+$IPButton.TabStop = $False  # Why is Tabstop set to $False
+
+#$IPButton = createItem "Button" 210 115 60 20 "Search" $mainForm
+	
 	$IPButton.Add_Click({ searchByIP })
 #Phone Info
 $PhoneLbl                            = New-Object system.Windows.Forms.Label
@@ -217,7 +233,7 @@ $PhoneLbl.Font                       = 'Microsoft Sans Serif,8.25'
 
 $PhoneBox = createItem "Textbox" 70 145 200 20 "" $mainForm
 	$PhoneBox.ReadOnly = $True
-	$PhoneBox.TabStop = $False
+	$PhoneBox.TabStop = $False	# Why is Tabstop set to $False
 #Lockout Info
 $LockoutLbl                          = New-Object system.Windows.Forms.Label
 $LockoutLbl.text                     = "Lockout:"
@@ -230,7 +246,7 @@ $LockoutBox = createItem "Textbox" 70 175 130 20 "" $mainForm
 	$LockoutBox.ReadOnly = $True
 	$LockoutBox.TabStop = $False
 $LockoutButton = createItem "Button" 210 175 60 20 "Unlock" $mainForm
-	$LockoutButton.TabStop = $False
+	$LockoutButton.TabStop = $False	# Why is Tabstop set to $False
 	$LockoutButton.Visible = $False
 	$LockoutButton.Add_Click({ unlockAccount })
 #H Drive Info
@@ -243,7 +259,7 @@ $HDriveLbl.Font                     = 'Microsoft Sans Serif,8.25'
 
 $HDriveBox = createItem "Textbox" 70 208 200 20 "" $mainForm
 $HDriveBox.ReadOnly = $True
-$HDriveBox.TabStop = $False
+$HDriveBox.TabStop = $False	# Why is Tabstop set to $False
 
 #OU Info
 $OULbl                              = New-Object system.Windows.Forms.Label
@@ -259,7 +275,7 @@ $OUBox.height                       = 20
 $OUBox.location                     = New-Object System.Drawing.Point(70,235)
 $OUBox.Font                         = 'Microsoft Sans Serif,8.25'
 $OUBox.ReadOnly = $True
-$OUBox.TabStop = $False
+$OUBox.TabStop = $False # Why is Tabstop set to $False
 #$OUBox = createItem "Textbox" 70 235 200 20 "" $mainForm
 #Buttons
 $RVButton = createItem "Button" 10 265 259 20 "Connect Via SCCM Remote Control" $mainForm
