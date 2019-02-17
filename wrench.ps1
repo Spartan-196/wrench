@@ -110,9 +110,16 @@ $mainForm = createForm "Wrench" 300 635 "CenterScreen" "Fixed3D" $true $false $t
 	$mainForm.KeyPreview = $True
 	$mainForm.Add_KeyDown({ mainKeyboard })
 #Name Info
+$Namelbl                          = New-Object system.Windows.Forms.Label
+$Namelbl.text                     = "Name: "
+$Namelbl.AutoSize                 = $true
+$Namelbl.width                    = 130
+$Namelbl.height                   = 20
+$Namelbl.location                 = New-Object System.Drawing.Point(11,28)
+$Namelbl.Font                     = 'Microsoft Sans Serif,9'
 
 
-$NameLbl = createItem "Label" 10 28 60 20 "Name: " $mainForm
+# $NameLbl = createItem "Label" 10 28 60 20 "Name: " $mainForm
 $NameBox = createItem "TextBox" 70 25 130 20 "" $mainForm
 $NameButton = createItem "Button" 210 25 60 20 "Search" $mainForm
 	$NameButton.TabStop = $False
@@ -206,6 +213,7 @@ $ExpandButton = createItem "Button" 264 577 15 15 ">" $mainForm
 	$ExpandButton.Add_Click({ expandForm })
 	$ExpandButton.Visible = $true
 
+$mainForm.controls.AddRange(@($Namelbl))
 ####### EXPANDED FORM GUI #######
 
 #Draw Seperator
