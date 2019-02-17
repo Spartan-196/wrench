@@ -219,11 +219,11 @@ $IPButton.height                  = 20
 $IPButton.location                = New-Object System.Drawing.Point(210,25)
 $IPButton.Font                    = 'Microsoft Sans Serif,8.25'
 $IPButton.TabStop = $False  # Why is Tabstop set to $False
-
+$IPButton.Add_Click({ searchByIP })
+#Ph
 #$IPButton = createItem "Button" 210 115 60 20 "Search" $mainForm
 	
-	$IPButton.Add_Click({ searchByIP })
-#Phone Info
+	one Info
 $PhoneLbl                            = New-Object system.Windows.Forms.Label
 $PhoneLbl.text                       = "Phone:"
 $PhoneLbl.width                      = 60
@@ -231,9 +231,15 @@ $PhoneLbl.height                     = 20
 $PhoneLbl.location                   = New-Object System.Drawing.Point(10,148)
 $PhoneLbl.Font                       = 'Microsoft Sans Serif,8.25'
 
-$PhoneBox = createItem "Textbox" 70 145 200 20 "" $mainForm
-	$PhoneBox.ReadOnly = $True
-	$PhoneBox.TabStop = $False	# Why is Tabstop set to $False
+$PhoneBox                        = New-Object system.Windows.Forms.TextBox
+$PhoneBox.width                  = 200
+$PhoneBox.height                 = 20
+$PhoneBox.location               = New-Object System.Drawing.Point70,145)
+$PhoneBox.Font                   = 'Microsoft Sans Serif,8.25'
+$PhoneBox.ReadOnly = $True
+$PhoneBox.TabStop = $False	# Why is Tabstop set to $False
+#$PhoneBox = createItem "Textbox" 70 145 200 20 "" $mainForm
+
 #Lockout Info
 $LockoutLbl                          = New-Object system.Windows.Forms.Label
 $LockoutLbl.text                     = "Lockout:"
@@ -242,13 +248,27 @@ $LockoutLbl.height                   = 20
 $LockoutLbl.location                 = New-Object System.Drawing.Point(10,178)
 $LockoutLbl.Font                     = 'Microsoft Sans Serif,8.25'
 
-$LockoutBox = createItem "Textbox" 70 175 130 20 "" $mainForm
-	$LockoutBox.ReadOnly = $True
-	$LockoutBox.TabStop = $False
-$LockoutButton = createItem "Button" 210 175 60 20 "Unlock" $mainForm
-	$LockoutButton.TabStop = $False	# Why is Tabstop set to $False
-	$LockoutButton.Visible = $False
-	$LockoutButton.Add_Click({ unlockAccount })
+$LockoutBox                        = New-Object system.Windows.Forms.TextBox
+$LockoutBox.width                  = 130
+$LockoutBox.height                 = 20
+$LockoutBox.location               = New-Object System.Drawing.Point(70,175)
+$LockoutBox.Font                   = 'Microsoft Sans Serif,8.25'
+$LockoutBox.ReadOnly 				= $True
+$LockoutBox.TabStop = $False # Why is Tabstop set to $False
+ #$LockoutBox = createItem "Textbox" 70 175 130 20 "" $mainForm
+
+$LockoutButton                         = New-Object system.Windows.Forms.Button
+$LockoutButton.Text                   = "Unlock"
+$LockoutButton.width                   = 60
+$LockoutButton.height                  = 20
+$LockoutButton.location                = New-Object System.Drawing.Point(210,25)
+$LockoutButton.Font                    = 'Microsoft Sans Serif,8.25'
+$LockoutButton.TabStop                 = $False	# Why is Tabstop set to $False
+$LockoutButton.Visible                 = $False # Hide button if useraccount is not locked out in AD.
+$LockoutButton.Add_Click({ unlockAccount })
+
+#$LockoutButton = createItem "Button" 210 175 60 20 "Unlock" $mainForm
+	
 #H Drive Info
 $HDriveLbl                          = New-Object system.Windows.Forms.Label
 $HDriveLbl.text                     = "H Drive:"
@@ -257,7 +277,13 @@ $HDriveLbl.height                   = 20
 $HDriveLbl.location                 = New-Object System.Drawing.Point(10,208)
 $HDriveLbl.Font                     = 'Microsoft Sans Serif,8.25'
 
-$HDriveBox = createItem "Textbox" 70 208 200 20 "" $mainForm
+$HDriveBox                        = New-Object system.Windows.Forms.TextBox
+$HDriveBox.width                  = 200
+$HDriveBox.height                 = 20
+$HDriveBox.location               = New-Object System.Drawing.Point(70,208)
+$HDriveBox.Font                   = 'Microsoft Sans Serif,8.25'
+
+#$HDriveBox = createItem "Textbox" 70 208 200 20 "" $mainForm
 $HDriveBox.ReadOnly = $True
 $HDriveBox.TabStop = $False	# Why is Tabstop set to $False
 
