@@ -10,5 +10,7 @@ $VPNSiteUrl	= "" #Url on Cisco ASA for use with a username that has privlidge le
 $ClientCenterLocation = "" #Path to SCCMCliCtrWPF.exe either local or UNC Share, utility from https://github.com/rzander/sccmclictr/releases
 $SCCMSiteDataFile = "${env:ProgramFiles(x86)}\Microsoft Configuration Manager\AdminConsole\bin\ConfigurationManager\ConfigurationManager.psd1"
 $SCCMSiteServer = "" #Hostname for SCCM Primary
-$SCCMNameSpace = "" #sms site name such as site_xx to buld WMI name space of root\sms\$sitename
+#The $SCCMNameSpace variable is obsolete and has been removed from the code.
+#$SCCMNameSpace = "" #sms site name such as site_xx to buld WMI name space of root\sms\$sitename 
 $Domain = "" #Windows domain goes here so it can be excluded from resolved UserIDs in some functions
+$SCCMSiteCode = "" # Add three letter site code. ex. $SCCMSiteCode = "ABC". You can retrive the site code with following code from a machine the Wrench works on. ([wmiclass]"ROOT\ccm:SMS_Client").GetAssignedSite().sSiteCode

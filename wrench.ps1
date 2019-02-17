@@ -124,11 +124,16 @@ $NameBox.height                       = 20
 $NameBox.location                     = New-Object System.Drawing.Point(70,25)
 $NameBox.Font                         = 'Microsoft Sans Serif,8.25'
 
-# $NameBox = createItem "TextBox" 70 25 130 20 "" $mainForm
-
-$NameButton = createItem "Button" 210 25 60 20 "Search" $mainForm
-	$NameButton.TabStop = $False
-	$NameButton.Add_Click({	searchByName })
+$NameButton                           = New-Object system.Windows.Forms.Button
+$NameButton.text                      = "Search"
+$NameButton.width                     = 60
+$NameButton.height                    = 20
+$NameButton.location                  = New-Object System.Drawing.Point(210,25)
+$NameButton.Font                      = 'Microsoft Sans Serif,8.25'
+$NameButton.TabStop = $False
+$NameButton.Add_Click({	searchByName })
+# $NameButton = createItem "Button" 210 25 60 20 "Search" $mainForm
+	
 
 $UserIDLbl                            = New-Object system.Windows.Forms.Label
 $UserIDLbl.text                       = "User ID: "
@@ -137,9 +142,17 @@ $UserIDLbl.height                     = 20
 $UserIDLbl.location                   = New-Object System.Drawing.Point(10,58)
 $UserIDLbl.Font                   	  = 'Microsoft Sans Serif,8.25'
 
-$UserIDBox = createItem "TextBox" 70 55 130 20 "" $mainForm
-	#$UserIDBox.MaxLength = 15
-$UserIDButton = createItem "Button" 210 55 60 20 "Search" $mainForm
+$UserIDBox                             = New-Object system.Windows.Forms.TextBox
+$UserIDBox.width                       = 130
+$UserIDBox.height                      = 20
+$UserIDBox.location                    = New-Object System.Drawing.Point(10,25)
+$UserIDBox.Font                        = 'Microsoft Sans Serif,8.25'
+#$UserIDBox.MaxLength = 15
+
+#$UserIDBox = createItem "TextBox" 70 55 130 20 "" $mainForm
+
+
+#$UserIDButton = createItem "Button" 210 55 60 20 "Search" $mainForm
 	$UserIDButton.TabStop = $False
 	$UserIDButton.Add_Click({ searchByUserID })
 #PC Name Info
@@ -162,26 +175,26 @@ $PCButton = createItem "Button" 210 85 60 20 "Search" $mainForm
 	$PCButton.TabStop = $False
 	$PCButton.Add_Click({ searchByPCName })
 #IP Info
-$IPLbl                                = New-Object system.Windows.Forms.Label
-$IPLbl.text                           = "IP: "
-$IPLbl.width                          = 18
-$IPLbl.height                         = 20
-$IPLbl.location                       = New-Object System.Drawing.Point(10,118)
-$IPLbl.Font                           = 'Microsoft Sans Serif,8.25'
+$IPLbl                               = New-Object system.Windows.Forms.Label
+$IPLbl.text                          = "IP: "
+$IPLbl.width                         = 18
+$IPLbl.height                        = 20
+$IPLbl.location                      = New-Object System.Drawing.Point(10,118)
+$IPLbl.Font                          = 'Microsoft Sans Serif,8.25'
 
 # IP Source Info
-$IPSourceLbl                          = New-Object system.Windows.Forms.Label
-$IPSourceLbl.text                     = "" # Starts Empty
-$IPSourceLbl.width                    = 40
-$IPSourceLbl.height                   = 20
-$IPSourceLbl.location                 = New-Object System.Drawing.Point(28,118)
-$IPSourceLbl.Font                     = 'Microsoft Sans Serif,8.25'
+$IPSourceLbl                         = New-Object system.Windows.Forms.Label
+$IPSourceLbl.text                    = "" # Starts Empty
+$IPSourceLbl.width                   = 40
+$IPSourceLbl.height                  = 20
+$IPSourceLbl.location                = New-Object System.Drawing.Point(28,118)
+$IPSourceLbl.Font                    = 'Microsoft Sans Serif,8.25'
 
-$IPBox                        	      = New-Object system.Windows.Forms.TextBox
-$IPBox.width                          = 130
-$IPBox.height                         = 20
-$IPBox.location                       = New-Object System.Drawing.Point(70,115)
-$IPBox.Font                           = 'Microsoft Sans Serif,8.25'
+$IPBox                        	     = New-Object system.Windows.Forms.TextBox
+$IPBox.width                         = 130
+$IPBox.height                        = 20
+$IPBox.location                      = New-Object System.Drawing.Point(70,115)
+$IPBox.Font                          = 'Microsoft Sans Serif,8.25'
 
 # $IPBox = createItem "Textbox" 70 115 130 20 "" $mainForm
 	$IPBox.MaxLength = 15
@@ -293,9 +306,10 @@ $ExpandButton = createItem "Button" 264 577 15 15 ">" $mainForm
 
 # Add Labels to MainForm
 $mainForm.controls.AddRange(@($Namelbl,$UserIDLbl,$IPLbl,$PCLbl,$IPSourceLbl,$PhoneLbl,$LockoutLbl,$HDriveLbl,$OULbl,$NewPSLbl))
+# Add Textboxes to MainForm $UserIDBox
+$mainForm.controls.AddRange(@($NameBox,$IPBox,$PCBox,$OUBox,$UserIDBox)) 
 # Add Buttons to MainForm
-$mainForm.controls.AddRange(@($NameBox,$NameButton,$IPBox,$PCBox,$OUBox))
-
+$mainForm.controls.AddRange(@($NameButton))
 ####### EXPANDED FORM GUI #######
 
 #Draw Seperator
@@ -1074,6 +1088,8 @@ function pingIP{
 		Test-Connection -Computername $IP -BufferSize 16 -Count 1 -quiet
 	} -Arg $global:IP
 }
+ # fix later if WSMAN is broken that the ping check will fail.
+ # Make WSMan Test and fix
 function checkPing{
 	if (($global:PingJob.State -eq "Completed")){
 		$Pingable = @(Receive-Job -id $PingJob.id)
