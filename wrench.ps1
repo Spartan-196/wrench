@@ -182,7 +182,13 @@ $PhoneBox = createItem "Textbox" 70 145 200 20 "" $mainForm
 	$PhoneBox.ReadOnly = $True
 	$PhoneBox.TabStop = $False
 #Lockout Info
-$LockoutLbl = createItem "Label" 10 178 60 20 "Lockout:" $mainForm
+$LockoutLbl                          = New-Object system.Windows.Forms.Label
+$LockoutLbl.text                     = "Name: "
+$LockoutLbl.width                    = 60
+$LockoutLbl.height                   = 20
+$LockoutLbl.location                 = New-Object System.Drawing.Point(10,178)
+$LockoutLbl.Font                     = 'Microsoft Sans Serif,9'
+# $LockoutLbl = createItem "Label" 10 178 60 20 "Lockout:" $mainForm
 $LockoutBox = createItem "Textbox" 70 175 130 20 "" $mainForm
 	$LockoutBox.ReadOnly = $True
 	$LockoutBox.TabStop = $False
