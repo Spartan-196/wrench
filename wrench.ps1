@@ -1421,29 +1421,64 @@ function extraPCFacts{
 	# WMI info
 	$UnderlineFont = New-Object System.Drawing.Font("Microsoft Sans Serif",8.5,[System.Drawing.FontStyle]::Underline)
 	$NonUnderlineFont = New-Object System.Drawing.Font("Microsoft Sans Serif",8.5)
-	$LoggedUserLbl = createItem "Label" 10 190 270 20 "Logged in user: " $PCFactsForm
-		$LoggedUserLbl.Add_Click({ populateLoggedUser })
-		$LoggedUserLbl.ForeColor = "darkblue"
-		$LoggedUserLbl.Font = $UnderlineFont
-	$PCTypeLbl = createItem "Label" 10 220 270 30 "PC Type: " $PCFactsForm
-		$PCTypeLbl.Add_Click({ populatePCType })
-		$PCTypeLbl.ForeColor = "darkblue"
-		$PCTypeLbl.Font = $UnderlineFont
-	$MACLbl = createItem "Label" 10 250 270 20 "MAC: " $PCFactsForm
-		$MACLbl.Add_Click({ populateMAC })
-		$MACLbl.ForeColor = "darkblue"
-		$MACLbl.Font = $UnderlineFont
-	$MACBtn = createItem "Button" 2 247 8 20  "" $PCFactsForm
-		$MACBtn.Visible = $false
-		$MACBtn.Add_Click({ stepMAC })
-	$MemLbl = createItem "Label" 10 280 270 20 "Memory: " $PCFactsForm
-		$MemLbl.Add_Click({ populateMem })
-		$MemLbl.ForeColor = "darkblue"
-		$MemLbl.Font = $UnderlineFont
-	$DriveLbl = createItem "Label" 10 310 270 20 "Drive: " $PCFactsForm
-		$DriveLbl.Add_Click({ populateDrive })
-		$DriveLbl.ForeColor = "darkblue"
-		$DriveLbl.Font = $UnderlineFont
+
+	$LoggedOnUserLabel                          = New-Object system.Windows.Forms.Label
+	$LoggedOnUserLabel.text                     = "Logged in user: "
+	$LoggedOnUserLabel.width                    = 270
+	$LoggedOnUserLabel.height                   = 20
+	$LoggedOnUserLabel.location                 = New-Object System.Drawing.Point(10,190)
+	$LoggedOnUserLabel.Font                     = $UnderlineFont
+	$LoggedOnUserLabel.ForeColor 				= "darkblue"
+	$LoggedOnUserLabel.Add_Click({ populateLoggedUser })
+	#$LoggedOnUserLabel = createItem "Label" 10 190 270 20 "Logged in user: " $PCFactsForm
+	$PCTypeLabel                          		= New-Object system.Windows.Forms.Label
+	$PCTypeLabel.text                     		= "PC Type: "
+	$PCTypeLabel.width                    		= 270
+	$PCTypeLabel.height                   		= 30
+	$PCTypeLabel.location                 		= New-Object System.Drawing.Point(10,220)
+	$PCTypeLabel.ForeColor 						= "darkblue"
+	$PCTypeLabel.Font 							= $UnderlineFont
+	$PCTypeLabel.Add_Click({ populatePCType })			
+	#$PCTypeLabel = createItem "Label" 10 220 270 30 "PC Type: " $PCFactsForm
+	$MACLabel                          			= New-Object system.Windows.Forms.Label	
+	$MACLabel.text                     			= "MAC: "
+	$MACLabel.width                    			= 270
+	$MACLabel.height                   			= 20
+	$MACLabel.location                 			= New-Object System.Drawing.Point(10,250)
+	$MACLabel.ForeColor 						= "darkblue"
+	$MACLabel.Font 								= $UnderlineFont
+	$MACLabel.Add_Click({ populateMAC })		
+	#MACLabel = createItem "Label" 10 250 270 20 "MAC: " $PCFactsForm
+	$MACButton                         			= New-Object system.Windows.Forms.Button
+	$MACButton.text                    			= ""
+	$MACButton.width                   			= 8
+	$MACButton.height                  			= 20
+	$MACButton.location                			= New-Object System.Drawing.Point(2,247)
+	$MACButton.Font                    			= 'Microsoft Sans Serif,8.25'
+	$MACButton.Visible 							= $false	
+	$MACButton.Add_Click({ stepMAC })	
+	#$MACButton = createItem "Button" 2 247 8 20  "" $PCFactsForm
+	$MemoryLabel                          		= New-Object system.Windows.Forms.Label
+	$MemoryLabel.text                     		= "Memory: "
+	$MemoryLabel.width                    		= 270
+	$MemoryLabel.height                   		= 20
+	$MemoryLabel.location                 		= New-Object System.Drawing.Point(10,280)
+	$MemoryLabel.Font                     		= 'Microsoft Sans Serif,8.25'
+	$MemoryLabel.ForeColor 						= "darkblue"
+	$MemoryLabel.Font 							= $UnderlineFont
+	$MemoryLabel.Add_Click({ populateMem })	
+	#$MemoryLabel = createItem "Label" 10 280 270 20 "Memory: " $PCFactsForm
+	$DriveLabel                          		= New-Object system.Windows.Forms.Label
+	$DriveLabel.text                     		= "Drive: "
+	$DriveLabel.width                    		= 270
+	$DriveLabel.height                   		= 20
+	$DriveLabel.location                 		= New-Object System.Drawing.Point(10,310)
+	$DriveLabel.Font  							= $UnderlineFont
+	$DriveLabel.ForeColor 						= "darkblue"
+	$DriveLabel.Add_Click({ populateDrive })		
+	#$DriveLabel = createItem "Label" 10 310 270 20 "Drive: " $PCFactsForm
+		
+		
 	
 	# PSinfo info
 	$SoftwareVersionButton                     	= New-Object system.Windows.Forms.Button
@@ -1477,12 +1512,12 @@ function extraPCFacts{
 	$IELabel.location                 			= New-Object System.Drawing.Point(10,370)
 	$IELabel.Font                     			= 'Microsoft Sans Serif,8.25'
 	#$IELabel = createItem "Label" 10 370 270 20 "IE:" $PCFactsForm
-	$FlashLabel                         			= New-Object system.Windows.Forms.Label
-	$FlashLabel.text                     			= "Flash:"
-	$FlashLabel.width                    			= 270
-	$FlashLabel.height                   			= 20
-	$FlashLabel.location                 			= New-Object System.Drawing.Point(10,400)
-	$FlashLabel.Font                     			= 'Microsoft Sans Serif,8.25'	
+	$FlashLabel                         		= New-Object system.Windows.Forms.Label
+	$FlashLabel.text                     		= "Flash:"
+	$FlashLabel.width                    		= 270
+	$FlashLabel.height                   		= 20
+	$FlashLabel.location                 		= New-Object System.Drawing.Point(10,400)
+	$FlashLabel.Font                     		= 'Microsoft Sans Serif,8.25'	
 	#$FlashLabel = createItem "Label" 10 400 270 20 "Flash:" $PCFactsForm
 	$FlashButton                         		= New-Object system.Windows.Forms.Button
 	$FlashButton.text                    		= ""
@@ -1494,11 +1529,11 @@ function extraPCFacts{
 	$FlashButton.Add_Click({ stepFlash })	
 	#$FlashButton = createItem "Button" 2 397 8 20 "" $PCFactsForm
 	$JavaLabel									= New-Object system.Windows.Forms.Label
-	$JavaLabel.text                     			= "Java:"
-	$JavaLabel.width                    			= 270
-	$JavaLabel.height                   			= 20
-	$JavaLabel.location                 			= New-Object System.Drawing.Point(10,430)
-	$JavaLabel.Font                     			= 'Microsoft Sans Serif,8.25'
+	$JavaLabel.text                     		= "Java:"
+	$JavaLabel.width                    		= 270
+	$JavaLabel.height                   		= 20
+	$JavaLabel.location                 		= New-Object System.Drawing.Point(10,430)
+	$JavaLabel.Font                     		= 'Microsoft Sans Serif,8.25'
 	#$JavaLabel = createItem "Label" 10 430 270 20 "Java:" $PCFactsForm
 	$JavaButton                         		= New-Object system.Windows.Forms.Button
 	$JavaButton.text                    		= ""
@@ -1541,7 +1576,8 @@ function extraPCFacts{
 	$PCFactsForm.controls.AddRange(@($SoftwareVersionButton,$SoftwareVersionLabel,
 	$UpTimeLabel,$IELabel,$FlashButton,$JavaLabel,$JavaButton,$EndPointButton,
 	$EndPointLabel,$SmartCtlLabel,$FlashLabel,$ADUserEnabled,$OULabel,
-	$LastLogonLbl,$OSLabel,$UserAccountCreationTimeLabel,$UserAccountModifiedTimeLabel))
+	$LastLogonLbl,$OSLabel,$UserAccountCreationTimeLabel,$UserAccountModifiedTimeLabel,
+	$LoggedOnUserLabel,$PCTypeLabel,$MACLabel,$MACButton,$MemoryLabel,$DriveLabel))
 	showForm $PCFactsForm
 }
 function viewGroups($ADObjectType){
@@ -1748,10 +1784,10 @@ function displayDetails($jobresult, $name){
 	}
 	switch($name){
 		"LoggedIn" {
-			$LoggedUserLbl.Text = "Logged in user: " + $jobresult   
+			$LoggedOnUserLabel.Text = "Logged in user: " + $jobresult   
 		}
 		"PCType"{
-			$PCTypeLbl.Text = "PC Type: " + $jobresult
+			$PCTypeLabel.Text = "PC Type: " + $jobresult
 		}
 		"MAC"{
 			for ($i = 1; $i -lt $jobresult.Count; $i++){
@@ -1760,16 +1796,16 @@ function displayDetails($jobresult, $name){
 					$MACsEdited.Add($jobresult[$i])	
 				}
 			}
-			$MACLbl.Text = "MAC: " + $MACsEdited[0]
+			MACLabel.Text = "MAC: " + $MACsEdited[0]
 			if ($MACsEdited.count -gt 1){
-				$MACBtn.Visible = $True
+				$MACButton.Visible = $True
 			}
 		}
 		"Memory"{
-			$MemLbl.Text = "Memory: " + $jobresult + " MHz"
+			$MemoryLabel.Text = "Memory: " + $jobresult + " MHz"
 		}
 		"Drive"{
-			$DriveLbl.Text = "Drive: " + $jobresult
+			$DriveLabel.Text = "Drive: " + $jobresult
 		}
 	}
 	
@@ -1844,7 +1880,7 @@ function getSoftwareVersions{
 function stepMAC{
 	$global:MACStepper = $global:MACStepper + 1
 	$index = ($MACStepper%($MACsEdited.count))
-	$MACLbl.Text = "MAC: " + $MACsEdited[$index]
+	MACLabel.Text = "MAC: " + $MACsEdited[$index]
 }
 function stepJava{
 	$global:JavaButtonIndex++
@@ -1883,9 +1919,9 @@ function populateLoggedUser{
 			@(Get-WmiObject -Class Win32_ComputerSystem -ComputerName $PCName -erroraction silentlycontinue)[0].UserName
 		} -Arg $global:PCName
 	}
-	$LoggedUserLbl.Font = $NonUnderlineFont
-	$LoggedUserLbl.ForeColor = "black"
-	$LoggedUserLbl.Text = "Logged in user: Please wait..."
+	$LoggedOnUserLabel.Font = $NonUnderlineFont
+	$LoggedOnUserLabel.ForeColor = "black"
+	$LoggedOnUserLabel.Text = "Logged in user: Please wait..."
 	$DetailsTimer.start()
 }
 function populatePCType{
@@ -1900,9 +1936,9 @@ function populatePCType{
 			(Get-WmiObject -Class Win32_Bios -ComputerName $PCName | Select-Object @{Name='mfgDate' ; expression ={$_.ConvertToDateTime($_.ReleaseDate).ToShortDateString()}}).mfgDate
 		} -Arg $global:PCName
 	}
-	$PCTypeLbl.Font = $NonUnderlineFont
-	$PCTypeLbl.ForeColor = "black"
-	$PCTypeLbl.Text = "PC Type: Please wait..."
+	$PCTypeLabel.Font = $NonUnderlineFont
+	$PCTypeLabel.ForeColor = "black"
+	$PCTypeLabel.Text = "PC Type: Please wait..."
 	$DetailsTimer.start()
 }
 function populateMAC{
@@ -1913,9 +1949,9 @@ function populateMAC{
 			getmac /s $PCName /nh
 		} -Arg $global:PCName
 	}
-	$MACLbl.Font = $NonUnderlineFont
-	$MACLbl.ForeColor = "black"
-	$MACLbl.Text = "Mac: Please wait..."
+	MACLabel.Font = $NonUnderlineFont
+	MACLabel.ForeColor = "black"
+	MACLabel.Text = "Mac: Please wait..."
 	$DetailsTimer.start()
 }
 function populateMem{
@@ -1928,9 +1964,9 @@ function populateMem{
 			(((Get-WmiObject -Class WIn32_PhysicalMemory -ComputerName $PCName).speed) | Measure-Object -min ).minimum
 		} -Arg $global:PCName
 	}
-	$MemLbl.Font = $NonUnderlineFont
-	$MemLbl.ForeColor = "black"
-	$MemLbl.Text = "Memory: Please wait..."
+	$MemoryLabel.Font = $NonUnderlineFont
+	$MemoryLabel.ForeColor = "black"
+	$MemoryLabel.Text = "Memory: Please wait..."
 	$DetailsTimer.start()
 }
 function populateDrive{
@@ -1946,9 +1982,9 @@ function populateDrive{
 			$outstr
 		} -Arg $global:PCName
 	}
-	$DriveLbl.Font = $NonUnderlineFont
-	$DriveLbl.ForeColor = "black"
-	$DriveLbl.Text = "Drive: Please wait..."
+	$DriveLabel.Font = $NonUnderlineFont
+	$DriveLabel.ForeColor = "black"
+	$DriveLabel.Text = "Drive: Please wait..."
 	$DetailsTimer.start()
 }
 
