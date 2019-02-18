@@ -111,11 +111,11 @@ $mainForm = createForm "Wrench" 300 635 "CenterScreen" "Fixed3D" $true $false $t
 	$mainForm.KeyPreview = $True
 	$mainForm.Add_KeyDown({ mainKeyboard })
 #Name Info
-$UserNameLabel								= New-Object system.Windows.Forms.Label
-$UserNameLabel.text							= "Name: "
+$UserNameLabel									= New-Object system.Windows.Forms.Label
+$UserNameLabel.text								= "Name: "
 $UserNameLabel.width 							= 55
 $UserNameLabel.height							= 20
-$UserNameLabel.location						= New-Object System.Drawing.Point(11,28)
+$UserNameLabel.location							= New-Object System.Drawing.Point(11,28)
 $UserNameLabel.Font                         	= 'Microsoft Sans Serif,8.25'
 
 $UserNameTextbox                        	  	= New-Object system.Windows.Forms.TextBox
@@ -135,73 +135,73 @@ $UserNameSearchButton.Add_Click({	searchByName })
 # $UserNameSearchButton = createItem "Button" 210 25 60 20 "Search" $mainForm
 	
 
-$UserIDLabel                            = New-Object system.Windows.Forms.Label
-$UserIDLabel.text                       = "User ID: "
-$UserIDLabel.width                      = 60
-$UserIDLabel.height                     = 20
-$UserIDLabel.location                   = New-Object System.Drawing.Point(10,58)
-$UserIDLabel.Font                   	  = 'Microsoft Sans Serif,8.25'
+$UserIDLabel                            		= New-Object system.Windows.Forms.Label
+$UserIDLabel.text                      			= "User ID: "
+$UserIDLabel.width                      		= 60
+$UserIDLabel.height                     		= 20
+$UserIDLabel.location                   		= New-Object System.Drawing.Point(10,58)
+$UserIDLabel.Font                   	  		= 'Microsoft Sans Serif,8.25'
 
-$UserIDTextbox                             = New-Object system.Windows.Forms.TextBox
-$UserIDTextbox.width                       = 130
-$UserIDTextbox.height                      = 20
-$UserIDTextbox.location                    = New-Object System.Drawing.Point(70,55)
-$UserIDTextbox.Font                        = 'Microsoft Sans Serif,8.25'
+$UserIDTextbox                             		= New-Object system.Windows.Forms.TextBox
+$UserIDTextbox.width                       		= 130
+$UserIDTextbox.height                      		= 20
+$UserIDTextbox.location                    		= New-Object System.Drawing.Point(70,55)
+$UserIDTextbox.Font                       		= 'Microsoft Sans Serif,8.25'
 #$UserIDTextbox.MaxLength = 15
 
-$UserIDButton                         = New-Object system.Windows.Forms.Button
-$UserIDButton.text                    = "Search"
-$UserIDButton.width                   = 60
-$UserIDButton.height                  = 20
-$UserIDButton.location                = New-Object System.Drawing.Point(210,55)
-$UserIDButton.Font                    = 'Microsoft Sans Serif,8.25'
+$UserIDButton                         			= New-Object system.Windows.Forms.Button
+$UserIDButton.text                    			= "Search"
+$UserIDButton.width                   			= 60
+$UserIDButton.height                  			= 20
+$UserIDButton.location                			= New-Object System.Drawing.Point(210,55)
+$UserIDButton.Font                    			= 'Microsoft Sans Serif,8.25'
 $UserIDButton.TabStop = $False
 $UserIDButton.Add_Click({ searchByUserID })
 #$UserIDButton = createItem "Button" 210 55 60 20 "Search" $mainForm
 
 #PC Name Info
-$PCNameLabel                                = New-Object system.Windows.Forms.Label
-$PCNameLabel.text                           = "PC Name: "
-$PCNameLabel.width                          = 60
-$PCNameLabel.height                         = 20
-$PCNameLabel.location                       = New-Object System.Drawing.Point(10,88)
-$PCNameLabel.Font                           = 'Microsoft Sans Serif,8.25'
+$PCNameLabel                               		= New-Object system.Windows.Forms.Label
+$PCNameLabel.text                           	= "PC Name: "
+$PCNameLabel.width                          	= 60
+$PCNameLabel.height                         	= 20
+$PCNameLabel.location                       	= New-Object System.Drawing.Point(10,88)
+$PCNameLabel.Font                           	= 'Microsoft Sans Serif,8.25'
 
-$PCNameTextbox                       	      = New-Object system.Windows.Forms.TextBox
-$PCNameTextbox.width                          = 130
-$PCNameTextbox.height                         = 20
-$PCNameTextbox.location                       = New-Object System.Drawing.Point(70,85)
-$PCNameTextbox.Font                           = 'Microsoft Sans Serif,8.25'
+$PCNameTextbox                       	      	= New-Object system.Windows.Forms.TextBox
+$PCNameTextbox.width                          	= 130
+$PCNameTextbox.height                         	= 20
+$PCNameTextbox.location                       	= New-Object System.Drawing.Point(70,85)
+$PCNameTextbox.Font                           	= 'Microsoft Sans Serif,8.25'
 $PCNameTextbox.MaxLength = 15
 #$PCNameTextbox = createItem "TextBox" 70 85 130 20 "" $mainForm
 
-$PCSearchButton                             = New-Object system.Windows.Forms.Button
-$PCSearchButton.text                        = "Search"
-$PCSearchButton.width                       = 60
-$PCSearchButton.height                      = 20
-$PCSearchButton.location                    = New-Object System.Drawing.Point(210,85)
-$PCSearchButton.Font                        = 'Microsoft Sans Serif,8.25'
+$PCSearchButton                             	= New-Object system.Windows.Forms.Button
+$PCSearchButton.text                        	= "Search"
+$PCSearchButton.width                       	= 60
+$PCSearchButton.height                      	= 20
+$PCSearchButton.location                    	= New-Object System.Drawing.Point(210,85)
+$PCSearchButton.Font                        	= 'Microsoft Sans Serif,8.25'
 $PCSearchButton.TabStop = $False
 $PCSearchButton.Add_Click({ searchByPCName })
 
 #$PCSearchButton = createItem "Button" 210 85 60 20 "Search" $mainForm
 #IP Info
-$IPAddressLabel                               = New-Object system.Windows.Forms.Label
-$IPAddressLabel.text                          = "IP: "
-$IPAddressLabel.width                         = 18
-$IPAddressLabel.height                        = 20
-$IPAddressLabel.location                      = New-Object System.Drawing.Point(10,118)
-$IPAddressLabel.Font                          = 'Microsoft Sans Serif,8.25'
+$IPAddressLabel                               	= New-Object system.Windows.Forms.Label
+$IPAddressLabel.text                          	= "IP: "
+$IPAddressLabel.width                         	= 18
+$IPAddressLabel.height                       	= 20
+$IPAddressLabel.location                      	= New-Object System.Drawing.Point(10,118)
+$IPAddressLabel.Font                          	= 'Microsoft Sans Serif,8.25'
 
 # IP Source Info
-$IPAddressSourceLabel                         = New-Object system.Windows.Forms.Label
-$IPAddressSourceLabel.text                    = "" # Starts Empty
-$IPAddressSourceLabel.width                   = 40
-$IPAddressSourceLabel.height                  = 20
-$IPAddressSourceLabel.location                = New-Object System.Drawing.Point(28,118)
-$IPAddressSourceLabel.Font                    = 'Microsoft Sans Serif,8.25'
+$IPAddressSourceLabel                        	= New-Object system.Windows.Forms.Label
+$IPAddressSourceLabel.text                    	= "" # Starts Empty
+$IPAddressSourceLabel.width                  	= 40
+$IPAddressSourceLabel.height                  	= 20
+$IPAddressSourceLabel.location                	= New-Object System.Drawing.Point(28,118)
+$IPAddressSourceLabel.Font                    	= 'Microsoft Sans Serif,8.25'
 
-$IPAddressTextbox                        	     = New-Object system.Windows.Forms.TextBox
+$IPAddressTextbox                        	    = New-Object system.Windows.Forms.TextBox
 $IPAddressTextbox.width                         = 130
 $IPAddressTextbox.height                        = 20
 $IPAddressTextbox.location                      = New-Object System.Drawing.Point(70,115)
@@ -210,171 +210,171 @@ $IPAddressTextbox.MaxLength = 15
 # $IPAddressTextbox = createItem "Textbox" 70 115 130 20 "" $mainForm
 #	$IPAddressTextbox.MaxLength = 15
 
-$IPAddressSearchButton                         = New-Object system.Windows.Forms.Button
-$IPAddressSearchButton.text                    = "Search"
-$IPAddressSearchButton.width                   = 60
-$IPAddressSearchButton.height                  = 20
-$IPAddressSearchButton.location                = New-Object System.Drawing.Point(210,115)
-$IPAddressSearchButton.Font                    = 'Microsoft Sans Serif,8.25'
+$IPAddressSearchButton                        	= New-Object system.Windows.Forms.Button
+$IPAddressSearchButton.text                    	= "Search"
+$IPAddressSearchButton.width                   	= 60
+$IPAddressSearchButton.height                  	= 20
+$IPAddressSearchButton.location                	= New-Object System.Drawing.Point(210,115)
+$IPAddressSearchButton.Font                   	= 'Microsoft Sans Serif,8.25'
 $IPAddressSearchButton.TabStop = $False  # Why is Tabstop set to $False
 $IPAddressSearchButton.Add_Click({ searchByIP })
 #Ph
 #$IPAddressSearchButton = createItem "Button" 210 115 60 20 "Search" $mainForm
 	
 #PHone Info
-$PhoneNumberLabel                            = New-Object system.Windows.Forms.Label
-$PhoneNumberLabel.text                       = "Phone:"
-$PhoneNumberLabel.width                      = 60
-$PhoneNumberLabel.height                     = 20
-$PhoneNumberLabel.location                   = New-Object System.Drawing.Point(10,148)
-$PhoneNumberLabel.Font                       = 'Microsoft Sans Serif,8.25'
+$PhoneNumberLabel                            	= New-Object system.Windows.Forms.Label
+$PhoneNumberLabel.text                       	= "Phone:"
+$PhoneNumberLabel.width                      	= 60
+$PhoneNumberLabel.height                     	= 20
+$PhoneNumberLabel.location                   	= New-Object System.Drawing.Point(10,148)
+$PhoneNumberLabel.Font                       	= 'Microsoft Sans Serif,8.25'
 
-$PhoneNamberTextBox                        = New-Object system.Windows.Forms.TextBox
-$PhoneNamberTextBox.width                  = 200
-$PhoneNamberTextBox.height                 = 20
-$PhoneNamberTextBox.location               = New-Object System.Drawing.Point(70,145)
-$PhoneNamberTextBox.Font                   = 'Microsoft Sans Serif,8.25'
+$PhoneNamberTextBox                        		= New-Object system.Windows.Forms.TextBox
+$PhoneNamberTextBox.width                  		= 200
+$PhoneNamberTextBox.height                 		= 20
+$PhoneNamberTextBox.location               		= New-Object System.Drawing.Point(70,145)
+$PhoneNamberTextBox.Font                   		= 'Microsoft Sans Serif,8.25'
 $PhoneNamberTextBox.ReadOnly = $True
 $PhoneNamberTextBox.TabStop = $False	# Why is Tabstop set to $False
 #$PhoneNamberTextBox = createItem "Textbox" 70 145 200 20 "" $mainForm
 
 #Lockout Info
-$LockedOutUserLabel                          = New-Object system.Windows.Forms.Label
-$LockedOutUserLabel.text                     = "Lockout:"
-$LockedOutUserLabel.width                    = 60
-$LockedOutUserLabel.height                   = 20
-$LockedOutUserLabel.location                 = New-Object System.Drawing.Point(10,178)
-$LockedOutUserLabel.Font                     = 'Microsoft Sans Serif,8.25'
+$LockedOutUserLabel                         	= New-Object system.Windows.Forms.Label
+$LockedOutUserLabel.text                     	= "Lockout:"
+$LockedOutUserLabel.width                    	= 60
+$LockedOutUserLabel.height                  	= 20
+$LockedOutUserLabel.location                 	= New-Object System.Drawing.Point(10,178)
+$LockedOutUserLabel.Font                     	= 'Microsoft Sans Serif,8.25'
 
-$LockedOutUserTextbox                        = New-Object system.Windows.Forms.TextBox
-$LockedOutUserTextbox.width                  = 130
-$LockedOutUserTextbox.height                 = 20
-$LockedOutUserTextbox.location               = New-Object System.Drawing.Point(70,175)
-$LockedOutUserTextbox.Font                   = 'Microsoft Sans Serif,8.25'
-$LockedOutUserTextbox.ReadOnly 				= $True
+$LockedOutUserTextbox                        	= New-Object system.Windows.Forms.TextBox
+$LockedOutUserTextbox.width                  	= 130
+$LockedOutUserTextbox.height                 	= 20
+$LockedOutUserTextbox.location               	= New-Object System.Drawing.Point(70,175)
+$LockedOutUserTextbox.Font                   	= 'Microsoft Sans Serif,8.25'
+$LockedOutUserTextbox.ReadOnly 					= $True
 $LockedOutUserTextbox.TabStop = $False # Why is Tabstop set to $False
  #$LockedOutUserTextbox = createItem "Textbox" 70 175 130 20 "" $mainForm
 
-$LockedOutUserButton                         = New-Object system.Windows.Forms.Button
-$LockedOutUserButton.Text                   = "Unlock"
-$LockedOutUserButton.width                   = 60
-$LockedOutUserButton.height                  = 20
-$LockedOutUserButton.location                = New-Object System.Drawing.Point(210,175)
-$LockedOutUserButton.Font                    = 'Microsoft Sans Serif,8.25'
-$LockedOutUserButton.TabStop                 = $False	# Why is Tabstop set to $False
-$LockedOutUserButton.Visible                 = $False # Hide button if useraccount is not locked out in AD.
+$LockedOutUserButton                         	= New-Object system.Windows.Forms.Button
+$LockedOutUserButton.Text                   	= "Unlock"
+$LockedOutUserButton.width                   	= 60
+$LockedOutUserButton.height                  	= 20
+$LockedOutUserButton.location                	= New-Object System.Drawing.Point(210,175)
+$LockedOutUserButton.Font                    	= 'Microsoft Sans Serif,8.25'
+$LockedOutUserButton.TabStop                 	= $False	# Why is Tabstop set to $False
+$LockedOutUserButton.Visible                 	= $False # Hide button if useraccount is not locked out in AD.
 $LockedOutUserButton.Add_Click({ unlockAccount })
 
 #$LockedOutUserButton = createItem "Button" 210 175 60 20 "Unlock" $mainForm
 	
 #H Drive Info
-$HDriveLabel                          = New-Object system.Windows.Forms.Label
-$HDriveLabel.text                     = "H Drive:"
-$HDriveLabel.width                    = 60
-$HDriveLabel.height                   = 20
-$HDriveLabel.location                 = New-Object System.Drawing.Point(10,208)
-$HDriveLabel.Font                     = 'Microsoft Sans Serif,8.25'
+$HDriveLabel                          			= New-Object system.Windows.Forms.Label
+$HDriveLabel.text                     			= "H Drive:"
+$HDriveLabel.width                    			= 60
+$HDriveLabel.height                   			= 20
+$HDriveLabel.location                 			= New-Object System.Drawing.Point(10,208)
+$HDriveLabel.Font                    		 	= 'Microsoft Sans Serif,8.25'
 
-$HDriveTextbox                        = New-Object system.Windows.Forms.TextBox
-$HDriveTextbox.width                  = 200
-$HDriveTextbox.height                 = 20
-$HDriveTextbox.location               = New-Object System.Drawing.Point(70,208)
-$HDriveTextbox.Font                   = 'Microsoft Sans Serif,8.25'
-$HDriveTextbox.ReadOnly                 = $True
-$HDriveTextbox.TabStop					= $False	# Why is Tabstop set to $False
+$HDriveTextbox                        			= New-Object system.Windows.Forms.TextBox
+$HDriveTextbox.width                  			= 200
+$HDriveTextbox.height                 			= 20
+$HDriveTextbox.location               			= New-Object System.Drawing.Point(70,208)
+$HDriveTextbox.Font                   			= 'Microsoft Sans Serif,8.25'
+$HDriveTextbox.ReadOnly                 		= $True
+$HDriveTextbox.TabStop							= $False	# Why is Tabstop set to $False
 #$HDriveTextbox = createItem "Textbox" 70 208 200 20 "" $mainForm
 
 #OU Info
-$OULabel                              = New-Object system.Windows.Forms.Label
-$OULabel.text                         = "User OU:"
-$OULabel.width                        = 60
-$OULabel.height                       = 20
-$OULabel.location                     = New-Object System.Drawing.Point(10,238)
-$OULabel.Font                         = 'Microsoft Sans Serif,8.25'
+$OULabel                              			= New-Object system.Windows.Forms.Label
+$OULabel.text                         			= "User OU:"
+$OULabel.width                        			= 60
+$OULabel.height                       			= 20
+$OULabel.location                     			= New-Object System.Drawing.Point(10,238)
+$OULabel.Font                         			= 'Microsoft Sans Serif,8.25'
 
-$OUTextbox                              = New-Object system.Windows.Forms.TextBox
-$OUTextbox.width                        = 200
-$OUTextbox.height                       = 20
-$OUTextbox.location                     = New-Object System.Drawing.Point(70,235)
-$OUTextbox.Font                         = 'Microsoft Sans Serif,8.25'
+$OUTextbox                              		= New-Object system.Windows.Forms.TextBox
+$OUTextbox.width                       	 		= 200
+$OUTextbox.height                       		= 20
+$OUTextbox.location                     		= New-Object System.Drawing.Point(70,235)
+$OUTextbox.Font                         		= 'Microsoft Sans Serif,8.25'
 $OUTextbox.ReadOnly = $True
 $OUTextbox.TabStop = $False # Why is Tabstop set to $False
 #$OUTextbox = createItem "Textbox" 70 235 200 20 "" $mainForm
 #Buttons
 
-$SCCMRemoteControlButton                         = New-Object system.Windows.Forms.Button
-$SCCMRemoteControlButton.text                    = "Connect Via SCCM Remote Control"
-$SCCMRemoteControlButton.width                   = 259
-$SCCMRemoteControlButton.height                  = 20
-$SCCMRemoteControlButton.location                = New-Object System.Drawing.Point(10,265)
-$SCCMRemoteControlButton.Font                    = 'Microsoft Sans Serif,8.25'
+$SCCMRemoteControlButton                      	= New-Object system.Windows.Forms.Button
+$SCCMRemoteControlButton.text                  	= "Connect Via SCCM Remote Control"
+$SCCMRemoteControlButton.width                	= 259
+$SCCMRemoteControlButton.height               	= 20
+$SCCMRemoteControlButton.location              	= New-Object System.Drawing.Point(10,265)
+$SCCMRemoteControlButton.Font                  	= 'Microsoft Sans Serif,8.25'
 $SCCMRemoteControlButton.Add_Click({ runRemoteViewer })
 
 # $SCCMRemoteControlButton = createItem "Button" 10 265 259 20 "Connect Via SCCM Remote Control" $mainForm
-$UserDetailsButton                         = New-Object system.Windows.Forms.Button
-$UserDetailsButton.text                    = "User Details"
-$UserDetailsButton.width                   = 122
-$UserDetailsButton.height                  = 20
-$UserDetailsButton.location                = New-Object System.Drawing.Point(10,295)
-$UserDetailsButton.Font                    = 'Microsoft Sans Serif,8.25'
+$UserDetailsButton                         		= New-Object system.Windows.Forms.Button
+$UserDetailsButton.text                   		= "User Details"
+$UserDetailsButton.width                   		= 122
+$UserDetailsButton.height                  		= 20
+$UserDetailsButton.location                		= New-Object System.Drawing.Point(10,295)
+$UserDetailsButton.Font                    		= 'Microsoft Sans Serif,8.25'
 $UserDetailsButton.Add_Click({ runUserFacts })
 # $UserDetailsButton = createItem "Button" 10 295 122 20 "User Details" $mainForm
 
-$UserOUGroupsButton                         = New-Object system.Windows.Forms.Button
-$UserOUGroupsButton.text                    = "User OU Groups"
-$UserOUGroupsButton.width                   = 122
-$UserOUGroupsButton.height                  = 20
-$UserOUGroupsButton.location                = New-Object System.Drawing.Point(10,325)
-$UserOUGroupsButton.Font                    = 'Microsoft Sans Serif,8.25'
+$UserOUGroupsButton                         	= New-Object system.Windows.Forms.Button
+$UserOUGroupsButton.text                    	= "User OU Groups"
+$UserOUGroupsButton.width                   	= 122
+$UserOUGroupsButton.height                  	= 20
+$UserOUGroupsButton.location                	= New-Object System.Drawing.Point(10,325)
+$UserOUGroupsButton.Font                   	 	= 'Microsoft Sans Serif,8.25'
 $UserOUGroupsButton.Add_Click({ runUserGroups })
 #$UserOUGroupsButton = createItem "Button" 10 325 122 20 "User Groups" $mainForm
-$ChangePasswordButton                         = New-Object system.Windows.Forms.Button
-$ChangePasswordButton.text                    = "Change Password"
-$ChangePasswordButton.width                   = 122
-$ChangePasswordButton.height                  = 20
-$ChangePasswordButton.location                = New-Object System.Drawing.Point(10,355)
-$ChangePasswordButton.Font                    = 'Microsoft Sans Serif,8.25'
+$ChangePasswordButton                         	= New-Object system.Windows.Forms.Button
+$ChangePasswordButton.text                    	= "Change Password"
+$ChangePasswordButton.width                   	= 122
+$ChangePasswordButton.height                  	= 20
+$ChangePasswordButton.location                	= New-Object System.Drawing.Point(10,355)
+$ChangePasswordButton.Font                    	= 'Microsoft Sans Serif,8.25'
 $ChangePasswordButton.Add_Click({newUserPassword})
 # $ChangePasswordButton = createItem "Button" 10 355 122 20 "Change Password" $mainForm
-$PCDetailsButton                         = New-Object system.Windows.Forms.Button
-$PCDetailsButton.text                    = "PC Details"
-$PCDetailsButton.width                   = 122
-$PCDetailsButton.height                  = 20
-$PCDetailsButton.location                = New-Object System.Drawing.Point(147,295)
-$PCDetailsButton.Font                    = 'Microsoft Sans Serif,8.25'
+$PCDetailsButton                         		= New-Object system.Windows.Forms.Button
+$PCDetailsButton.text                    		= "PC Details"
+$PCDetailsButton.width                   		= 122
+$PCDetailsButton.height                  		= 20
+$PCDetailsButton.location                		= New-Object System.Drawing.Point(147,295)
+$PCDetailsButton.Font                    		= 'Microsoft Sans Serif,8.25'
 $PCDetailsButton.Add_Click({ runPCFacts })
 # $PCDetailsButton = createItem "Button" 147 295 122 20 "PC Details" $mainForm
-$PCOUGroups                         = New-Object system.Windows.Forms.Button
-$PCOUGroups.text                    = "PC OU Groups"
-$PCOUGroups.width                   = 122
-$PCOUGroups.height                  = 20
-$PCOUGroups.location                = New-Object System.Drawing.Point(147,325)
-$PCOUGroups.Font                    = 'Microsoft Sans Serif,8.25'
+$PCOUGroups                         			= New-Object system.Windows.Forms.Button
+$PCOUGroups.text                    			= "PC OU Groups"
+$PCOUGroups.width                   			= 122
+$PCOUGroups.height                  			= 20
+$PCOUGroups.location                			= New-Object System.Drawing.Point(147,325)
+$PCOUGroups.Font                    			= 'Microsoft Sans Serif,8.25'
 $PCOUGroups.Add_Click({ runPCGroups })	
 #$PCOUGroups = createItem "Button" 147 325 122 20 "PC Groups" $mainForm
-$ComputerManagementButton                         = New-Object system.Windows.Forms.Button
-$ComputerManagementButton.text                    = "Computer Mgt"
-$ComputerManagementButton.width                   = 122
-$ComputerManagementButton.height                  = 20
-$ComputerManagementButton.location                = New-Object System.Drawing.Point(147,355)
-$ComputerManagementButton.Font                    = 'Microsoft Sans Serif,8.25'
+$ComputerManagementButton                     	= New-Object system.Windows.Forms.Button
+$ComputerManagementButton.text                 	= "Computer Mgt"
+$ComputerManagementButton.width                	= 122
+$ComputerManagementButton.height               	= 20
+$ComputerManagementButton.location             	= New-Object System.Drawing.Point(147,355)
+$ComputerManagementButton.Font                 	= 'Microsoft Sans Serif,8.25'
 $ComputerManagementButton.Add_Click({ runManagePC })
 #$ComputerManagementButton = createItem "Button" 147 355 122 20 "Manage PC" $mainForm
-$ViewRemotePCCDrive                         = New-Object system.Windows.Forms.Button
-$ViewRemotePCCDrive.text                    = "View Remote C:"
-$ViewRemotePCCDrive.width                   = 122
-$ViewRemotePCCDrive.height                  = 20
-$ViewRemotePCCDrive.location                = New-Object System.Drawing.Point(147,385)
-$ViewRemotePCCDrive.Font                    = 'Microsoft Sans Serif,8.25'
+$ViewRemotePCCDrive                         	= New-Object system.Windows.Forms.Button
+$ViewRemotePCCDrive.text                    	= "View Remote C:"
+$ViewRemotePCCDrive.width                   	= 122
+$ViewRemotePCCDrive.height                  	= 20
+$ViewRemotePCCDrive.location                	= New-Object System.Drawing.Point(147,385)
+$ViewRemotePCCDrive.Font                    	= 'Microsoft Sans Serif,8.25'
 $ViewRemotePCCDrive.Add_Click({ runViewC })
 
 # Use Remote Desktop to connect to remote machine
-$RDPButton                         = New-Object system.Windows.Forms.Button
-$RDPButton.text                    = "RDP"
-$RDPButton.width                   = 122
-$RDPButton.height                  = 20
-$RDPButton.location                = New-Object System.Drawing.Point(147,415)
-$RDPButton.Font                    = 'Microsoft Sans Serif,8.25'
+$RDPButton                         				= New-Object system.Windows.Forms.Button
+$RDPButton.text                    				= "RDP"
+$RDPButton.width                   				= 122
+$RDPButton.height                  				= 20
+$RDPButton.location                				= New-Object System.Drawing.Point(147,415)
+$RDPButton.Font                    				= 'Microsoft Sans Serif,8.25'
 $RDPButton.Add_Click({ runRDP })
 
 # Use PowerShell Session to connect to remote machine
@@ -387,23 +387,23 @@ $PowerShellRemoteButton.Font                    = 'Microsoft Sans Serif,8.25'
 $PowerShellRemoteButton.Add_Click({connectPSSession})
 
 # Make Wrench stay on top of all windows
-$KeepWrenchTopMostCheckbox                       = New-Object system.Windows.Forms.CheckBox
-$KeepWrenchTopMostCheckbox.text                  = "Keep Wrench on Top"
-$KeepWrenchTopMostCheckbox.AutoSize              = $false
-$KeepWrenchTopMostCheckbox.width                 = 100
-$KeepWrenchTopMostCheckbox.height                = 35
-$KeepWrenchTopMostCheckbox.location              = New-Object System.Drawing.Point(30,410)
-$KeepWrenchTopMostCheckbox.Font                  = 'Microsoft Sans Serif,8.25'
+$KeepWrenchTopMostCheckbox                    	= New-Object system.Windows.Forms.CheckBox
+$KeepWrenchTopMostCheckbox.text              	= "Keep Wrench on Top"
+$KeepWrenchTopMostCheckbox.AutoSize           	= $false
+$KeepWrenchTopMostCheckbox.width               	= 100
+$KeepWrenchTopMostCheckbox.height              	= 35
+$KeepWrenchTopMostCheckbox.location            	= New-Object System.Drawing.Point(30,410)
+$KeepWrenchTopMostCheckbox.Font                	= 'Microsoft Sans Serif,8.25'
 $KeepWrenchTopMostCheckbox.Add_Click({ runOnTop })
 #$KeepWrenchTopMostCheckbox = createItem "Checkbox" 30 410 100 35 "Keep Wrench on Top" $mainForm
 
-$NewLocalPowerShellWindowLabel                          = New-Object system.Windows.Forms.Label
-$NewLocalPowerShellWindowLabel.text                     = "New Local Powershell Window"
-$NewLocalPowerShellWindowLabel.width                    = 150
-$NewLocalPowerShellWindowLabel.height                   = 15
-$NewLocalPowerShellWindowLabel.location                 = New-Object System.Drawing.Point(80,578)
-$NewLocalPowerShellWindowLabel.Font                     = 'Microsoft Sans Serif,8.25'
-$NewLocalPowerShellWindowLabel.ForeColor = "Blue"
+$NewLocalPowerShellWindowLabel              	= New-Object system.Windows.Forms.Label
+$NewLocalPowerShellWindowLabel.text           	= "New Local Powershell Window"
+$NewLocalPowerShellWindowLabel.width          	= 150
+$NewLocalPowerShellWindowLabel.height           = 15
+$NewLocalPowerShellWindowLabel.location       	= New-Object System.Drawing.Point(80,578)
+$NewLocalPowerShellWindowLabel.Font             = 'Microsoft Sans Serif,8.25'
+$NewLocalPowerShellWindowLabel.ForeColor 		= "Blue"
 $NewLocalPowerShellWindowLabel.Add_Click({ Start-Process "powershell.exe" })
 
 $PingTimer = New-Object System.Windows.Forms.Timer
@@ -418,13 +418,13 @@ $WrenchLogoPictureBox.BorderStyle = "FixedSingle"
 $WrenchLogoPictureBox.Image = [System.Drawing.Image]::Fromfile((get-item $LogoLocation));
 
 #Expand Button
-$ExpandButton                         = New-Object system.Windows.Forms.Button
-$ExpandButton.text                    = ">"
-$ExpandButton.width                   = 15
-$ExpandButton.height                  = 15
-$ExpandButton.location                = New-Object System.Drawing.Point(264,577)
-$ExpandButton.Font                    = 'Microsoft Sans Serif,8.25'
-$ExpandButton.Visible 				 = $true #this is not needed.  The default for a button is visible
+$ExpandButton                        			= New-Object system.Windows.Forms.Button
+$ExpandButton.text                    			= ">"
+$ExpandButton.width                   			= 15
+$ExpandButton.height                  			= 15
+$ExpandButton.location                			= New-Object System.Drawing.Point(264,577)
+$ExpandButton.Font                    			= 'Microsoft Sans Serif,8.25'
+$ExpandButton.Visible 				 			= $true #this is not needed.  The default for a button is visible
 $ExpandButton.Add_Click({ expandForm })
 
 # Add Labels to MainForm
@@ -464,21 +464,21 @@ $GPTimer = New-Object System.Windows.Forms.Timer
 $GPTimer.Interval = 2000
 $GPTimer.add_tick({ checkGP })
 
-$TelnetPCButton                         = New-Object system.Windows.Forms.Button
-$TelnetPCButton.text                    = "Telnet"
-$TelnetPCButton.width                   = 122
-$TelnetPCButton.height                  = 20
-$TelnetPCButton.location                = New-Object System.Drawing.Point(290,55)
-$TelnetPCButton.Font                    = 'Microsoft Sans Serif,8.25'
+$TelnetPCButton                         		= New-Object system.Windows.Forms.Button
+$TelnetPCButton.text                    		= "Telnet"
+$TelnetPCButton.width                  			= 122
+$TelnetPCButton.height                  		= 20
+$TelnetPCButton.location                		= New-Object System.Drawing.Point(290,55)
+$TelnetPCButton.Font                    		= 'Microsoft Sans Serif,8.25'
 $TelnetPCButton.Add_Click({ runTelnet })
 
 #$TelnetPCButton = createItem "Button" 290 55 122 20 "Telnet" $mainForm
-$RenameButton                         = New-Object system.Windows.Forms.Button
-$RenameButton.text                    = "Rename PC"
-$RenameButton.width                   = 122
-$RenameButton.height                  = 20
-$RenameButton.location                = New-Object System.Drawing.Point(290,85)
-$RenameButton.Font                    = 'Microsoft Sans Serif,8.25'
+$RenameButton                         			= New-Object system.Windows.Forms.Button
+$RenameButton.text                    			= "Rename PC"
+$RenameButton.width                   			= 122
+$RenameButton.height                  			= 20
+$RenameButton.location                			= New-Object System.Drawing.Point(290,85)
+$RenameButton.Font                    			= 'Microsoft Sans Serif,8.25'
 $RenameButton.Add_Click({ runRename })
 # $RenameButton = createItem "Button" 290 85 122 20 "Rename PC" $mainForm
 $SCCMClientCenterButton                         = New-Object system.Windows.Forms.Button
@@ -489,12 +489,12 @@ $SCCMClientCenterButton.location                = New-Object System.Drawing.Poin
 $SCCMClientCenterButton.Font                    = 'Microsoft Sans Serif,8.25'
 $SCCMClientCenterButton.Add_Click({ openClientCenter })	
 # $SCCMClientCenterButton = createItem "Button" 290 115 122 20 "Client Center" $mainForm
-$MSRemoteAssistanceButton                         = New-Object system.Windows.Forms.Button
-$MSRemoteAssistanceButton.text                    = "MS Remote Assist"
-$MSRemoteAssistanceButton.width                   = 122
-$MSRemoteAssistanceButton.height                  = 20
-$MSRemoteAssistanceButton.location                = New-Object System.Drawing.Point(290,145)
-$MSRemoteAssistanceButton.Font                    = 'Microsoft Sans Serif,8.25'
+$MSRemoteAssistanceButton                     	= New-Object system.Windows.Forms.Button
+$MSRemoteAssistanceButton.text                 	= "MS Remote Assist"
+$MSRemoteAssistanceButton.width                	= 122
+$MSRemoteAssistanceButton.height              	= 20
+$MSRemoteAssistanceButton.location              = New-Object System.Drawing.Point(290,145)
+$MSRemoteAssistanceButton.Font                 	= 'Microsoft Sans Serif,8.25'
 $MSRemoteAssistanceButton.Add_Click({ openMSRA })
 #$MSRemoteAssistanceButton = createItem "Button" 290 145 122 20 "MS Remote Assist" $mainForm
 
@@ -1274,85 +1274,85 @@ function extraUserFacts{
 	
 	$UserFactsForm = createForm "ACtive Directory User Info" 300 350 "CenterScreen" "Fixed3D" $false $false $true
 	#$UserFactsForm.Add_KeyDown({subWindowKeyListener($UserFactsForm)})
-	$EnabledUserLabel                          = New-Object system.Windows.Forms.Label
-	$EnabledUserLabel.text                     = ("Enabled: "  + $user.Enabled)
-	$EnabledUserLabel.width                    = 280
-	$EnabledUserLabel.height                   = 20
-	$EnabledUserLabel.location                 = New-Object System.Drawing.Point(10,10)
-	$EnabledUserLabel.Font                     = 'Microsoft Sans Serif,8.25'
+	$EnabledUserLabel                          	= New-Object system.Windows.Forms.Label
+	$EnabledUserLabel.text                    	= ("Enabled: "  + $user.Enabled)
+	$EnabledUserLabel.width                    	= 280
+	$EnabledUserLabel.height                   	= 20
+	$EnabledUserLabel.location                 	= New-Object System.Drawing.Point(10,10)
+	$EnabledUserLabel.Font                     	= 'Microsoft Sans Serif,8.25'
 	#$EnabledLbl = createItem "Label" 10 10 280 20 ("Enabled: "  + $user.Enabled) $UserFactsForm
-	$UserAccountExpireDateLabel                          = New-Object system.Windows.Forms.Label
-	$UserAccountExpireDateLabel.text                     = ("Account Expires: " + $user.AccountExpirationDate)
-	$UserAccountExpireDateLabel.width                    = 280
-	$UserAccountExpireDateLabel.height                   = 20
-	$UserAccountExpireDateLabel.location                 = New-Object System.Drawing.Point(10,40)
-	$UserAccountExpireDateLabel.Font                     = 'Microsoft Sans Serif,8.25'	
+	$UserAccountExpireDateLabel              	= New-Object system.Windows.Forms.Label
+	$UserAccountExpireDateLabel.text         	= ("Account Expires: " + $user.AccountExpirationDate)
+	$UserAccountExpireDateLabel.width       	= 280
+	$UserAccountExpireDateLabel.height   		= 20
+	$UserAccountExpireDateLabel.location     	= New-Object System.Drawing.Point(10,40)
+	$UserAccountExpireDateLabel.Font   			= 'Microsoft Sans Serif,8.25'	
 	#$UserAccountExpireDateLabel = createItem "Label" 10 40 280 20 ("Account Expires: " + $user.AccountExpirationDate) $UserFactsForm
-	$PasswordNeverExpiresLabel                          = New-Object system.Windows.Forms.Label
-	$PasswordNeverExpiresLabel.text                     = ("Password Never Expires: " + $($user.PasswordNeverExpires))
-	$PasswordNeverExpiresLabel.width                    = 280
-	$PasswordNeverExpiresLabel.height                   = 20
-	$PasswordNeverExpiresLabel.location                 = New-Object System.Drawing.Point(10,70)
-	$PasswordNeverExpiresLabel.Font                     = 'Microsoft Sans Serif,8.25'
+	$PasswordNeverExpiresLabel        			= New-Object system.Windows.Forms.Label
+	$PasswordNeverExpiresLabel.text        		= ("Password Never Expires: " + $($user.PasswordNeverExpires))
+	$PasswordNeverExpiresLabel.width  			= 280
+	$PasswordNeverExpiresLabel.height  			= 20
+	$PasswordNeverExpiresLabel.location 		= New-Object System.Drawing.Point(10,70)
+	$PasswordNeverExpiresLabel.Font       		= 'Microsoft Sans Serif,8.25'
 	#$PasswordNeverExpiresLabel = createItem "Label" 10 70 280 20 ("Password Never Expires: " + $user.PasswordNeverExpires) $UserFactsForm
-	$BadPasswordCountLabel                          = New-Object system.Windows.Forms.Label
-	$BadPasswordCountLabel.text                     = ("Bad Password Count: " + $user.BadPwdCount)
-	$BadPasswordCountLabel.width                    = 280
-	$BadPasswordCountLabel.height                   = 20
-	$BadPasswordCountLabel.location                 = New-Object System.Drawing.Point(10,100)
-	$BadPasswordCountLabel.Font                     = 'Microsoft Sans Serif,8.25'	
+	$BadPasswordCountLabel            			= New-Object system.Windows.Forms.Label
+	$BadPasswordCountLabel.text   				= ("Bad Password Count: " + $user.BadPwdCount)
+	$BadPasswordCountLabel.width  				= 280
+	$BadPasswordCountLabel.height  				= 20
+	$BadPasswordCountLabel.location  			= New-Object System.Drawing.Point(10,100)
+	$BadPasswordCountLabel.Font         		= 'Microsoft Sans Serif,8.25'	
 	#$BadPasswordCountLabel = createItem "Label" 10 100 280 20 ("Bad Password Count: " + $user.BadPwdCount) $UserFactsForm
-	$UserAccountCreationTimeLabel                          = New-Object system.Windows.Forms.Label
-	$UserAccountCreationTimeLabel.text                     = ("Created Time: " + $user.whenCreated)
-	$UserAccountCreationTimeLabel.width                    = 280
-	$UserAccountCreationTimeLabel.height                   = 20
-	$UserAccountCreationTimeLabel.location                 = New-Object System.Drawing.Point(10,130)
-	$UserAccountCreationTimeLabel.Font                     = 'Microsoft Sans Serif,8.25'	
+	$UserAccountCreationTimeLabel   			= New-Object system.Windows.Forms.Label
+	$UserAccountCreationTimeLabel.text  		= ("Created Time: " + $user.whenCreated)
+	$UserAccountCreationTimeLabel.width   		= 280
+	$UserAccountCreationTimeLabel.height     	= 20
+	$UserAccountCreationTimeLabel.location  	= New-Object System.Drawing.Point(10,130)
+	$UserAccountCreationTimeLabel.Font       	= 'Microsoft Sans Serif,8.25'	
 	#$UserAccountCreationTimeLabel = createItem "Label" 10 130 280 20 ("Created Time: " + $user.whenCreated) $UserFactsForm
-	$UserAccountModifiedTimeLabel                          = New-Object system.Windows.Forms.Label
-	$UserAccountModifiedTimeLabel.text                     = ("Modified Time: " + $user.whenChanged)
-	$UserAccountModifiedTimeLabel.width                    = 280
-	$UserAccountModifiedTimeLabel.height                   = 20
-	$UserAccountModifiedTimeLabel.location                 = New-Object System.Drawing.Point(10,160)
-	$UserAccountModifiedTimeLabel.Font                     = 'Microsoft Sans Serif,8.25'
+	$UserAccountModifiedTimeLabel          		= New-Object system.Windows.Forms.Label
+	$UserAccountModifiedTimeLabel.text     		= ("Modified Time: " + $user.whenChanged)
+	$UserAccountModifiedTimeLabel.width    		= 280
+	$UserAccountModifiedTimeLabel.height   		= 20
+	$UserAccountModifiedTimeLabel.location    	= New-Object System.Drawing.Point(10,160)
+	$UserAccountModifiedTimeLabel.Font         	= 'Microsoft Sans Serif,8.25'
 	#$UserAccountModifiedTimeLabel = createItem "Label" 10 160 280 20 ("Modified Time: " + $user.whenChanged) $UserFactsForm
-	$PasswordAgeLabel                          = New-Object system.Windows.Forms.Label
-	$PasswordAgeLabel.text                     = (getPasswordAge)
-	$PasswordAgeLabel.width                    = 280
-	$PasswordAgeLabel.height                   = 20
-	$PasswordAgeLabel.location                 = New-Object System.Drawing.Point(10,190)
-	$PasswordAgeLabel.Font                     = 'Microsoft Sans Serif,8.25'	
+	$PasswordAgeLabel                         	= New-Object system.Windows.Forms.Label
+	$PasswordAgeLabel.text                     	= (getPasswordAge)
+	$PasswordAgeLabel.width                    	= 280
+	$PasswordAgeLabel.height                   	= 20
+	$PasswordAgeLabel.location                 	= New-Object System.Drawing.Point(10,190)
+	$PasswordAgeLabel.Font                     	= 'Microsoft Sans Serif,8.25'	
 	#$PasswordAgeLabel = createItem "Label" 10 190 280 20 (getPasswordAge) $UserFactsForm
-	$CertificateButton                         = New-Object system.Windows.Forms.Button
-	$CertificateButton.text                    = ""
-	$CertificateButton.width                   = 10
-	$CertificateButton.height                  = 20
-	$CertificateButton.location                = New-Object System.Drawing.Point(2,217)
-	$CertificateButton.Font                    = 'Microsoft Sans Serif,8.25'
+	$CertificateButton                         	= New-Object system.Windows.Forms.Button
+	$CertificateButton.text                    	= ""
+	$CertificateButton.width                   	= 10
+	$CertificateButton.height                  	= 20
+	$CertificateButton.location                	= New-Object System.Drawing.Point(2,217)
+	$CertificateButton.Font                    	= 'Microsoft Sans Serif,8.25'
 	$CertificateButton.Visible = $False
 	$global:CertStepper = 0
 	$CertificateButton.Add_Click({ stepCert })
 	#$CertificateButton = createItem "Button" 2 217 10 20 "" $UserFactsForm
-	$CertificateLabel                        = New-Object system.Windows.Forms.Label
-	$CertificateLabel.text                     = (getCertText).tostring()
-	$CertificateLabel.width                    = 270
-	$CertificateLabel.height                   = 20
-	$CertificateLabel.location                 = New-Object System.Drawing.Point(10,220)
-	$CertificateLabel.Font                     = 'Microsoft Sans Serif,8.25'
+	$CertificateLabel                        	= New-Object system.Windows.Forms.Label
+	$CertificateLabel.text                    	= (getCertText).tostring()
+	$CertificateLabel.width                    	= 270
+	$CertificateLabel.height                   	= 20
+	$CertificateLabel.location                 	= New-Object System.Drawing.Point(10,220)
+	$CertificateLabel.Font                     	= 'Microsoft Sans Serif,8.25'
 	#$certificateButton = createItem "Label" 10 220 270 20 (getCertText) $UserFactsForm
-	$UserDepartmentLabel                          = New-Object system.Windows.Forms.Label
-	$UserDepartmentLabel.text                     = ("Department: " + $user.Department)
-	$UserDepartmentLabel.width                    = 280
-	$UserDepartmentLabel.height                   = 20
-	$UserDepartmentLabel.location                 = New-Object System.Drawing.Point(10,250)
-	$UserDepartmentLabel.Font                     = 'Microsoft Sans Serif,8.25'	
+	$UserDepartmentLabel                      	= New-Object system.Windows.Forms.Label
+	$UserDepartmentLabel.text               	= ("Department: " + $user.Department)
+	$UserDepartmentLabel.width              	= 280
+	$UserDepartmentLabel.height         		= 20
+	$UserDepartmentLabel.location       		= New-Object System.Drawing.Point(10,250)
+	$UserDepartmentLabel.Font              		= 'Microsoft Sans Serif,8.25'	
 	#$UserDepartmentLabel = createItem "Label" 10 250 280 20 ("Department: " + $user.Department) $UserFactsForm
-	$UserDescription				 = New-Object system.Windows.Forms.Label
-	$UserDescription.text                    = ("Description: " + $user.Description)
-	$UserDescription.width                    = 280
-	$UserDescription.height                   = 20
-	$UserDescription.location                 = New-Object System.Drawing.Point(10,280)
-	$UserDescription.Font                     = 'Microsoft Sans Serif,8.25'	
+	$UserDescription				 			= New-Object system.Windows.Forms.Label
+	$UserDescription.text                    	= ("Description: " + $user.Description)
+	$UserDescription.width                    	= 280
+	$UserDescription.height                   	= 20
+	$UserDescription.location                 	= New-Object System.Drawing.Point(10,280)
+	$UserDescription.Font                     	= 'Microsoft Sans Serif,8.25'	
 	#$UserDescription = createItem "Label" 10 280 280 20 ("Description: " + $user.Description) $UserFactsForm
 
 	$UserFactsForm.controls.AddRange(@($EnabledUserLabel,$UserAccountExpireDateLabel,$PWNeverExpireLb,
@@ -1387,48 +1387,48 @@ function extraPCFacts{
 		
 		
 	# AD info
-	$ADUserEnabledlbl                          = New-Object system.Windows.Forms.Label
-	$ADUserEnabledlbl.text                     = ("Enabled: "  + $pc.Enabled)
-	$ADUserEnabledlbl.width                    = 270
-	$ADUserEnabledlbl.height                   = 30
-	$ADUserEnabledlbl.location                 = New-Object System.Drawing.Point(10,10)
-	$ADUserEnabledlbl.Font                     = 'Microsoft Sans Serif,8.25'
+	$ADUserEnabledlbl                          	= New-Object system.Windows.Forms.Label
+	$ADUserEnabledlbl.text                    	= ("Enabled: "  + $pc.Enabled)
+	$ADUserEnabledlbl.width                    	= 270
+	$ADUserEnabledlbl.height                   	= 30
+	$ADUserEnabledlbl.location                 	= New-Object System.Drawing.Point(10,10)
+	$ADUserEnabledlbl.Font                     	= 'Microsoft Sans Serif,8.25'
 
 	#$ADUserEnabledlbl = createItem "Label" 10 10 270 20 ("Enabled: "  + $pc.Enabled) $PCFactsForm
-	$OULabel                          = New-Object system.Windows.Forms.Label
-	$OULabel.text                     = ("OU: " + ($pc.CanonicalName.Substring(($pc.CanonicalName).IndexOf('/')))) 
-	$OULabel.width                    = 270
-	$OULabel.height                   = 20
-	$OULabel.location                 = New-Object System.Drawing.Point(10,40)
-	$OULabel.Font                     = 'Microsoft Sans Serif,8.25'
+	$OULabel                         			= New-Object system.Windows.Forms.Label
+	$OULabel.text                    			= ("OU: " + ($pc.CanonicalName.Substring(($pc.CanonicalName).IndexOf('/')))) 
+	$OULabel.width                    			= 270
+	$OULabel.height                   			= 20
+	$OULabel.location                 			= New-Object System.Drawing.Point(10,40)
+	$OULabel.Font                     			= 'Microsoft Sans Serif,8.25'
 	#$OULabel = createItem "Label" 10 40 270 30 ("OU: " + ($pc.CanonicalName.Substring(($pc.CanonicalName).IndexOf('/')))) $PCFactsForm
-    $LastWrenchLogoPictureBoxnLbl                          = New-Object system.Windows.Forms.Label
-	$LastWrenchLogoPictureBoxnLbl.text                     = "Name: "
-	$LastWrenchLogoPictureBoxnLbl.width                    = 270
-	$LastWrenchLogoPictureBoxnLbl.height                   = 20
-	$LastWrenchLogoPictureBoxnLbl.location                 = New-Object System.Drawing.Point(10,100)
-	$LastWrenchLogoPictureBoxnLbl.Font                     = 'Microsoft Sans Serif,8.25'
+    $LastWrenchLogoPictureBoxnLbl         		= New-Object system.Windows.Forms.Label
+	$LastWrenchLogoPictureBoxnLbl.text     		= "Name: "
+	$LastWrenchLogoPictureBoxnLbl.width    		= 270
+	$LastWrenchLogoPictureBoxnLbl.height   		= 20
+	$LastWrenchLogoPictureBoxnLbl.location 		= New-Object System.Drawing.Point(10,100)
+	$LastWrenchLogoPictureBoxnLbl.Font     		= 'Microsoft Sans Serif,8.25'
 	#$LastWrenchLogoPictureBoxnLbl = createItem "Label" 10 70 270 20 ("Last WrenchLogoPictureBoxn: " + $pc.LastWrenchLogoPictureBoxnDate) $PCFactsForm
-	$OSLbl                          = New-Object system.Windows.Forms.Label
-	$OSLbl.text                     = ("OS: " + $pc.OperatingSystem + " " + $pc.OperatingSystemServicePack)
-	$OSLbl.width                    = 270
-	$OSLbl.height                   = 20
-	$OSLbl.location                 = New-Object System.Drawing.Point(10,100)
-	$OSLbl.Font                     = 'Microsoft Sans Serif,8.25'
+	$OSLbl                          			= New-Object system.Windows.Forms.Label
+	$OSLbl.text                     			= ("OS: " + $pc.OperatingSystem + " " + $pc.OperatingSystemServicePack)
+	$OSLbl.width                    			= 270
+	$OSLbl.height                   			= 20
+	$OSLbl.location                 			= New-Object System.Drawing.Point(10,100)
+	$OSLbl.Font                     			= 'Microsoft Sans Serif,8.25'
 	#$OSLbl = createItem "Label" 10 100 270 20 ("OS: " + $pc.OperatingSystem + " " + $pc.OperatingSystemServicePack) $PCFactsForm
-	$UserAccountCreationTimeLabel                          = New-Object system.Windows.Forms.Label
-	$UserAccountCreationTimeLabel.text                     = ("Created Time: " + $pc.whenCreated)
-	$UserAccountCreationTimeLabel.width                    = 270
-	$UserAccountCreationTimeLabel.height                   = 20
-	$UserAccountCreationTimeLabel.location                 = New-Object System.Drawing.Point(10,130)
-	$UserAccountCreationTimeLabel.Font                     = 'Microsoft Sans Serif,8.25'
+	$UserAccountCreationTimeLabel           	= New-Object system.Windows.Forms.Label
+	$UserAccountCreationTimeLabel.text       	= ("Created Time: " + $pc.whenCreated)
+	$UserAccountCreationTimeLabel.width         = 270
+	$UserAccountCreationTimeLabel.height      	= 20
+	$UserAccountCreationTimeLabel.location      = New-Object System.Drawing.Point(10,130)
+	$UserAccountCreationTimeLabel.Font          = 'Microsoft Sans Serif,8.25'
 	#$UserAccountCreationTimeLabel = createItem "Label" 10 130 270 20 ("Created Time: " + $pc.whenCreated) $PCFactsForm
-	$UserAccountModifiedTimeLabel                          = New-Object system.Windows.Forms.Label
-	$UserAccountModifiedTimeLabel.text                     = ("Modified Time: " + $pc.whenChanged)
-	$UserAccountModifiedTimeLabel.width                    = 60
-	$UserAccountModifiedTimeLabel.height                   = 20
-	$UserAccountModifiedTimeLabel.location                 = New-Object System.Drawing.Point(10,28)
-	$UserAccountModifiedTimeLabel.Font                     = 'Microsoft Sans Serif,8.25'
+	$UserAccountModifiedTimeLabel          		= New-Object system.Windows.Forms.Label
+	$UserAccountModifiedTimeLabel.text     		= ("Modified Time: " + $pc.whenChanged)
+	$UserAccountModifiedTimeLabel.width   		= 60
+	$UserAccountModifiedTimeLabel.height   		= 20
+	$UserAccountModifiedTimeLabel.location  	= New-Object System.Drawing.Point(10,28)
+	$UserAccountModifiedTimeLabel.Font         	= 'Microsoft Sans Serif,8.25'
 	#$UserAccountModifiedTimeLabel = createItem "Label" 10 160 270 20 ("Modified Time: " + $pc.whenChanged) $PCFactsForm
 
 	# WMI info
@@ -1459,93 +1459,93 @@ function extraPCFacts{
 		$DriveLbl.Font = $UnderlineFont
 	
 	# PSinfo info
-	$SoftVerButton                         = New-Object system.Windows.Forms.Button
-	$SoftVerButton.text                    = "Uptime and Software Versions"
-	$SoftVerButton.width                   = 270
-	$SoftVerButton.height                  = 20
-	$SoftVerButton.location                = New-Object System.Drawing.Point(10,340)
-	$SoftVerButton.Font                    = 'Microsoft Sans Serif,8.25'
+	$SoftVerButton                         		= New-Object system.Windows.Forms.Button
+	$SoftVerButton.text                    		= "Uptime and Software Versions"
+	$SoftVerButton.width                   		= 270
+	$SoftVerButton.height                  		= 20
+	$SoftVerButton.location                		= New-Object System.Drawing.Point(10,340)
+	$SoftVerButton.Font                    		= 'Microsoft Sans Serif,8.25'
 	$SoftVerButton.Add_Click({ getSoftwareVersions })
 	#$SoftVerButton = createItem "Button" 10 340 270 20 "Uptime and Software Versions" $PCFactsForm
-	$SoftVerLbl                          = New-Object system.Windows.Forms.Label
-	$SoftVerLbl.text                     = "Loading ... (May take a while)"
-	$SoftVerLbl.width                    = 370
-	$SoftVerLbl.height                   = 20
-	$SoftVerLbl.location                 = New-Object System.Drawing.Point(10,340)
-	$SoftVerLbl.Font                     = 'Microsoft Sans Serif,8.25'
+	$SoftVerLbl                          		= New-Object system.Windows.Forms.Label
+	$SoftVerLbl.text                     		= "Loading ... (May take a while)"
+	$SoftVerLbl.width                    		= 370
+	$SoftVerLbl.height                   		= 20
+	$SoftVerLbl.location                 		= New-Object System.Drawing.Point(10,340)
+	$SoftVerLbl.Font                     		= 'Microsoft Sans Serif,8.25'
 	$SoftVerLbl.ForeColor = "Blue"
 	$SoftVerLbl.Visible = $false
 	#$SoftVerLbl = createItem "Label" 10 340 270 20 "Loading ... (May take a while)" $PCFactsForm
-	$UptimeLbl                          = New-Object system.Windows.Forms.Label
-	$UptimeLbl.text                     = "Uptime:"
-	$UptimeLbl.width                    = 300
-	$UptimeLbl.height                   = 20
-	$UptimeLbl.location                 = New-Object System.Drawing.Point(10,340)
-	$UptimeLbl.Font                     = 'Microsoft Sans Serif,8.25'
+	$UptimeLbl                          		= New-Object system.Windows.Forms.Label
+	$UptimeLbl.text                     		= "Uptime:"
+	$UptimeLbl.width                    		= 300
+	$UptimeLbl.height                   		= 20
+	$UptimeLbl.location                 		= New-Object System.Drawing.Point(10,340)
+	$UptimeLbl.Font                     		= 'Microsoft Sans Serif,8.25'
 	#$UptimeLbl = createItem "Label" 10 340 300 20 "Uptime:" $PCFactsForm
-	$IELbl                          = New-Object system.Windows.Forms.Label
-	$IELbl.text                     = "IE:"
-	$IELbl.width                    = 270
-	$IELbl.height                   = 20
-	$IELbl.location                 = New-Object System.Drawing.Point(10,370)
-	$IELbl.Font                     = 'Microsoft Sans Serif,8.25'
+	$IELbl                          			= New-Object system.Windows.Forms.Label
+	$IELbl.text                     			= "IE:"
+	$IELbl.width                    			= 270
+	$IELbl.height                   			= 20
+	$IELbl.location                 			= New-Object System.Drawing.Point(10,370)
+	$IELbl.Font                     			= 'Microsoft Sans Serif,8.25'
 	#$IELbl = createItem "Label" 10 370 270 20 "IE:" $PCFactsForm
-	$FlashLbl                          = New-Object system.Windows.Forms.Label
-	$FlashLbl.text                     = "Flash:"
-	$FlashLbl.width                    = 270
-	$FlashLbl.height                   = 20
-	$FlashLbl.location                 = New-Object System.Drawing.Point(10,400)
-	$FlashLbl.Font                     = 'Microsoft Sans Serif,8.25'	
+	$FlashLbl                         			= New-Object system.Windows.Forms.Label
+	$FlashLbl.text                     			= "Flash:"
+	$FlashLbl.width                    			= 270
+	$FlashLbl.height                   			= 20
+	$FlashLbl.location                 			= New-Object System.Drawing.Point(10,400)
+	$FlashLbl.Font                     			= 'Microsoft Sans Serif,8.25'	
 	#$FlashLbl = createItem "Label" 10 400 270 20 "Flash:" $PCFactsForm
-	$FlashButton                         = New-Object system.Windows.Forms.Button
-	$FlashButton.text                    = ""
-	$FlashButton.width                   = 8
-	$FlashButton.height                  = 20
-	$FlashButton.location                = New-Object System.Drawing.Point(2,397)
-	$FlashButton.Font                    = 'Microsoft Sans Serif,8.25'
+	$FlashButton                         		= New-Object system.Windows.Forms.Button
+	$FlashButton.text                    		= ""
+	$FlashButton.width                   		= 8
+	$FlashButton.height                  		= 20
+	$FlashButton.location                		= New-Object System.Drawing.Point(2,397)
+	$FlashButton.Font                    		= 'Microsoft Sans Serif,8.25'
 	$FlashButton.Visible = $false
 	$FlashButton.Add_Click({ stepFlash })	
 	#$FlashButton = createItem "Button" 2 397 8 20 "" $PCFactsForm
-	$JavaLbl.text                     = "Java:"
-	$JavaLbl.width                    = 270
-	$JavaLbl.height                   = 20
-	$JavaLbl.location                 = New-Object System.Drawing.Point(2,247)
-	$JavaLbl.Font                     = 'Microsoft Sans Serif,8.25'
+	$JavaLbl.text                     			= "Java:"
+	$JavaLbl.width                    			= 270
+	$JavaLbl.height                   			= 20
+	$JavaLbl.location                 			= New-Object System.Drawing.Point(2,247)
+	$JavaLbl.Font                     			= 'Microsoft Sans Serif,8.25'
 	#$JavaLbl = createItem "Label" 10 430 270 20 "Java:" $PCFactsForm
-	$JavaButton.text                    = ""
-	$JavaButton.width                   = 8
-	$JavaButton.height                  = 20
-	$JavaButton.location                = New-Object System.Drawing.Point(2,427)
-	$JavaButton.Font                    = 'Microsoft Sans Serif,8.25'
+	$JavaButton.text                    		= ""
+	$JavaButton.width                   		= 8
+	$JavaButton.height                  		= 20
+	$JavaButton.location                		= New-Object System.Drawing.Point(2,427)
+	$JavaButton.Font                    		= 'Microsoft Sans Serif,8.25'
 	$JavaButton.Visible = $false
 	$JavaButton.Add_Click({ stepJava })	
 	#$JavaButton = createItem "Button" 2 427 8 20 "" $PCFactsForm
 	
 	#Endpoint Protection
-	$EndPointButton                         = New-Object system.Windows.Forms.Button
-	$EndPointButton.text                    = "View Endpoint Details"
-	$EndPointButton.width                   = 270
-	$EndPointButton.height                  = 20
-	$EndPointButton.location                = New-Object System.Drawing.Point(10,460)
-	$EndPointButton.Font                    = 'Microsoft Sans Serif,8.25'	
+	$EndPointButton                         	= New-Object system.Windows.Forms.Button
+	$EndPointButton.text                    	= "View Endpoint Details"
+	$EndPointButton.width                   	= 270
+	$EndPointButton.height                  	= 20
+	$EndPointButton.location                	= New-Object System.Drawing.Point(10,460)
+	$EndPointButton.Font                   		= 'Microsoft Sans Serif,8.25'	
 	$EndPointButton = createItem "Button" 10 460 270 20 "View Endpoint Details" $PCFactsForm
 	$EndPointButton.Add_Click({getEndpointInfo $EndPointButton $EndpointLabel})
 	
-	$EndPointLabel                          = New-Object system.Windows.Forms.Label
-	$EndPointLabel.text                     = "Signatures Last Updated: "
-	$EndPointLabel.width                    = 270
-	$EndPointLabel.height                   = 20
-	$EndPointLabel.location                 = New-Object System.Drawing.Point(10,460)
-	$EndPointLabel.Font                     = 'Microsoft Sans Serif,8.25'
+	$EndPointLabel                          	= New-Object system.Windows.Forms.Label
+	$EndPointLabel.text                     	= "Signatures Last Updated: "
+	$EndPointLabel.width                    	= 270
+	$EndPointLabel.height                   	= 20
+	$EndPointLabel.location                 	= New-Object System.Drawing.Point(10,460)
+	$EndPointLabel.Font                     	= 'Microsoft Sans Serif,8.25'
 	$EndPointLabel.Visible = $False	
 	#$EndPointLabel = createItem "Label" 10 460 270 20 "Signatures Last Updated: " $PCFactsForm
 	#View Smart Data
-	$SmartLbl                          = New-Object system.Windows.Forms.Label
-	$SmartLbl.text                     = "View Disk Health"
-	$SmartLbl.width                    = 270
-	$SmartLbl.height                   = 20
-	$SmartLbl.location                 = New-Object System.Drawing.Point(100,490)
-	$SmartLbl.Font                     = 'Microsoft Sans Serif,8.25'
+	$SmartLbl                          			= New-Object system.Windows.Forms.Label
+	$SmartLbl.text                     			= "View Disk Health"
+	$SmartLbl.width                    			= 270
+	$SmartLbl.height                  			= 20
+	$SmartLbl.location                 			= New-Object System.Drawing.Point(100,490)
+	$SmartLbl.Font                     			= 'Microsoft Sans Serif,8.25'
 	$SmartLbl.ForeColor = "Blue"
 	$SmartLbl.Add_Click({ getSmartData })	
 	#$SmartLbl = createItem "Label" 100 490 270 20 "View Disk Health" $PCFactsForm
@@ -1555,12 +1555,12 @@ function extraPCFacts{
 function viewGroups($ADObjectType){
 		$GroupForm = createForm "Groups" 250 300 "CenterScreen" "Fixed3D" $false $false $true
 
-		$GroupList                        = New-Object system.Windows.Forms.ListBox
-		$GroupList.text                   = "" # Starts Empty. Is this needed.
-		$GroupList.width                  = 210
-		$GroupList.height                 = 180
-		$GroupList.location               = New-Object System.Drawing.Point(10,10)
-		$GroupList.HorizontalScrollbar = $true
+		$GroupList                        		= New-Object system.Windows.Forms.ListBox
+		$GroupList.text                   		= "" # Starts Empty. Is this needed.
+		$GroupList.width                 		= 210
+		$GroupList.height                 		= 180
+		$GroupList.location               		= New-Object System.Drawing.Point(10,10)
+		$GroupList.HorizontalScrollbar 			= $true
 		$GroupList.DataSource = @((getGroups($ADObjectType)).SamAccountName | Sort-Object )
 		#$GroupList = createItem "ListBox" 10 10 210 180 "" $GroupForm
 
@@ -1573,12 +1573,12 @@ function viewGroups($ADObjectType){
 		$AddGroupButton.Add_Click({ addGroup $ADObjectType})	
 		#$AddGroupButton = createItem "Button" 10 190 210 30 "Add to Group" $GroupForm
 		
-		$RemoveGroupButton                         = New-Object system.Windows.Forms.Button
-		$RemoveGroupButton.text                    = "Remove from Group"
-		$RemoveGroupButton.width                   = 210
-		$RemoveGroupButton.height                  = 30
-		$RemoveGroupButton.location                = New-Object System.Drawing.Point(10,225)
-		$RemoveGroupButton.Font                    = 'Microsoft Sans Serif,8.25'
+		$RemoveGroupButton                  	= New-Object system.Windows.Forms.Button
+		$RemoveGroupButton.text            		= "Remove from Group"
+		$RemoveGroupButton.width           		= 210
+		$RemoveGroupButton.height          		= 30
+		$RemoveGroupButton.location      		= New-Object System.Drawing.Point(10,225)
+		$RemoveGroupButton.Font             	= 'Microsoft Sans Serif,8.25'
 		$RemoveGroupButton.Add_Click({ removeGroup $ADObjectType})
 		#$RemoveGroupButton = createItem "Button" 10 225 210 30 "Remove from Group" $GroupForm
 		$GroupForm.controls.AddRange(@($GroupList,$AddGroupButton,$RemoveGroupButton))
@@ -1587,65 +1587,65 @@ function viewGroups($ADObjectType){
 }
 function newUserPassword{
 	$newPWForm = createForm "New Password" 300 160 "CenterScreen" "Fixed3D" $false $false $false
-	$NewPWLb                          = New-Object system.Windows.Forms.Label
-	$NewPWLb.text                     = "Enter New Password: "
-	$NewPWLb.width                    = 120
-	$NewPWLb.height                   = 20
-	$NewPWLb.location                 = New-Object System.Drawing.Point(10,12)
-	$NewPWLb.Font                     = 'Microsoft Sans Serif,8.25'
-	# $NewPWLbl = createItem "Label" 10 12 120 20 "Enter New Password: " $newPWForm
-	$NewPWBox                        = New-Object system.Windows.Forms.TextBox
-	$NewPWBox.width                  = 120
-	$NewPWBox.height                 = 20
-	$NewPWBox.location               = New-Object System.Drawing.Point(140,10)
-	$NewPWBox.Font                   = 'Microsoft Sans Serif,8.25'
-	$NewPWBox.PasswordChar 			= "*"
-	#$NewPWBox = createItem "TextBox" 140 10 120 20 "" $newPWForm
-	$ConfirmPWLbl                          = New-Object system.Windows.Forms.Label
-	$ConfirmPWLbl.text                     = "Name: "
-	$ConfirmPWLbl.width                    = 120
-	$ConfirmPWLbl.height                   = 20
-	$ConfirmPWLbl.location                 = New-Object System.Drawing.Point(10,42)
-	$ConfirmPWLbl.Font                     = 'Microsoft Sans Serif,8.25'	
-	#$ConfirmPWLbl = createItem "Label" 10 42 120 20 "Confirm Password: " $newPWForm
-	$ConfirmPWBox                        = New-Object system.Windows.Forms.TextBox
-	$ConfirmPWBox.width                  = 120
-	$ConfirmPWBox.height                 = 20
-	$ConfirmPWBox.location               = New-Object System.Drawing.Point(140,40)
-	$ConfirmPWBox.Font                   = 'Microsoft Sans Serif,8.25'
-	$ConfirmPWBox.PasswordChar = "*"
-	#$ConfirmPWBox = createItem "TextBox" 140 40 120 20 "" $newPWForm
-	$ChangePWLoginCheck                       = New-Object system.Windows.Forms.CheckBox
-	$ChangePWLoginCheck.text                  = "checkBox"
-	$ChangePWLoginCheck.AutoSize              = $false
-	$ChangePWLoginCheck.width                 = 220
-	$ChangePWLoginCheck.height                = 20
-	$ChangePWLoginCheck.location              = New-Object System.Drawing.Point(60,67)
-	$ChangePWLoginCheck.Font                  = 'Microsoft Sans Serif,10'	
-	#$ChangePWLoginCheck = createItem "CheckBox" 60 67 220 20 "Change password at next login" $newPWForm
-	$NewPWOKButton                         = New-Object system.Windows.Forms.Button
-	$NewPWOKButton.text                    = "OK"
-	$NewPWOKButton.width                   = 122
-	$NewPWOKButton.height                  = 20
-	$NewPWOKButton.location                = New-Object System.Drawing.Point(10,90)
-	$NewPWOKButton.Font                    = 'Microsoft Sans Serif,8.25'
-	#$NewPWOKButton = createItem "Button" 10 90 122 20 "OK" $newPWForm
-	$SoftVerButton                         = New-Object system.Windows.Forms.Button
-	$SoftVerButton.text                    = "Cancel"
-	$SoftVerButton.width                   = 122
-	$SoftVerButton.height                  = 20
-	$SoftVerButton.location                = New-Object System.Drawing.Point(147,90)
-	$SoftVerButton.Font                    = 'Microsoft Sans Serif,8.25'
-	#$NewPWCancelButton = createItem "Button" 147 90 122 20 "Cancel" $newPWForm
+	$NewPasswordLabel                         			= New-Object system.Windows.Forms.Label
+	$NewPasswordLabel.text                     	= "Enter New Password: "
+	$NewPasswordLabel.width                    	= 120
+	$NewPasswordLabel.height                   	= 20
+	$NewPasswordLabel.location                 	= New-Object System.Drawing.Point(10,12)
+	$NewPasswordLabel.Font                     	= 'Microsoft Sans Serif,8.25'
+	# $NewPasswordLabell = createItem "Label" 1	0 12 120 20 "Enter New Password: " $newPWForm
+	$NewPasswordTextbox                        	= New-Object system.Windows.Forms.TextBox
+	$NewPasswordTextbox.width                  	= 120
+	$NewPasswordTextbox.height                 	= 20
+	$NewPasswordTextbox.location               	= New-Object System.Drawing.Point(140,10)
+	$NewPasswordTextbox.Font                   	= 'Microsoft Sans Serif,8.25'
+	$NewPasswordTextbox.PasswordChar 			= "*"
+	#$NewPasswordTextbox = createItem "TextBox" 140 10 120 20 "" $newPWForm
+	$ConfirmPasswordLabel                		= New-Object system.Windows.Forms.Label
+	$ConfirmPasswordLabel.text          		= "Name: "
+	$ConfirmPasswordLabel.width          		= 120
+	$ConfirmPasswordLabel.height          		= 20
+	$ConfirmPasswordLabel.location       		= New-Object System.Drawing.Point(10,42)
+	$ConfirmPasswordLabel.Font          		= 'Microsoft Sans Serif,8.25'	
+	#$ConfirmPasswordLabel = createItem "Label" 10 42 120 20 "Confirm Password: " $newPWForm
+	$ConfirmPaswordTextbox            			= New-Object system.Windows.Forms.TextBox
+	$ConfirmPaswordTextbox.width          		= 120
+	$ConfirmPaswordTextbox.height       		= 20
+	$ConfirmPaswordTextbox.location           	= New-Object System.Drawing.Point(140,40)
+	$ConfirmPaswordTextbox.Font       			= 'Microsoft Sans Serif,8.25'
+	$ConfirmPaswordTextbox.PasswordChar 		= "*"
+	#$ConfirmPaswordTextbox = createItem "TextBox" 140 40 120 20 "" $newPWForm
+	$ChangePasswordCheckbox                   	= New-Object system.Windows.Forms.CheckBox
+	$ChangePasswordCheckbox.text              	= "checkBox"
+	$ChangePasswordCheckbox.AutoSize          	= $false
+	$ChangePasswordCheckbox.width              	= 220
+	$ChangePasswordCheckbox.height             	= 20
+	$ChangePasswordCheckbox.location           	= New-Object System.Drawing.Point(60,67)
+	$ChangePasswordCheckbox.Font                = 'Microsoft Sans Serif,10'	
+	#$ChangePasswordCheckbox = createItem "CheckBox" 60 67 220 20 "Change password at next login" $newPWForm
+	$NewPasswordOkButton                        = New-Object system.Windows.Forms.Button
+	$NewPasswordOkButton.text                   = "OK"
+	$NewPasswordOkButton.width                  = 122
+	$NewPasswordOkButton.height                 = 20
+	$NewPasswordOkButton.location               = New-Object System.Drawing.Point(10,90)
+	$NewPasswordOkButton.Font                   = 'Microsoft Sans Serif,8.25'
+	#$NewPasswordOkButton = createItem "Button" 10 90 122 20 "OK" $newPWForm
+	$NewPasswordCancelButton                    = New-Object system.Windows.Forms.Button
+	$NewPasswordCancelButton.text               = "Cancel"
+	$NewPasswordCancelButton.width              = 122
+	$NewPasswordCancelButton.height             = 20
+	$NewPasswordCancelButton.location           = New-Object System.Drawing.Point(147,90)
+	$NewPasswordCancelButton.Font               = 'Microsoft Sans Serif,8.25'
+	#$NewPasswordCancelButton = createItem "Button" 147 90 122 20 "Cancel" $newPWForm
 
-	$newPWForm.controls.AddRange(@($NewPWLb,$NewPWBox,$ConfirmPWLbl,$ConfirmPWBox,$ChangePWLoginCheck,$NewPWOKButton,$NewPWCancelButton))
+	$newPWForm.controls.AddRange(@($NewPasswordLabel,$NewPasswordTextbox,$ConfirmPasswordLabel,$ConfirmPaswordTextbox,$ChangePasswordCheckbox,$NewPasswordOkButton,$NewPasswordCancelButton))
 
-	$NewPWOKButton.Add_Click({
-		if ($NewPWBox.Text -eq $ConfirmPWBox.text){
+	$NewPasswordOkButton.Add_Click({
+		if ($NewPasswordTextbox.Text -eq $ConfirmPaswordTextbox.text){
 			try{
-				$pw = ConvertTo-SecureString $NewPWBox.Text -AsPlainText -Force
+				$pw = ConvertTo-SecureString $NewPasswordTextbox.Text -AsPlainText -Force
 				Set-ADAccountPassword $global:UserID -Reset -NewPassword $pw	
-				if ($ChangePWLoginCheck.Checked -eq $true){
+				if ($ChangePasswordCheckbox.Checked -eq $true){
 					Set-ADUser $global:UserID -ChangePasswordAtWrenchLogoPictureBoxn:$true
 				}
 				$newPWForm.Close()
@@ -1657,7 +1657,7 @@ function newUserPassword{
 		}
 	})
 	
-	$NewPWCancelButton.Add_Click({
+	$NewPasswordCancelButton.Add_Click({
 		$NewPWForm.Close()
 	})
 	
