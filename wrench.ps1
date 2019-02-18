@@ -169,7 +169,7 @@ $PCNameTextbox.width                          	= 130
 $PCNameTextbox.height                         	= 20
 $PCNameTextbox.location                       	= New-Object System.Drawing.Point(70,85)
 $PCNameTextbox.Font                           	= 'Microsoft Sans Serif,8.25'
-$PCNameTextbox.MaxLength = 15
+#$PCNameTextbox.MaxLength = 15
 
 $PCSearchButton                             	= New-Object system.Windows.Forms.Button
 $PCSearchButton.text                        	= "Search"
@@ -1004,6 +1004,7 @@ function PCNameByUserID{
 	if ($pcnames.length -eq 1){
 		$global:PCName = $pcnames[0]
 		$true
+		
 	}else{
 		$returnval = $false
 		MakeClickList ([ref]$global:PCName) $pcnames ([ref]$returnval)
@@ -1348,7 +1349,7 @@ function extraUserFacts{
 	showForm $UserFactsForm
 }
 function extraPCFacts{
-	$pc = Get-ADComputer $PCName -properties CanonicalName, Enabled, LastWrenchLogoPictureBoxnDate, OperatingSystem, OperatingSystemServicePack, WhenChanged, WhenCreated
+	$pc = Get-ADComputer $PCName -properties CanonicalName, Enabled, LastLogonDate, OperatingSystem, OperatingSystemServicePack, WhenChanged, WhenCreated
 	
 	#Global Variables
 	$global:MACStepper = 0
@@ -1388,13 +1389,13 @@ function extraPCFacts{
 	$OULabel.location                 			= New-Object System.Drawing.Point(10,40)
 	$OULabel.Font                     			= 'Microsoft Sans Serif,8.25'
 	#$OULabel = createItem "Label" 10 40 270 30 ("OU: " + ($pc.CanonicalName.Substring(($pc.CanonicalName).IndexOf('/')))) $PCFactsForm
-    $LastWrenchLogoPictureBoxLabel         		= New-Object system.Windows.Forms.Label
-	$LastWrenchLogoPictureBoxLabel.text     	= "Name: "
-	$LastWrenchLogoPictureBoxLabel.width    	= 270
-	$LastWrenchLogoPictureBoxLabel.height   	= 20
-	$LastWrenchLogoPictureBoxLabel.location 	= New-Object System.Drawing.Point(10,100)
-	$LastWrenchLogoPictureBoxLabel.Font     	= 'Microsoft Sans Serif,8.25'
-	#$LastWrenchLogoPictureBoxLabel = createItem "Label" 10 70 270 20 ("Last WrenchLogoPictureBoxn: " + $pc.LastWrenchLogoPictureBoxnDate) $PCFactsForm
+    $LastLogonLbl         		= New-Object system.Windows.Forms.Label
+	$LastLogonLbl.text     	= ("Last Logon: " + $pc.LastLogonDate)
+	$LastLogonLbl.width    	= 270
+	$LastLogonLbl.height   	= 20
+	$LastLogonLbl.location 	= New-Object System.Drawing.Point(10,70)
+	$LastLogonLbl.Font     	= 'Microsoft Sans Serif,8.25'
+	#$LastWrenchLogoPictureBoxLabel = createItem "Label" 10 70 270 20 ("Last WrenchLogoPictureBoxn: " + $pc.LastLogonDate) $PCFactsForm
 	$OSLabel                          			= New-Object system.Windows.Forms.Label
 	$OSLabel.text                     			= ("OS: " + $pc.OperatingSystem + " " + $pc.OperatingSystemServicePack)
 	$OSLabel.width                    			= 270
@@ -1411,9 +1412,9 @@ function extraPCFacts{
 	#$UserAccountCreationTimeLabel = createItem "Label" 10 130 270 20 ("Created Time: " + $pc.whenCreated) $PCFactsForm
 	$UserAccountModifiedTimeLabel          		= New-Object system.Windows.Forms.Label
 	$UserAccountModifiedTimeLabel.text     		= ("Modified Time: " + $pc.whenChanged)
-	$UserAccountModifiedTimeLabel.width   		= 60
+	$UserAccountModifiedTimeLabel.width   		= 270
 	$UserAccountModifiedTimeLabel.height   		= 20
-	$UserAccountModifiedTimeLabel.location  	= New-Object System.Drawing.Point(10,28)
+	$UserAccountModifiedTimeLabel.location  	= New-Object System.Drawing.Point(10,160)
 	$UserAccountModifiedTimeLabel.Font         	= 'Microsoft Sans Serif,8.25'
 	#$UserAccountModifiedTimeLabel = createItem "Label" 10 160 270 20 ("Modified Time: " + $pc.whenChanged) $PCFactsForm
 
@@ -1492,12 +1493,14 @@ function extraPCFacts{
 	$FlashButton.Visible = $false
 	$FlashButton.Add_Click({ stepFlash })	
 	#$FlashButton = createItem "Button" 2 397 8 20 "" $PCFactsForm
+	$JavaLabel									= New-Object system.Windows.Forms.Label
 	$JavaLabel.text                     			= "Java:"
 	$JavaLabel.width                    			= 270
 	$JavaLabel.height                   			= 20
 	$JavaLabel.location                 			= New-Object System.Drawing.Point(10,430)
 	$JavaLabel.Font                     			= 'Microsoft Sans Serif,8.25'
 	#$JavaLabel = createItem "Label" 10 430 270 20 "Java:" $PCFactsForm
+	$JavaButton                         		= New-Object system.Windows.Forms.Button
 	$JavaButton.text                    		= ""
 	$JavaButton.width                   		= 8
 	$JavaButton.height                  		= 20
@@ -1538,7 +1541,7 @@ function extraPCFacts{
 	$PCFactsForm.controls.AddRange(@($SoftwareVersionButton,$SoftwareVersionLabel,
 	$UpTimeLabel,$IELabel,$FlashButton,$JavaLabel,$JavaButton,$EndPointButton,
 	$EndPointLabel,$SmartCtlLabel,$FlashLabel,$ADUserEnabled,$OULabel,
-	$LastWrenchLogoPictureBoxLabel,$OSLabel,$UserAccountCreationTimeLabel,$UserAccountModifiedTimeLabel))
+	$LastLogonLbl,$OSLabel,$UserAccountCreationTimeLabel,$UserAccountModifiedTimeLabel))
 	showForm $PCFactsForm
 }
 function viewGroups($ADObjectType){
