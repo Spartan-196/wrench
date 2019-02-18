@@ -415,7 +415,7 @@ $WrenchLogoPictureBox = new-object Windows.Forms.PictureBox
 $WrenchLogoPictureBox.location = New-Object System.Drawing.Size(10,477)
 $WrenchLogoPictureBox.size = New-Object System.Drawing.Size(260,100)
 $WrenchLogoPictureBox.BorderStyle = "FixedSingle"
-$WrenchLogoPictureBox.Image = [System.Drawing.Image]::Fromfile((get-item $WrenchLogoPictureBoxLocation));
+$WrenchLogoPictureBox.Image = [System.Drawing.Image]::Fromfile((get-item $LogoLocation));
 
 #Expand Button
 $ExpandButton                         = New-Object system.Windows.Forms.Button
@@ -540,7 +540,7 @@ function searchByName{
 }
 function searchByUserID{
 	clearVariables
-	$global:UserID = ($UserIDTextbox.Text).Trim()
+	$global:UserID = ($UserIDTextbox.Text).Trim() #FIXTHIS
 	testID
 	if($global:validID -eq $True){
 		if(!(pickID)){return}
@@ -559,6 +559,7 @@ function searchByUserID{
 		$msg::Show("No UserID found")
 	}
 }
+$global:UserID
 function searchByPCName{
 	clearVariables
 	$global:PCName = ($PCNameTextbox.Text).Trim()
@@ -1271,23 +1272,93 @@ function checkPing{
 function extraUserFacts{
 	$user = Get-ADUser $UserID -properties LockedOut, Enabled, AccountExpirationDate, Certificates, Department, Description, PasswordNeverExpires, BadPwdCount, LastBadPasswordAttempt, PasswordLastSet, WhenChanged, WhenCreated
 	
-	$UserFactsForm = createForm "User Info" 300 350 "CenterScreen" "Fixed3D" $false $false $true
-		#$UserFactsForm.Add_KeyDown({subWindowKeyListener($UserFactsForm)})
-	$EnabledLbl = createItem "Label" 10 10 280 20 ("Enabled: "  + $user.Enabled) $UserFactsForm
-	$AccountExpireLbl = createItem "Label" 10 40 280 20 ("Account Expires: " + $user.AccountExpirationDate) $UserFactsForm
-	$PWNeverExpireLbl = createItem "Label" 10 70 280 20 ("Password Never Expires: " + $user.PasswordNeverExpires) $UserFactsForm
-	$BadPWCountLbl = createItem "Label" 10 100 280 20 ("Bad Password Count: " + $user.BadPwdCount) $UserFactsForm
-	$CreateTimeLbl = createItem "Label" 10 130 280 20 ("Created Time: " + $user.whenCreated) $UserFactsForm
-	$ChangeTimeLbl = createItem "Label" 10 160 280 20 ("Modified Time: " + $user.whenChanged) $UserFactsForm
-	$PWDaysLbl = createItem "Label" 10 190 280 20 (getPasswordAge) $UserFactsForm
-	$CertBtn = createItem "Button" 2 217 10 20 "" $UserFactsForm
-		$CertBtn.Visible = $False
-		$global:CertStepper = 0
-		$CertBtn.Add_Click({ stepCert })
-	$CertLbl = createItem "Label" 10 220 270 20 (getCertText) $UserFactsForm
-	$UserDepartLbl = createItem "Label" 10 250 280 20 ("Department: " + $user.Department) $UserFactsForm
-	$UserDescriptLbl = createItem "Label" 10 280 280 20 ("Description: " + $user.Description) $UserFactsForm
-	
+	$UserFactsForm = createForm "ACtive Directory User Info" 300 350 "CenterScreen" "Fixed3D" $false $false $true
+	#$UserFactsForm.Add_KeyDown({subWindowKeyListener($UserFactsForm)})
+	$EnabledUserLabel                          = New-Object system.Windows.Forms.Label
+	$EnabledUserLabel.text                     = ("Enabled: "  + $user.Enabled)
+	$EnabledUserLabel.width                    = 280
+	$EnabledUserLabel.height                   = 20
+	$EnabledUserLabel.location                 = New-Object System.Drawing.Point(10,10)
+	$EnabledUserLabel.Font                     = 'Microsoft Sans Serif,8.25'
+	#$EnabledLbl = createItem "Label" 10 10 280 20 ("Enabled: "  + $user.Enabled) $UserFactsForm
+	$UserAccountExpireDateLabel                          = New-Object system.Windows.Forms.Label
+	$UserAccountExpireDateLabel.text                     = ("Account Expires: " + $user.AccountExpirationDate)
+	$UserAccountExpireDateLabel.width                    = 280
+	$UserAccountExpireDateLabel.height                   = 20
+	$UserAccountExpireDateLabel.location                 = New-Object System.Drawing.Point(10,40)
+	$UserAccountExpireDateLabel.Font                     = 'Microsoft Sans Serif,8.25'	
+	#$UserAccountExpireDateLabel = createItem "Label" 10 40 280 20 ("Account Expires: " + $user.AccountExpirationDate) $UserFactsForm
+	$PasswordNeverExpiresLabel                          = New-Object system.Windows.Forms.Label
+	$PasswordNeverExpiresLabel.text                     = ("Password Never Expires: " + $($user.PasswordNeverExpires))
+	$PasswordNeverExpiresLabel.width                    = 280
+	$PasswordNeverExpiresLabel.height                   = 20
+	$PasswordNeverExpiresLabel.location                 = New-Object System.Drawing.Point(10,70)
+	$PasswordNeverExpiresLabel.Font                     = 'Microsoft Sans Serif,8.25'
+	#$PasswordNeverExpiresLabel = createItem "Label" 10 70 280 20 ("Password Never Expires: " + $user.PasswordNeverExpires) $UserFactsForm
+	$BadPasswordCountLabel                          = New-Object system.Windows.Forms.Label
+	$BadPasswordCountLabel.text                     = ("Bad Password Count: " + $user.BadPwdCount)
+	$BadPasswordCountLabel.width                    = 280
+	$BadPasswordCountLabel.height                   = 20
+	$BadPasswordCountLabel.location                 = New-Object System.Drawing.Point(10,100)
+	$BadPasswordCountLabel.Font                     = 'Microsoft Sans Serif,8.25'	
+	#$BadPasswordCountLabel = createItem "Label" 10 100 280 20 ("Bad Password Count: " + $user.BadPwdCount) $UserFactsForm
+	$UserAccountCreationTimeLabel                          = New-Object system.Windows.Forms.Label
+	$UserAccountCreationTimeLabel.text                     = ("Created Time: " + $user.whenCreated)
+	$UserAccountCreationTimeLabel.width                    = 280
+	$UserAccountCreationTimeLabel.height                   = 20
+	$UserAccountCreationTimeLabel.location                 = New-Object System.Drawing.Point(10,130)
+	$UserAccountCreationTimeLabel.Font                     = 'Microsoft Sans Serif,8.25'	
+	#$UserAccountCreationTimeLabel = createItem "Label" 10 130 280 20 ("Created Time: " + $user.whenCreated) $UserFactsForm
+	$UserAccountModifiedTimeLabel                          = New-Object system.Windows.Forms.Label
+	$UserAccountModifiedTimeLabel.text                     = ("Modified Time: " + $user.whenChanged)
+	$UserAccountModifiedTimeLabel.width                    = 280
+	$UserAccountModifiedTimeLabel.height                   = 20
+	$UserAccountModifiedTimeLabel.location                 = New-Object System.Drawing.Point(10,160)
+	$UserAccountModifiedTimeLabel.Font                     = 'Microsoft Sans Serif,8.25'
+	#$UserAccountModifiedTimeLabel = createItem "Label" 10 160 280 20 ("Modified Time: " + $user.whenChanged) $UserFactsForm
+	$PasswordAgeLabel                          = New-Object system.Windows.Forms.Label
+	$PasswordAgeLabel.text                     = (getPasswordAge)
+	$PasswordAgeLabel.width                    = 280
+	$PasswordAgeLabel.height                   = 20
+	$PasswordAgeLabel.location                 = New-Object System.Drawing.Point(10,190)
+	$PasswordAgeLabel.Font                     = 'Microsoft Sans Serif,8.25'	
+	#$PasswordAgeLabel = createItem "Label" 10 190 280 20 (getPasswordAge) $UserFactsForm
+	$CertificateButton                         = New-Object system.Windows.Forms.Button
+	$CertificateButton.text                    = ""
+	$CertificateButton.width                   = 10
+	$CertificateButton.height                  = 20
+	$CertificateButton.location                = New-Object System.Drawing.Point(2,217)
+	$CertificateButton.Font                    = 'Microsoft Sans Serif,8.25'
+	$CertificateButton.Visible = $False
+	$global:CertStepper = 0
+	$CertificateButton.Add_Click({ stepCert })
+	#$CertificateButton = createItem "Button" 2 217 10 20 "" $UserFactsForm
+	$CertificateLabel                        = New-Object system.Windows.Forms.Label
+	$CertificateLabel.text                     = (getCertText).tostring()
+	$CertificateLabel.width                    = 270
+	$CertificateLabel.height                   = 20
+	$CertificateLabel.location                 = New-Object System.Drawing.Point(10,220)
+	$CertificateLabel.Font                     = 'Microsoft Sans Serif,8.25'
+	#$certificateButton = createItem "Label" 10 220 270 20 (getCertText) $UserFactsForm
+	$UserDepartmentLabel                          = New-Object system.Windows.Forms.Label
+	$UserDepartmentLabel.text                     = ("Department: " + $user.Department)
+	$UserDepartmentLabel.width                    = 280
+	$UserDepartmentLabel.height                   = 20
+	$UserDepartmentLabel.location                 = New-Object System.Drawing.Point(10,250)
+	$UserDepartmentLabel.Font                     = 'Microsoft Sans Serif,8.25'	
+	#$UserDepartmentLabel = createItem "Label" 10 250 280 20 ("Department: " + $user.Department) $UserFactsForm
+	$UserDescription				 = New-Object system.Windows.Forms.Label
+	$UserDescription.text                    = ("Description: " + $user.Description)
+	$UserDescription.width                    = 280
+	$UserDescription.height                   = 20
+	$UserDescription.location                 = New-Object System.Drawing.Point(10,280)
+	$UserDescription.Font                     = 'Microsoft Sans Serif,8.25'	
+	#$UserDescription = createItem "Label" 10 280 280 20 ("Description: " + $user.Description) $UserFactsForm
+
+	$UserFactsForm.controls.AddRange(@($EnabledUserLabel,$UserAccountExpireDateLabel,$PWNeverExpireLb,
+	$BadPasswordCountLabel,$UserAccountCreationTimeLabel,$UserAccountModifiedTimeLabel,$PasswordAgeLabel,$CertificateButton,$certificateButton,
+	$UserDepartmentLabel,$UserDescription,$PasswordNeverExpiresLabel,$CertificateLabel))
+
 	showForm $UserFactsForm
 }
 function extraPCFacts{
@@ -1345,20 +1416,20 @@ function extraPCFacts{
 	$OSLbl.location                 = New-Object System.Drawing.Point(10,100)
 	$OSLbl.Font                     = 'Microsoft Sans Serif,8.25'
 	#$OSLbl = createItem "Label" 10 100 270 20 ("OS: " + $pc.OperatingSystem + " " + $pc.OperatingSystemServicePack) $PCFactsForm
-	$CreateTimeLbl                          = New-Object system.Windows.Forms.Label
-	$CreateTimeLbl.text                     = ("Created Time: " + $pc.whenCreated)
-	$CreateTimeLbl.width                    = 270
-	$CreateTimeLbl.height                   = 20
-	$CreateTimeLbl.location                 = New-Object System.Drawing.Point(10,130)
-	$CreateTimeLbl.Font                     = 'Microsoft Sans Serif,8.25'
-	#$CreateTimeLbl = createItem "Label" 10 130 270 20 ("Created Time: " + $pc.whenCreated) $PCFactsForm
-	$ChangeTimeLbl                          = New-Object system.Windows.Forms.Label
-	$ChangeTimeLbl.text                     = ("Modified Time: " + $pc.whenChanged)
-	$ChangeTimeLbl.width                    = 60
-	$ChangeTimeLbl.height                   = 20
-	$ChangeTimeLbl.location                 = New-Object System.Drawing.Point(10,28)
-	$ChangeTimeLbl.Font                     = 'Microsoft Sans Serif,8.25'
-	#$ChangeTimeLbl = createItem "Label" 10 160 270 20 ("Modified Time: " + $pc.whenChanged) $PCFactsForm
+	$UserAccountCreationTimeLabel                          = New-Object system.Windows.Forms.Label
+	$UserAccountCreationTimeLabel.text                     = ("Created Time: " + $pc.whenCreated)
+	$UserAccountCreationTimeLabel.width                    = 270
+	$UserAccountCreationTimeLabel.height                   = 20
+	$UserAccountCreationTimeLabel.location                 = New-Object System.Drawing.Point(10,130)
+	$UserAccountCreationTimeLabel.Font                     = 'Microsoft Sans Serif,8.25'
+	#$UserAccountCreationTimeLabel = createItem "Label" 10 130 270 20 ("Created Time: " + $pc.whenCreated) $PCFactsForm
+	$UserAccountModifiedTimeLabel                          = New-Object system.Windows.Forms.Label
+	$UserAccountModifiedTimeLabel.text                     = ("Modified Time: " + $pc.whenChanged)
+	$UserAccountModifiedTimeLabel.width                    = 60
+	$UserAccountModifiedTimeLabel.height                   = 20
+	$UserAccountModifiedTimeLabel.location                 = New-Object System.Drawing.Point(10,28)
+	$UserAccountModifiedTimeLabel.Font                     = 'Microsoft Sans Serif,8.25'
+	#$UserAccountModifiedTimeLabel = createItem "Label" 10 160 270 20 ("Modified Time: " + $pc.whenChanged) $PCFactsForm
 
 	# WMI info
 	$UnderlineFont = New-Object System.Drawing.Font("Microsoft Sans Serif",8.5,[System.Drawing.FontStyle]::Underline)
@@ -1630,7 +1701,7 @@ function getCertText{
 	}elseif(($user.certificates).count -eq 1){
 		listCert(0)
 	}else{
-		$CertBtn.Visible = $true
+		$CertificateButton.Visible = $true
 		listCert(0)
 	}
 }
@@ -1644,7 +1715,7 @@ function listCert($certstep){
 function stepCert{
 	$global:CertStepper++
 	$index = ($CertStepper%($user.certificates).count)
-	$CertLbl.Text = listCert($index)
+	$certificateButton.Text = listCert($index)
 }
 
 ### PC FACT FUNCTIONS ###
