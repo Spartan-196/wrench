@@ -1477,9 +1477,6 @@ function extraPCFacts{
 	$DriveLabel.ForeColor 						= "darkblue"
 	$DriveLabel.Add_Click({ populateDrive })		
 	#$DriveLabel = createItem "Label" 10 310 270 20 "Drive: " $PCFactsForm
-		
-		
-	
 	# PSinfo info
 	$SoftwareVersionButton                     	= New-Object system.Windows.Forms.Button
 	$SoftwareVersionButton.text                 = "Uptime and Software Versions"
@@ -1581,37 +1578,37 @@ function extraPCFacts{
 	showForm $PCFactsForm
 }
 function viewGroups($ADObjectType){
-		$GroupForm = createForm "Groups" 250 300 "CenterScreen" "Fixed3D" $false $false $true
+	$GroupForm = createForm "Groups" 250 300 "CenterScreen" "Fixed3D" $false $false $true
 
-		$GroupList                        		= New-Object system.Windows.Forms.ListBox
-		$GroupList.text                   		= "" # Starts Empty. Is this needed.
-		$GroupList.width                 		= 210
-		$GroupList.height                 		= 180
-		$GroupList.location               		= New-Object System.Drawing.Point(10,10)
-		$GroupList.HorizontalScrollbar 			= $true
-		$GroupList.DataSource = @((getGroups($ADObjectType)).SamAccountName | Sort-Object )
-		#$GroupList = createItem "ListBox" 10 10 210 180 "" $GroupForm
+	$GroupList                        		= New-Object system.Windows.Forms.ListBox
+	$GroupList.text                   		= "" # Starts Empty. Is this needed.
+	$GroupList.width                 		= 210
+	$GroupList.height                 		= 180
+	$GroupList.location               		= New-Object System.Drawing.Point(10,10)
+	$GroupList.HorizontalScrollbar 			= $true
+	$GroupList.DataSource = @((getGroups($ADObjectType)).SamAccountName | Sort-Object )
+	#$GroupList = createItem "ListBox" 10 10 210 180 "" $GroupForm
 
-		$AddGroupButton                         = New-Object system.Windows.Forms.Button
-		$AddGroupButton.text                    = "Add to Group"
-		$AddGroupButton.width                   = 210
-		$AddGroupButton.height                  = 30
-		$AddGroupButton.location                = New-Object System.Drawing.Point(10,190)
-		$AddGroupButton.Font                    = 'Microsoft Sans Serif,8.25'
-		$AddGroupButton.Add_Click({ addGroup $ADObjectType})	
-		#$AddGroupButton = createItem "Button" 10 190 210 30 "Add to Group" $GroupForm
-		
-		$RemoveGroupButton                  	= New-Object system.Windows.Forms.Button
-		$RemoveGroupButton.text            		= "Remove from Group"
-		$RemoveGroupButton.width           		= 210
-		$RemoveGroupButton.height          		= 30
-		$RemoveGroupButton.location      		= New-Object System.Drawing.Point(10,225)
-		$RemoveGroupButton.Font             	= 'Microsoft Sans Serif,8.25'
-		$RemoveGroupButton.Add_Click({ removeGroup $ADObjectType})
-		#$RemoveGroupButton = createItem "Button" 10 225 210 30 "Remove from Group" $GroupForm
-		$GroupForm.controls.AddRange(@($GroupList,$AddGroupButton,$RemoveGroupButton))
+	$AddGroupButton                         = New-Object system.Windows.Forms.Button
+	$AddGroupButton.text                    = "Add to Group"
+	$AddGroupButton.width                   = 210
+	$AddGroupButton.height                  = 30
+	$AddGroupButton.location                = New-Object System.Drawing.Point(10,190)
+	$AddGroupButton.Font                    = 'Microsoft Sans Serif,8.25'
+	$AddGroupButton.Add_Click({ addGroup $ADObjectType})	
+	#$AddGroupButton = createItem "Button" 10 190 210 30 "Add to Group" $GroupForm
+	
+	$RemoveGroupButton                  	= New-Object system.Windows.Forms.Button
+	$RemoveGroupButton.text            		= "Remove from Group"
+	$RemoveGroupButton.width           		= 210
+	$RemoveGroupButton.height          		= 30
+	$RemoveGroupButton.location      		= New-Object System.Drawing.Point(10,225)
+	$RemoveGroupButton.Font             	= 'Microsoft Sans Serif,8.25'
+	$RemoveGroupButton.Add_Click({ removeGroup $ADObjectType})
+	#$RemoveGroupButton = createItem "Button" 10 225 210 30 "Remove from Group" $GroupForm
+	$GroupForm.controls.AddRange(@($GroupList,$AddGroupButton,$RemoveGroupButton))
 
-		showForm($GroupForm)
+	showForm($GroupForm)
 }
 function newUserPassword{
 	$newPWForm = createForm "New Password" 300 160 "CenterScreen" "Fixed3D" $false $false $false
