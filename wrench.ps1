@@ -111,45 +111,43 @@ $mainForm = createForm "Wrench" 300 635 "CenterScreen" "Fixed3D" $true $false $t
 	$mainForm.KeyPreview = $True
 	$mainForm.Add_KeyDown({ mainKeyboard })
 #Name Info
-$Namelbl                              = New-Object system.Windows.Forms.Label
-$Namelbl.text                         = "Name: "
-$Namelbl.width                        = 55
-$Namelbl.height                       = 20
-$Namelbl.location                     = New-Object System.Drawing.Point(11,28)
-$Namelbl.Font                         = 'Microsoft Sans Serif,8.25'
+$UserNameLabel								= New-Object system.Windows.Forms.Label
+$UserNameLabel.text							= "Name: "
+$UserNameLabel.width 							= 55
+$UserNameLabel.height							= 20
+$UserNameLabel.location						= New-Object System.Drawing.Point(11,28)
+$UserNameLabel.Font                         	= 'Microsoft Sans Serif,8.25'
 
-$NameBox                        	  = New-Object system.Windows.Forms.TextBox
-$NameBox.width                        = 130
-$NameBox.height                       = 20
-$NameBox.location                     = New-Object System.Drawing.Point(70,25)
-$NameBox.Font                         = 'Microsoft Sans Serif,8.25'
+$UserNameTextbox                        	  	= New-Object system.Windows.Forms.TextBox
+$UserNameTextbox.width                        	= 130
+$UserNameTextbox.height                       	= 20
+$UserNameTextbox.location                     	= New-Object System.Drawing.Point(70,25)
+$UserNameTextbox.Font                         	= 'Microsoft Sans Serif,8.25'
 
-$NameButton                           = New-Object system.Windows.Forms.Button
-$NameButton.text                      = "Search"
-$NameButton.width                     = 60
-$NameButton.height                    = 20
-$NameButton.location                  = New-Object System.Drawing.Point(210,25)
-$NameButton.Font                      = 'Microsoft Sans Serif,8.25'
-$NameButton.TabStop = $False
-$NameButton.Add_Click({	searchByName })
-# $NameButton = createItem "Button" 210 25 60 20 "Search" $mainForm
+$UserNameSearchButton                           	= New-Object system.Windows.Forms.Button
+$UserNameSearchButton.text                      = "Search"
+$UserNameSearchButton.width                     = 60
+$UserNameSearchButton.height                    = 20
+$UserNameSearchButton.location                  = New-Object System.Drawing.Point(210,25)
+$UserNameSearchButton.Font                      = 'Microsoft Sans Serif,8.25'
+$UserNameSearchButton.TabStop = $False
+$UserNameSearchButton.Add_Click({	searchByName })
+# $UserNameSearchButton = createItem "Button" 210 25 60 20 "Search" $mainForm
 	
 
-$UserIDLbl                            = New-Object system.Windows.Forms.Label
-$UserIDLbl.text                       = "User ID: "
-$UserIDLbl.width                      = 60
-$UserIDLbl.height                     = 20
-$UserIDLbl.location                   = New-Object System.Drawing.Point(10,58)
-$UserIDLbl.Font                   	  = 'Microsoft Sans Serif,8.25'
+$UserIDLabel                            = New-Object system.Windows.Forms.Label
+$UserIDLabel.text                       = "User ID: "
+$UserIDLabel.width                      = 60
+$UserIDLabel.height                     = 20
+$UserIDLabel.location                   = New-Object System.Drawing.Point(10,58)
+$UserIDLabel.Font                   	  = 'Microsoft Sans Serif,8.25'
 
-$UserIDBox                             = New-Object system.Windows.Forms.TextBox
-$UserIDBox.width                       = 130
-$UserIDBox.height                      = 20
-$UserIDBox.location                    = New-Object System.Drawing.Point(70,55)
-$UserIDBox.Font                        = 'Microsoft Sans Serif,8.25'
-#$UserIDBox.MaxLength = 15
-
-#$UserIDBox = createItem "TextBox" 70 55 130 20 "" $mainForm
+$UserIDTextbox                             = New-Object system.Windows.Forms.TextBox
+$UserIDTextbox.width                       = 130
+$UserIDTextbox.height                      = 20
+$UserIDTextbox.location                    = New-Object System.Drawing.Point(70,55)
+$UserIDTextbox.Font                        = 'Microsoft Sans Serif,8.25'
+#$UserIDTextbox.MaxLength = 15
 
 $UserIDButton                         = New-Object system.Windows.Forms.Button
 $UserIDButton.text                    = "Search"
@@ -162,214 +160,215 @@ $UserIDButton.Add_Click({ searchByUserID })
 #$UserIDButton = createItem "Button" 210 55 60 20 "Search" $mainForm
 
 #PC Name Info
-$PCLbl                                = New-Object system.Windows.Forms.Label
-$PCLbl.text                           = "PC Name: "
-$PCLbl.width                          = 60
-$PCLbl.height                         = 20
-$PCLbl.location                       = New-Object System.Drawing.Point(10,88)
-$PCLbl.Font                           = 'Microsoft Sans Serif,8.25'
+$PCNameLabel                                = New-Object system.Windows.Forms.Label
+$PCNameLabel.text                           = "PC Name: "
+$PCNameLabel.width                          = 60
+$PCNameLabel.height                         = 20
+$PCNameLabel.location                       = New-Object System.Drawing.Point(10,88)
+$PCNameLabel.Font                           = 'Microsoft Sans Serif,8.25'
 
-$PCBox                       	      = New-Object system.Windows.Forms.TextBox
-$PCBox.width                          = 130
-$PCBox.height                         = 20
-$PCBox.location                       = New-Object System.Drawing.Point(70,85)
-$PCBox.Font                           = 'Microsoft Sans Serif,8.25'
-$PCBox.MaxLength = 15
-#$PCBox = createItem "TextBox" 70 85 130 20 "" $mainForm
+$PCNameTextbox                       	      = New-Object system.Windows.Forms.TextBox
+$PCNameTextbox.width                          = 130
+$PCNameTextbox.height                         = 20
+$PCNameTextbox.location                       = New-Object System.Drawing.Point(70,85)
+$PCNameTextbox.Font                           = 'Microsoft Sans Serif,8.25'
+$PCNameTextbox.MaxLength = 15
+#$PCNameTextbox = createItem "TextBox" 70 85 130 20 "" $mainForm
 
-$PCButton                             = New-Object system.Windows.Forms.Button
-$PCButton.text                        = "Search"
-$PCButton.width                       = 60
-$PCButton.height                      = 20
-$PCButton.location                    = New-Object System.Drawing.Point(210,85)
-$PCButton.Font                        = 'Microsoft Sans Serif,8.25'
-$PCButton.TabStop = $False
-$PCButton.Add_Click({ searchByPCName })
+$PCSearchButton                             = New-Object system.Windows.Forms.Button
+$PCSearchButton.text                        = "Search"
+$PCSearchButton.width                       = 60
+$PCSearchButton.height                      = 20
+$PCSearchButton.location                    = New-Object System.Drawing.Point(210,85)
+$PCSearchButton.Font                        = 'Microsoft Sans Serif,8.25'
+$PCSearchButton.TabStop = $False
+$PCSearchButton.Add_Click({ searchByPCName })
 
-#$PCButton = createItem "Button" 210 85 60 20 "Search" $mainForm
+#$PCSearchButton = createItem "Button" 210 85 60 20 "Search" $mainForm
 #IP Info
-$IPLbl                               = New-Object system.Windows.Forms.Label
-$IPLbl.text                          = "IP: "
-$IPLbl.width                         = 18
-$IPLbl.height                        = 20
-$IPLbl.location                      = New-Object System.Drawing.Point(10,118)
-$IPLbl.Font                          = 'Microsoft Sans Serif,8.25'
+$IPAddressLabel                               = New-Object system.Windows.Forms.Label
+$IPAddressLabel.text                          = "IP: "
+$IPAddressLabel.width                         = 18
+$IPAddressLabel.height                        = 20
+$IPAddressLabel.location                      = New-Object System.Drawing.Point(10,118)
+$IPAddressLabel.Font                          = 'Microsoft Sans Serif,8.25'
 
 # IP Source Info
-$IPSourceLbl                         = New-Object system.Windows.Forms.Label
-$IPSourceLbl.text                    = "" # Starts Empty
-$IPSourceLbl.width                   = 40
-$IPSourceLbl.height                  = 20
-$IPSourceLbl.location                = New-Object System.Drawing.Point(28,118)
-$IPSourceLbl.Font                    = 'Microsoft Sans Serif,8.25'
+$IPAddressSourceLabel                         = New-Object system.Windows.Forms.Label
+$IPAddressSourceLabel.text                    = "" # Starts Empty
+$IPAddressSourceLabel.width                   = 40
+$IPAddressSourceLabel.height                  = 20
+$IPAddressSourceLabel.location                = New-Object System.Drawing.Point(28,118)
+$IPAddressSourceLabel.Font                    = 'Microsoft Sans Serif,8.25'
 
-$IPBox                        	     = New-Object system.Windows.Forms.TextBox
-$IPBox.width                         = 130
-$IPBox.height                        = 20
-$IPBox.location                      = New-Object System.Drawing.Point(70,115)
-$IPBox.Font                          = 'Microsoft Sans Serif,8.25'
-$IPBox.MaxLength = 15
-# $IPBox = createItem "Textbox" 70 115 130 20 "" $mainForm
-#	$IPBox.MaxLength = 15
+$IPAddressTextbox                        	     = New-Object system.Windows.Forms.TextBox
+$IPAddressTextbox.width                         = 130
+$IPAddressTextbox.height                        = 20
+$IPAddressTextbox.location                      = New-Object System.Drawing.Point(70,115)
+$IPAddressTextbox.Font                          = 'Microsoft Sans Serif,8.25'
+$IPAddressTextbox.MaxLength = 15
+# $IPAddressTextbox = createItem "Textbox" 70 115 130 20 "" $mainForm
+#	$IPAddressTextbox.MaxLength = 15
 
-$IPButton                         = New-Object system.Windows.Forms.Button
-$IPButton.text                    = "Search"
-$IPButton.width                   = 60
-$IPButton.height                  = 20
-$IPButton.location                = New-Object System.Drawing.Point(210,115)
-$IPButton.Font                    = 'Microsoft Sans Serif,8.25'
-$IPButton.TabStop = $False  # Why is Tabstop set to $False
-$IPButton.Add_Click({ searchByIP })
+$IPAddressSearchButton                         = New-Object system.Windows.Forms.Button
+$IPAddressSearchButton.text                    = "Search"
+$IPAddressSearchButton.width                   = 60
+$IPAddressSearchButton.height                  = 20
+$IPAddressSearchButton.location                = New-Object System.Drawing.Point(210,115)
+$IPAddressSearchButton.Font                    = 'Microsoft Sans Serif,8.25'
+$IPAddressSearchButton.TabStop = $False  # Why is Tabstop set to $False
+$IPAddressSearchButton.Add_Click({ searchByIP })
 #Ph
-#$IPButton = createItem "Button" 210 115 60 20 "Search" $mainForm
+#$IPAddressSearchButton = createItem "Button" 210 115 60 20 "Search" $mainForm
 	
 #PHone Info
-$PhoneLbl                            = New-Object system.Windows.Forms.Label
-$PhoneLbl.text                       = "Phone:"
-$PhoneLbl.width                      = 60
-$PhoneLbl.height                     = 20
-$PhoneLbl.location                   = New-Object System.Drawing.Point(10,148)
-$PhoneLbl.Font                       = 'Microsoft Sans Serif,8.25'
+$PhoneNumberLabel                            = New-Object system.Windows.Forms.Label
+$PhoneNumberLabel.text                       = "Phone:"
+$PhoneNumberLabel.width                      = 60
+$PhoneNumberLabel.height                     = 20
+$PhoneNumberLabel.location                   = New-Object System.Drawing.Point(10,148)
+$PhoneNumberLabel.Font                       = 'Microsoft Sans Serif,8.25'
 
-$PhoneBox                        = New-Object system.Windows.Forms.TextBox
-$PhoneBox.width                  = 200
-$PhoneBox.height                 = 20
-$PhoneBox.location               = New-Object System.Drawing.Point(70,145)
-$PhoneBox.Font                   = 'Microsoft Sans Serif,8.25'
-$PhoneBox.ReadOnly = $True
-$PhoneBox.TabStop = $False	# Why is Tabstop set to $False
-#$PhoneBox = createItem "Textbox" 70 145 200 20 "" $mainForm
+$PhoneNamberTextBox                        = New-Object system.Windows.Forms.TextBox
+$PhoneNamberTextBox.width                  = 200
+$PhoneNamberTextBox.height                 = 20
+$PhoneNamberTextBox.location               = New-Object System.Drawing.Point(70,145)
+$PhoneNamberTextBox.Font                   = 'Microsoft Sans Serif,8.25'
+$PhoneNamberTextBox.ReadOnly = $True
+$PhoneNamberTextBox.TabStop = $False	# Why is Tabstop set to $False
+#$PhoneNamberTextBox = createItem "Textbox" 70 145 200 20 "" $mainForm
 
 #Lockout Info
-$LockoutLbl                          = New-Object system.Windows.Forms.Label
-$LockoutLbl.text                     = "Lockout:"
-$LockoutLbl.width                    = 60
-$LockoutLbl.height                   = 20
-$LockoutLbl.location                 = New-Object System.Drawing.Point(10,178)
-$LockoutLbl.Font                     = 'Microsoft Sans Serif,8.25'
+$LockedOutUserLabel                          = New-Object system.Windows.Forms.Label
+$LockedOutUserLabel.text                     = "Lockout:"
+$LockedOutUserLabel.width                    = 60
+$LockedOutUserLabel.height                   = 20
+$LockedOutUserLabel.location                 = New-Object System.Drawing.Point(10,178)
+$LockedOutUserLabel.Font                     = 'Microsoft Sans Serif,8.25'
 
-$LockoutBox                        = New-Object system.Windows.Forms.TextBox
-$LockoutBox.width                  = 130
-$LockoutBox.height                 = 20
-$LockoutBox.location               = New-Object System.Drawing.Point(70,175)
-$LockoutBox.Font                   = 'Microsoft Sans Serif,8.25'
-$LockoutBox.ReadOnly 				= $True
-$LockoutBox.TabStop = $False # Why is Tabstop set to $False
- #$LockoutBox = createItem "Textbox" 70 175 130 20 "" $mainForm
+$LockedOutUserTextbox                        = New-Object system.Windows.Forms.TextBox
+$LockedOutUserTextbox.width                  = 130
+$LockedOutUserTextbox.height                 = 20
+$LockedOutUserTextbox.location               = New-Object System.Drawing.Point(70,175)
+$LockedOutUserTextbox.Font                   = 'Microsoft Sans Serif,8.25'
+$LockedOutUserTextbox.ReadOnly 				= $True
+$LockedOutUserTextbox.TabStop = $False # Why is Tabstop set to $False
+ #$LockedOutUserTextbox = createItem "Textbox" 70 175 130 20 "" $mainForm
 
-$LockoutButton                         = New-Object system.Windows.Forms.Button
-$LockoutButton.Text                   = "Unlock"
-$LockoutButton.width                   = 60
-$LockoutButton.height                  = 20
-$LockoutButton.location                = New-Object System.Drawing.Point(210,175)
-$LockoutButton.Font                    = 'Microsoft Sans Serif,8.25'
-$LockoutButton.TabStop                 = $False	# Why is Tabstop set to $False
-$LockoutButton.Visible                 = $False # Hide button if useraccount is not locked out in AD.
-$LockoutButton.Add_Click({ unlockAccount })
+$LockedOutUserButton                         = New-Object system.Windows.Forms.Button
+$LockedOutUserButton.Text                   = "Unlock"
+$LockedOutUserButton.width                   = 60
+$LockedOutUserButton.height                  = 20
+$LockedOutUserButton.location                = New-Object System.Drawing.Point(210,175)
+$LockedOutUserButton.Font                    = 'Microsoft Sans Serif,8.25'
+$LockedOutUserButton.TabStop                 = $False	# Why is Tabstop set to $False
+$LockedOutUserButton.Visible                 = $False # Hide button if useraccount is not locked out in AD.
+$LockedOutUserButton.Add_Click({ unlockAccount })
 
-#$LockoutButton = createItem "Button" 210 175 60 20 "Unlock" $mainForm
+#$LockedOutUserButton = createItem "Button" 210 175 60 20 "Unlock" $mainForm
 	
 #H Drive Info
-$HDriveLbl                          = New-Object system.Windows.Forms.Label
-$HDriveLbl.text                     = "H Drive:"
-$HDriveLbl.width                    = 60
-$HDriveLbl.height                   = 20
-$HDriveLbl.location                 = New-Object System.Drawing.Point(10,208)
-$HDriveLbl.Font                     = 'Microsoft Sans Serif,8.25'
+$HDriveLabel                          = New-Object system.Windows.Forms.Label
+$HDriveLabel.text                     = "H Drive:"
+$HDriveLabel.width                    = 60
+$HDriveLabel.height                   = 20
+$HDriveLabel.location                 = New-Object System.Drawing.Point(10,208)
+$HDriveLabel.Font                     = 'Microsoft Sans Serif,8.25'
 
-$HDriveBox                        = New-Object system.Windows.Forms.TextBox
-$HDriveBox.width                  = 200
-$HDriveBox.height                 = 20
-$HDriveBox.location               = New-Object System.Drawing.Point(70,208)
-$HDriveBox.Font                   = 'Microsoft Sans Serif,8.25'
-$HDriveBox.ReadOnly                 = $True
-$HDriveBox.TabStop = $False	# Why is Tabstop set to $False
-#$HDriveBox = createItem "Textbox" 70 208 200 20 "" $mainForm
+$HDriveTextbox                        = New-Object system.Windows.Forms.TextBox
+$HDriveTextbox.width                  = 200
+$HDriveTextbox.height                 = 20
+$HDriveTextbox.location               = New-Object System.Drawing.Point(70,208)
+$HDriveTextbox.Font                   = 'Microsoft Sans Serif,8.25'
+$HDriveTextbox.ReadOnly                 = $True
+$HDriveTextbox.TabStop					= $False	# Why is Tabstop set to $False
+#$HDriveTextbox = createItem "Textbox" 70 208 200 20 "" $mainForm
 
 #OU Info
-$OULbl                              = New-Object system.Windows.Forms.Label
-$OULbl.text                         = "User OU:"
-$OULbl.width                        = 60
-$OULbl.height                       = 20
-$OULbl.location                     = New-Object System.Drawing.Point(10,238)
-$OULbl.Font                         = 'Microsoft Sans Serif,8.25'
+$OULabel                              = New-Object system.Windows.Forms.Label
+$OULabel.text                         = "User OU:"
+$OULabel.width                        = 60
+$OULabel.height                       = 20
+$OULabel.location                     = New-Object System.Drawing.Point(10,238)
+$OULabel.Font                         = 'Microsoft Sans Serif,8.25'
 
-$OUBox                              = New-Object system.Windows.Forms.TextBox
-$OUBox.width                        = 200
-$OUBox.height                       = 20
-$OUBox.location                     = New-Object System.Drawing.Point(70,235)
-$OUBox.Font                         = 'Microsoft Sans Serif,8.25'
-$OUBox.ReadOnly = $True
-$OUBox.TabStop = $False # Why is Tabstop set to $False
-#$OUBox = createItem "Textbox" 70 235 200 20 "" $mainForm
+$OUTextbox                              = New-Object system.Windows.Forms.TextBox
+$OUTextbox.width                        = 200
+$OUTextbox.height                       = 20
+$OUTextbox.location                     = New-Object System.Drawing.Point(70,235)
+$OUTextbox.Font                         = 'Microsoft Sans Serif,8.25'
+$OUTextbox.ReadOnly = $True
+$OUTextbox.TabStop = $False # Why is Tabstop set to $False
+#$OUTextbox = createItem "Textbox" 70 235 200 20 "" $mainForm
 #Buttons
 
-$RVButton                         = New-Object system.Windows.Forms.Button
-$RVButton.text                    = "Connect Via SCCM Remote Control"
-$RVButton.width                   = 259
-$RVButton.height                  = 20
-$RVButton.location                = New-Object System.Drawing.Point(10,265)
-$RVButton.Font                    = 'Microsoft Sans Serif,8.25'
-$RVButton.Add_Click({ runRemoteViewer })
+$SCCMRemoteControlButton                         = New-Object system.Windows.Forms.Button
+$SCCMRemoteControlButton.text                    = "Connect Via SCCM Remote Control"
+$SCCMRemoteControlButton.width                   = 259
+$SCCMRemoteControlButton.height                  = 20
+$SCCMRemoteControlButton.location                = New-Object System.Drawing.Point(10,265)
+$SCCMRemoteControlButton.Font                    = 'Microsoft Sans Serif,8.25'
+$SCCMRemoteControlButton.Add_Click({ runRemoteViewer })
 
-# $RVButton = createItem "Button" 10 265 259 20 "Connect Via SCCM Remote Control" $mainForm
-$UserFactsButton                         = New-Object system.Windows.Forms.Button
-$UserFactsButton.text                    = "User Details"
-$UserFactsButton.width                   = 122
-$UserFactsButton.height                  = 20
-$UserFactsButton.location                = New-Object System.Drawing.Point(10,295)
-$UserFactsButton.Font                    = 'Microsoft Sans Serif,8.25'
-$UserFactsButton.Add_Click({ runUserFacts })
-# $UserFactsButton = createItem "Button" 10 295 122 20 "User Details" $mainForm
+# $SCCMRemoteControlButton = createItem "Button" 10 265 259 20 "Connect Via SCCM Remote Control" $mainForm
+$UserDetailsButton                         = New-Object system.Windows.Forms.Button
+$UserDetailsButton.text                    = "User Details"
+$UserDetailsButton.width                   = 122
+$UserDetailsButton.height                  = 20
+$UserDetailsButton.location                = New-Object System.Drawing.Point(10,295)
+$UserDetailsButton.Font                    = 'Microsoft Sans Serif,8.25'
+$UserDetailsButton.Add_Click({ runUserFacts })
+# $UserDetailsButton = createItem "Button" 10 295 122 20 "User Details" $mainForm
 
-$UserGroupButton                         = New-Object system.Windows.Forms.Button
-$UserGroupButton.text                    = "User Groups"
-$UserGroupButton.width                   = 122
-$UserGroupButton.height                  = 20
-$UserGroupButton.location                = New-Object System.Drawing.Point(10,325)
-$UserGroupButton.Font                    = 'Microsoft Sans Serif,8.25'
-$UserGroupButton.Add_Click({ runUserGroups })
-#$UserGroupButton = createItem "Button" 10 325 122 20 "User Groups" $mainForm
-$ChangePWButton                         = New-Object system.Windows.Forms.Button
-$ChangePWButton.text                    = "Change Password"
-$ChangePWButton.width                   = 122
-$ChangePWButton.height                  = 20
-$ChangePWButton.location                = New-Object System.Drawing.Point(10,355)
-$ChangePWButton.Font                    = 'Microsoft Sans Serif,8.25'
-$ChangePWButton.Add_Click({newUserPassword})
-# $ChangePWButton = createItem "Button" 10 355 122 20 "Change Password" $mainForm
-$PCFactsButton                         = New-Object system.Windows.Forms.Button
-$PCFactsButton.text                    = "PC Details"
-$PCFactsButton.width                   = 122
-$PCFactsButton.height                  = 20
-$PCFactsButton.location                = New-Object System.Drawing.Point(147,295)
-$PCFactsButton.Font                    = 'Microsoft Sans Serif,8.25'
-$PCFactsButton.Add_Click({ runPCFacts })
-# $PCFactsButton = createItem "Button" 147 295 122 20 "PC Details" $mainForm
-$PCGroupButton                         = New-Object system.Windows.Forms.Button
-$PCGroupButton.text                    = "PC Groups"
-$PCGroupButton.width                   = 122
-$PCGroupButton.height                  = 20
-$PCGroupButton.location                = New-Object System.Drawing.Point(147,325)
-$PCGroupButton.Font                    = 'Microsoft Sans Serif,8.25'
-$PCGroupButton.Add_Click({ runPCGroups })	
-#$PCGroupButton = createItem "Button" 147 325 122 20 "PC Groups" $mainForm
-$PCManageButton                         = New-Object system.Windows.Forms.Button
-$PCManageButton.text                    = "Manage PC"
-$PCManageButton.width                   = 122
-$PCManageButton.height                  = 20
-$PCManageButton.location                = New-Object System.Drawing.Point(147,355)
-$PCManageButton.Font                    = 'Microsoft Sans Serif,8.25'
-$PCManageButton.Add_Click({ runManagePC })
-#$PCManageButton = createItem "Button" 147 355 122 20 "Manage PC" $mainForm
-$ViewCButton                         = New-Object system.Windows.Forms.Button
-$ViewCButton.text                    = "View C:"
-$ViewCButton.width                   = 122
-$ViewCButton.height                  = 20
-$ViewCButton.location                = New-Object System.Drawing.Point(147,385)
-$ViewCButton.Font                    = 'Microsoft Sans Serif,8.25'
-$ViewCButton.Add_Click({ runViewC })
-#$ViewCButton = createItem "Button" 147 385 122 20 "View C:" $mainForm
+$UserOUGroupsButton                         = New-Object system.Windows.Forms.Button
+$UserOUGroupsButton.text                    = "User OU Groups"
+$UserOUGroupsButton.width                   = 122
+$UserOUGroupsButton.height                  = 20
+$UserOUGroupsButton.location                = New-Object System.Drawing.Point(10,325)
+$UserOUGroupsButton.Font                    = 'Microsoft Sans Serif,8.25'
+$UserOUGroupsButton.Add_Click({ runUserGroups })
+#$UserOUGroupsButton = createItem "Button" 10 325 122 20 "User Groups" $mainForm
+$ChangePasswordButton                         = New-Object system.Windows.Forms.Button
+$ChangePasswordButton.text                    = "Change Password"
+$ChangePasswordButton.width                   = 122
+$ChangePasswordButton.height                  = 20
+$ChangePasswordButton.location                = New-Object System.Drawing.Point(10,355)
+$ChangePasswordButton.Font                    = 'Microsoft Sans Serif,8.25'
+$ChangePasswordButton.Add_Click({newUserPassword})
+# $ChangePasswordButton = createItem "Button" 10 355 122 20 "Change Password" $mainForm
+$PCDetailsButton                         = New-Object system.Windows.Forms.Button
+$PCDetailsButton.text                    = "PC Details"
+$PCDetailsButton.width                   = 122
+$PCDetailsButton.height                  = 20
+$PCDetailsButton.location                = New-Object System.Drawing.Point(147,295)
+$PCDetailsButton.Font                    = 'Microsoft Sans Serif,8.25'
+$PCDetailsButton.Add_Click({ runPCFacts })
+# $PCDetailsButton = createItem "Button" 147 295 122 20 "PC Details" $mainForm
+$PCOUGroups                         = New-Object system.Windows.Forms.Button
+$PCOUGroups.text                    = "PC OU Groups"
+$PCOUGroups.width                   = 122
+$PCOUGroups.height                  = 20
+$PCOUGroups.location                = New-Object System.Drawing.Point(147,325)
+$PCOUGroups.Font                    = 'Microsoft Sans Serif,8.25'
+$PCOUGroups.Add_Click({ runPCGroups })	
+#$PCOUGroups = createItem "Button" 147 325 122 20 "PC Groups" $mainForm
+$ComputerManagementButton                         = New-Object system.Windows.Forms.Button
+$ComputerManagementButton.text                    = "Computer Mgt"
+$ComputerManagementButton.width                   = 122
+$ComputerManagementButton.height                  = 20
+$ComputerManagementButton.location                = New-Object System.Drawing.Point(147,355)
+$ComputerManagementButton.Font                    = 'Microsoft Sans Serif,8.25'
+$ComputerManagementButton.Add_Click({ runManagePC })
+#$ComputerManagementButton = createItem "Button" 147 355 122 20 "Manage PC" $mainForm
+$ViewRemotePCCDrive                         = New-Object system.Windows.Forms.Button
+$ViewRemotePCCDrive.text                    = "View Remote C:"
+$ViewRemotePCCDrive.width                   = 122
+$ViewRemotePCCDrive.height                  = 20
+$ViewRemotePCCDrive.location                = New-Object System.Drawing.Point(147,385)
+$ViewRemotePCCDrive.Font                    = 'Microsoft Sans Serif,8.25'
+$ViewRemotePCCDrive.Add_Click({ runViewC })
+
+# Use Remote Desktop to connect to remote machine
 $RDPButton                         = New-Object system.Windows.Forms.Button
 $RDPButton.text                    = "RDP"
 $RDPButton.width                   = 122
@@ -377,47 +376,46 @@ $RDPButton.height                  = 20
 $RDPButton.location                = New-Object System.Drawing.Point(147,415)
 $RDPButton.Font                    = 'Microsoft Sans Serif,8.25'
 $RDPButton.Add_Click({ runRDP })
-#$RDPButton = createItem "Button" 147 415 122 20 "RDP" $mainForm
-$PSSessionBtn                         = New-Object system.Windows.Forms.Button
-$PSSessionBtn.text                    = "PS Remote"
-$PSSessionBtn.width                   = 122
-$PSSessionBtn.height                  = 20
-$PSSessionBtn.location                = New-Object System.Drawing.Point(147,445)
-$PSSessionBtn.Font                    = 'Microsoft Sans Serif,8.25'	
-$PSSessionBtn.Add_Click({connectPSSession})
-#$PSSessionBtn = createItem "Button" 147 445 122 20 "PS Remote" $mainForm
 
+# Use PowerShell Session to connect to remote machine
+$PowerShellRemoteButton                         = New-Object system.Windows.Forms.Button
+$PowerShellRemoteButton.text                    = "PS Remote"
+$PowerShellRemoteButton.width                   = 122
+$PowerShellRemoteButton.height                  = 20
+$PowerShellRemoteButton.location                = New-Object System.Drawing.Point(147,445)
+$PowerShellRemoteButton.Font                    = 'Microsoft Sans Serif,8.25'	
+$PowerShellRemoteButton.Add_Click({connectPSSession})
 
-$OnTopCheck                       = New-Object system.Windows.Forms.CheckBox
-$OnTopCheck.text                  = "Keep Wrench on Top"
-$OnTopCheck.AutoSize              = $false
-$OnTopCheck.width                 = 100
-$OnTopCheck.height                = 35
-$OnTopCheck.location              = New-Object System.Drawing.Point(30,410)
-$OnTopCheck.Font                  = 'Microsoft Sans Serif,8.25'
-$OnTopCheck.Add_Click({ runOnTop })
-#$OnTopCheck = createItem "Checkbox" 30 410 100 35 "Keep Wrench on Top" $mainForm
+# Make Wrench stay on top of all windows
+$KeepWrenchTopMostCheckbox                       = New-Object system.Windows.Forms.CheckBox
+$KeepWrenchTopMostCheckbox.text                  = "Keep Wrench on Top"
+$KeepWrenchTopMostCheckbox.AutoSize              = $false
+$KeepWrenchTopMostCheckbox.width                 = 100
+$KeepWrenchTopMostCheckbox.height                = 35
+$KeepWrenchTopMostCheckbox.location              = New-Object System.Drawing.Point(30,410)
+$KeepWrenchTopMostCheckbox.Font                  = 'Microsoft Sans Serif,8.25'
+$KeepWrenchTopMostCheckbox.Add_Click({ runOnTop })
+#$KeepWrenchTopMostCheckbox = createItem "Checkbox" 30 410 100 35 "Keep Wrench on Top" $mainForm
 
-$NewPSLbl                          = New-Object system.Windows.Forms.Label
-$NewPSLbl.text                     = "New Powershell Window"
-$NewPSLbl.width                    = 150
-$NewPSLbl.height                   = 15
-$NewPSLbl.location                 = New-Object System.Drawing.Point(80,578)
-$NewPSLbl.Font                     = 'Microsoft Sans Serif,8.25'
-$NewPSLbl.ForeColor = "Blue"
-$NewPSLbl.Add_Click({ Start-Process "powershell.exe" })
-#$NewPSLbl = createItem "Label" 80 578 150 15 "New Powershell Window" $mainForm
+$NewLocalPowerShellWindowLabel                          = New-Object system.Windows.Forms.Label
+$NewLocalPowerShellWindowLabel.text                     = "New Local Powershell Window"
+$NewLocalPowerShellWindowLabel.width                    = 150
+$NewLocalPowerShellWindowLabel.height                   = 15
+$NewLocalPowerShellWindowLabel.location                 = New-Object System.Drawing.Point(80,578)
+$NewLocalPowerShellWindowLabel.Font                     = 'Microsoft Sans Serif,8.25'
+$NewLocalPowerShellWindowLabel.ForeColor = "Blue"
+$NewLocalPowerShellWindowLabel.Add_Click({ Start-Process "powershell.exe" })
 
 $PingTimer = New-Object System.Windows.Forms.Timer
 $PingTimer.Interval = 1000
 $PingTimer.add_tick({ checkPing })
 
-#Logo Image
-$logo = new-object Windows.Forms.PictureBox
-$logo.location = New-Object System.Drawing.Size(10,477)
-$logo.size = New-Object System.Drawing.Size(260,100)
-$logo.BorderStyle = "FixedSingle"
-$logo.Image = [System.Drawing.Image]::Fromfile((get-item $LogoLocation));
+# Wrench Logo PictureBox Image
+$WrenchLogoPictureBox = new-object Windows.Forms.PictureBox
+$WrenchLogoPictureBox.location = New-Object System.Drawing.Size(10,477)
+$WrenchLogoPictureBox.size = New-Object System.Drawing.Size(260,100)
+$WrenchLogoPictureBox.BorderStyle = "FixedSingle"
+$WrenchLogoPictureBox.Image = [System.Drawing.Image]::Fromfile((get-item $WrenchLogoPictureBoxLocation));
 
 #Expand Button
 $ExpandButton                         = New-Object system.Windows.Forms.Button
@@ -426,22 +424,26 @@ $ExpandButton.width                   = 15
 $ExpandButton.height                  = 15
 $ExpandButton.location                = New-Object System.Drawing.Point(264,577)
 $ExpandButton.Font                    = 'Microsoft Sans Serif,8.25'
-$ExpandButton.Visible 				 = $true #this is not needed.  The default for button is visible
+$ExpandButton.Visible 				 = $true #this is not needed.  The default for a button is visible
 $ExpandButton.Add_Click({ expandForm })
-#$ExpandButton = createItem "Button" 264 577 15 15 ">" $mainForm
 
 # Add Labels to MainForm
-$mainForm.controls.AddRange(@($Namelbl,$UserIDLbl,$IPLbl,$PCLbl,$IPSourceLbl,$PhoneLbl,$LockoutLbl,$HDriveLbl,$OULbl,$NewPSLbl))
+$mainForm.controls.AddRange(@($UserNameLabel,$UserIDLabel,$IPAddressLabel,
+$PCNameLabel,$IPAddressSourceLabel,$PhoneNumberLabel,$LockedOutUserLabel,
+$HDriveLabel,$OULabel,$NewLocalPowerShellWindowLabel))
 # Add Textboxes to MainForm 
-$mainForm.controls.AddRange(@($NameBox,$IPBox,$PCBox,$OUBox,$UserIDBox,$PhoneLbl,$PhoneBox,$HDriveBox,$LockoutBox)) 
+$mainForm.controls.AddRange(@($UserNameTextbox,$IPAddressTextbox,
+$PCNameTextbox,$OUTextbox,$UserIDTextbox,$PhoneNumberLabel,$PhoneNamberTextBox,
+$HDriveTextbox,$LockedOutUserTextbox)) 
 # Add Buttons to MainForm
-$mainForm.controls.AddRange(@($NameButton,$UserIDButton,$IPButton,
-$LockoutButton,$RVButton,$UserFactsButton,$UserGroupButton,$ChangePWButton,
-$PSSessionBtn,$RDPButton,$ExpandButton,$PCButton,$PCFactsButton,
-$PCGroupButton,$PCManageButton,$RenameButton,$SCCMClientCenterButton,
-$ViewCButton,$ViewCButton,$GPBtn,$TelnetPCButton,$RenameButton,$MSRemoteAssistanceButton))
+$mainForm.controls.AddRange(@($UserNameSearchButton,$UserIDButton,
+$IPAddressSearchButton,$LockedOutUserButton,$SCCMRemoteControlButton,
+$UserDetailsButton,$UserOUGroupsButton,$ChangePasswordButton,$PowerShellRemoteButton,
+$RDPButton,$ExpandButton,$PCSearchButton,$PCDetailsButton,$PCOUGroups,
+$ComputerManagementButton,$RenameButton,$SCCMClientCenterButton,$ViewRemotePCCDrive,
+$ViewRemotePCCDrive,$GPBtn,$TelnetPCButton,$RenameButton,$MSRemoteAssistanceButton))
 # Add Other Controls that are not defined above
-$mainForm.controls.AddRange(@($OnTopCheck,$logo))
+$mainForm.controls.AddRange(@($KeepWrenchTopMostCheckbox,$WrenchLogoPictureBox))
 ####### EXPANDED FORM GUI #######
 
 #Draw Seperator
@@ -517,13 +519,13 @@ $global:IPWithARec = $True
 ### MAIN FORM FUNCTIONS ###
 function searchByName{
 	clearVariables
-	$global:Name = ($NameBox.text).Trim()
+	$global:Name = ($UserNameTextbox.text).Trim()
 	testName		
 	if ($global:validName -eq $True){
 		if(!(pickName)){return}
 		clearBoxes
-		$NameBox.text = $global:Name
-		$LockoutButton.Visible=$false
+		$UserNameTextbox.text = $global:Name
+		$LockedOutUserButton.Visible=$false
 		if(!(IDByLastName)){return}
 		PhoneByUserID
 		if(!(PCNameByUserID)){return}
@@ -538,13 +540,13 @@ function searchByName{
 }
 function searchByUserID{
 	clearVariables
-	$global:UserID = ($UserIDBox.Text).Trim()
+	$global:UserID = ($UserIDTextbox.Text).Trim()
 	testID
 	if($global:validID -eq $True){
 		if(!(pickID)){return}
 		clearBoxes
-		$UserIDBox.Text = $global:UserID
-		$LockoutButton.Visible=$false
+		$UserIDTextbox.Text = $global:UserID
+		$LockedOutUserButton.Visible=$false
 		NameByUserID
 		if(!(PCNameByUserID)){return}
 		LockoutByUserID
@@ -559,13 +561,13 @@ function searchByUserID{
 }
 function searchByPCName{
 	clearVariables
-	$global:PCName = ($PCBox.Text).Trim()
+	$global:PCName = ($PCNameTextbox.Text).Trim()
 	testPCName
 	if($global:validPCName -eq $True){
 		if(!(pickPCName)){return}
 		clearBoxes
-		$PCBox.Text = $global:PCName
-		$LockoutButton.Visible=$false
+		$PCNameTextbox.Text = $global:PCName
+		$LockedOutUserButton.Visible=$false
 		UserIDByPCName
 		NameByUserID
 		LockoutByUserID
@@ -580,12 +582,12 @@ function searchByPCName{
 }
 function searchByIP{
 	clearVariables
-	$global:IP = ($IPBox.Text).Trim()
+	$global:IP = ($IPAddressTextbox.Text).Trim()
 	if(testIP){
 		clearBoxes
-		$IPBox.Text = $global:IP
+		$IPAddressTextbox.Text = $global:IP
 		if($global:IPWithARec){
-			$LockoutButton.Visible=$false
+			$LockedOutUserButton.Visible=$false
 			PCNameByIP
 			UserIDByPCName
 			NameByUserID
@@ -601,10 +603,10 @@ function unlockAccount{
 	try{
 		Unlock-ADAccount $global:UserID -Confirm:$False
 		if((Get-ADUser $global:UserID -properties LockedOut).LockedOut -eq $False){
-			$LockoutButton.Visible = $False
-			$LockoutBox.Text = "Not Locked"
+			$LockedOutUserButton.Visible = $False
+			$LockedOutUserTextbox.Text = "Not Locked"
 		}else{
-			$LockoutBox.Text = "Locked"
+			$LockedOutUserTextbox.Text = "Locked"
 		}
 	}catch{
 		$msg::Show($error[0].toString() + "`r`n`r`nIf this is in error, please check out http://support.microsoft.com/kb/2577917")
@@ -679,7 +681,7 @@ function connectPSSession{
 	Start-Process "powershell.exe" -ArgumentList '-NoExit', $commandArg
 }
 function runOnTop{
-	if ($OnTopCheck.Checked -eq $true){
+	if ($KeepWrenchTopMostCheckbox.Checked -eq $true){
 		$mainForm.TopMost = $true
 		$mainForm.Update()
 	}else{
@@ -689,10 +691,10 @@ function runOnTop{
 }
 function mainKeyboard{
 	if ($_.KeyCode -eq "Enter"){
-		if($NameBox.Focused){ $NameButton.PerformClick() }
-		elseif ($PCBox.Focused){ $PCButton.PerformClick() }
-		elseif ($IPBox.Focused){ $IPButton.PerformClick() }
-		elseif ($UserIDBox.Focused){ $UserIDButton.PerformClick() }
+		if($UserNameTextbox.Focused){ $UserNameSearchButton.PerformClick() }
+		elseif ($PCNameTextbox.Focused){ $PCSearchButton.PerformClick() }
+		elseif ($IPAddressTextbox.Focused){ $IPAddressSearchButton.PerformClick() }
+		elseif ($UserIDTextbox.Focused){ $UserIDButton.PerformClick() }
 	}
 }
 
@@ -787,12 +789,12 @@ function makeClickList([ref]$variable, $array, [ref]$returnval){
 	showForm($PickForm)
 }
 function clearBoxes{
-	$NameBox.Text = ""
-	$UserIDBox.Text = ""
-	$PCBox.Text = ""
-	$IPBox.Text = ""
-	$LockoutBox.Text = ""
-	$PhoneBox.Text = ""
+	$UserNameTextbox.Text = ""
+	$UserIDTextbox.Text = ""
+	$PCNameTextbox.Text = ""
+	$IPAddressTextbox.Text = ""
+	$LockedOutUserTextbox.Text = ""
+	$PhoneNamberTextBox.Text = ""
 }
 function clearVariables{
 	$global:Name = ""
@@ -805,7 +807,7 @@ function clearVariables{
 	$global:ValidUserID = $False
 	$global:ValidPCName = $False
 	$global:IPWithARec = $True
-	$IPBox.Forecolor = "black"
+	$IPAddressTextbox.Forecolor = "black"
 }
 function subWindowKeyListener($form){
 	if($_.Control -eq $true -and $_.KeyCode -eq "W" ){
@@ -851,7 +853,7 @@ function pickName{
 	
 	if ($matches.count -eq 1){		
 		$global:Name = $matches[0]
-		$NameBox.Text = $global:Name
+		$UserNameTextbox.Text = $global:Name
 		$true
 	}elseif ($matches.count -gt 1){
 		$returnval = $false
@@ -870,7 +872,7 @@ function pickID{
 		MakeClickList ([ref]$global:UserID) $ids ([ref]$returnval)
 		if(!$returnval){$false}else{$true}
 	}
-	$UserIDBox.Text = $global:UserID
+	$UserIDTextbox.Text = $global:UserID
 }
 function pickPCName{
 	$variantname = "$PCName" + "*"
@@ -884,7 +886,7 @@ function pickPCName{
 		if(!$returnval){$false}else{$true}
 		
 	}
-	$PCBox.Text = $global:PCName
+	$PCNameTextbox.Text = $global:PCName
 }
 function testName{
 	if (($Name).Length -lt 1){
@@ -926,10 +928,10 @@ function testName{
 	}
 }
 function testID{
-	if (($UserIDBox.Text).length -lt 1){
+	if (($UserIDTextbox.Text).length -lt 1){
 		$global:validID = $False
 	}else{
-		#if($UserIDBox.Text -contains "@"){
+		#if($UserIDTextbox.Text -contains "@"){
 		$variantname = "$UserID" + "*"
 		#$ids = @((get-aduser -f {UserPrincipalName -like $variantname}).UserPrincipalName)
 		#}else{
@@ -944,7 +946,7 @@ function testID{
 	}
 }
 function testPCName{
-	if (($PCBox.Text).length -lt 1){
+	if (($PCNameTextbox.Text).length -lt 1){
 		$global:validPCName = $False
 	}else{
 		$variantname = "$PCName" + "*"
@@ -961,7 +963,7 @@ function testIP{
 	$Online = Test-Connection -Computername $global:IP -BufferSize 16 -Count 1 -quiet
 	if (!$Online){
 		$false
-		$IPBox.Forecolor = "red"
+		$IPAddressTextbox.Forecolor = "red"
 	}else{
 		try{
 			$IPObject = [System.Net.IPAddress]::parse($IP)
@@ -970,7 +972,7 @@ function testIP{
 		}catch{
 			$global:IPWithARec = $False
 		}
-		$IPBox.Forecolor = "green"
+		$IPAddressTextbox.Forecolor = "green"
 		$true
 	}
 
@@ -988,7 +990,7 @@ function IDByLastName{
 		
 	}
 	
-	$UserIDBox.Text = $global:UserID
+	$UserIDTextbox.Text = $global:UserID
 }
 
 function PCNameByUserID{
@@ -1022,9 +1024,9 @@ function PCNameByUserID{
 	}
 	if ($global:PCName.length -lt 2){
 		$global:PCName = "-"
-		$PCBox.Text = "-"
+		$PCNameTextbox.Text = "-"
 	}
-		$PCBox.Text = $global:PCName
+		$PCNameTextbox.Text = $global:PCName
 }
 
 function getIP{
@@ -1039,21 +1041,21 @@ function getIP{
 			}
 		}
 	}
-	$IPBox.Text = $global:IP
+	$IPAddressTextbox.Text = $global:IP
 }
 function LockoutByUserID{
 	if ($global:UserID -ne "-"){
 		$user = get-aduser $global:userID -properties LockedOut
 		if ($user.LockedOut -eq $True){
-			$LockoutBox.Text = "Locked"
-			$LockoutButton.Visible = $True
+			$LockedOutUserTextbox.Text = "Locked"
+			$LockedOutUserButton.Visible = $True
 
 		}else{
-			$LockoutBox.Text = "Not Locked"
+			$LockedOutUserTextbox.Text = "Not Locked"
 		}
 	}else{
 		$global:Lockout = "-"
-		$LockoutBox.Text = "-"
+		$LockedOutUserTextbox.Text = "-"
 	}
 		
 }
@@ -1080,7 +1082,7 @@ function PhoneByUserID{
 			}
 			Else {$global:Phone = '-'}  # The UserName field has a "-" in it.
 	
-			$PhoneBox.Text = $global:Phone
+			$PhoneNamberTextBox.Text = $global:Phone
 		}
 
 function NameByUserID{
@@ -1090,7 +1092,7 @@ function NameByUserID{
 		$global:Name = "-"
 	}	
 
-	$NameBox.Text = $global:Name
+	$UserNameTextbox.Text = $global:Name
 }
 function UserIDByPCName{
 	if($global:PCName.length -lt 7){
@@ -1115,7 +1117,7 @@ function UserIDByPCName{
 			
 		}
 	}
-	$UserIDBox.Text = $global:UserID	
+	$UserIDTextbox.Text = $global:UserID	
 }
 function PCNameByIP{
 	$hostname = ([System.Net.Dns]::GetHostByAddress($IP)).HostName
@@ -1124,7 +1126,7 @@ function PCNameByIP{
 	}else{
 		$global:PCName = $hostname.Substring(0,$hostname.IndexOf('.'))
 	}
-	$PCBox.Text = $PCName
+	$PCNameTextbox.Text = $PCName
 
 	
 }
@@ -1132,9 +1134,9 @@ function HDriveByUserID{
 	try{
 		if ($global:UserID -ne "-"){
 			$user = Get-AdUser $global:UserID -Properties HomeDirectory
-			$HDriveBox.Text = $user.HomeDirectory
+			$HDriveTextbox.Text = $user.HomeDirectory
 		}else{
-			$HDriveBox.Text = "-"
+			$HDriveTextbox.Text = "-"
 		}
 	}catch{
 	
@@ -1145,9 +1147,9 @@ function OUByUserID{
 	try{
 		if ($global:UserID -ne "-"){
 			$user = Get-AdUser $global:UserID -Properties CanonicalName
-			$OUBox.Text = $user.CanonicalName.Substring(($user.CanonicalName).IndexOf('/'))
+			$OUTextbox.Text = $user.CanonicalName.Substring(($user.CanonicalName).IndexOf('/'))
 		}else{
-			$OUBox.Text = "-"
+			$OUTextbox.Text = "-"
 		}
 	}catch{
 	
@@ -1217,7 +1219,7 @@ function getVPNIP{
 			$pair = searchVPNArray $global:name $NameIPArray
 			if ($pair.count -eq 2){
 				$global:IP = $pair[1]
-				$IPSourceLbl.Text ="(vpn)"
+				$IPAddressSourceLabel.Text ="(vpn)"
 			}
 		}
 	}
@@ -1225,7 +1227,7 @@ function getVPNIP{
 function getADIP{
 	try{
 		$global:IP = (Get-ADComputer $global:PCName -Properties IPv4Address).IPv4Address
-		$IPSourceLbl.Text ="(ad)"
+		$IPAddressSourceLabel.Text ="(ad)"
 	}catch{
 		$global:IP = "-"
 	}
@@ -1234,7 +1236,7 @@ function getDNSIP{
 	$ips = @(([System.Net.Dns]::GetHostAddresses($global:PCName)).IPAddressToString)
 	if ($ips.length -eq 1){
 		$global:IP = $ips[0]
-		$IPSourceLbl.Text ="(dns)"
+		$IPAddressSourceLabel.Text ="(dns)"
 		$true
 	}elseif($ips.length -gt 1){
 		$returnval = $false
@@ -1244,7 +1246,7 @@ function getDNSIP{
 }
 function pingIP{
 	#$Online = Test-Connection -Computername $global:IP -BufferSize 16 -Count 1 -quiet
-	#if($Online){ $IPBox.Forecolor = "green" } else{ $IPBox.Forecolor = "red" }
+	#if($Online){ $IPAddressTextbox.Forecolor = "green" } else{ $IPAddressTextbox.Forecolor = "red" }
 	$PingTimer.Enabled = $true
 	$global:PingJob = Start-Job {
 		param($IP)
@@ -1257,9 +1259,9 @@ function checkPing{
 	if (($global:PingJob.State -eq "Completed")){
 		$Pingable = @(Receive-Job -id $PingJob.id)
 		if ($Pingable){
-			$IPBox.Forecolor = "Green"
+			$IPAddressTextbox.Forecolor = "Green"
 		}else{
-			$IPBox.Forecolor = "Red"
+			$IPAddressTextbox.Forecolor = "Red"
 		}
 		$PingTimer.Enabled = $false
 	}
@@ -1289,7 +1291,7 @@ function extraUserFacts{
 	showForm $UserFactsForm
 }
 function extraPCFacts{
-	$pc = Get-ADComputer $PCName -properties CanonicalName, Enabled, LastLogonDate, OperatingSystem, OperatingSystemServicePack, WhenChanged, WhenCreated
+	$pc = Get-ADComputer $PCName -properties CanonicalName, Enabled, LastWrenchLogoPictureBoxnDate, OperatingSystem, OperatingSystemServicePack, WhenChanged, WhenCreated
 	
 	#Global Variables
 	$global:MACStepper = 0
@@ -1322,20 +1324,20 @@ function extraPCFacts{
 	$ADUserEnabledlbl.Font                     = 'Microsoft Sans Serif,8.25'
 
 	#$ADUserEnabledlbl = createItem "Label" 10 10 270 20 ("Enabled: "  + $pc.Enabled) $PCFactsForm
-	$OULbl                          = New-Object system.Windows.Forms.Label
-	$OULbl.text                     = ("OU: " + ($pc.CanonicalName.Substring(($pc.CanonicalName).IndexOf('/')))) 
-	$OULbl.width                    = 270
-	$OULbl.height                   = 20
-	$OULbl.location                 = New-Object System.Drawing.Point(10,40)
-	$OULbl.Font                     = 'Microsoft Sans Serif,8.25'
-	#$OULbl = createItem "Label" 10 40 270 30 ("OU: " + ($pc.CanonicalName.Substring(($pc.CanonicalName).IndexOf('/')))) $PCFactsForm
-    $LastLogonLbl                          = New-Object system.Windows.Forms.Label
-	$LastLogonLbl.text                     = "Name: "
-	$LastLogonLbl.width                    = 270
-	$LastLogonLbl.height                   = 20
-	$LastLogonLbl.location                 = New-Object System.Drawing.Point(10,100)
-	$LastLogonLbl.Font                     = 'Microsoft Sans Serif,8.25'
-	#$LastLogonLbl = createItem "Label" 10 70 270 20 ("Last Logon: " + $pc.LastLogonDate) $PCFactsForm
+	$OULabel                          = New-Object system.Windows.Forms.Label
+	$OULabel.text                     = ("OU: " + ($pc.CanonicalName.Substring(($pc.CanonicalName).IndexOf('/')))) 
+	$OULabel.width                    = 270
+	$OULabel.height                   = 20
+	$OULabel.location                 = New-Object System.Drawing.Point(10,40)
+	$OULabel.Font                     = 'Microsoft Sans Serif,8.25'
+	#$OULabel = createItem "Label" 10 40 270 30 ("OU: " + ($pc.CanonicalName.Substring(($pc.CanonicalName).IndexOf('/')))) $PCFactsForm
+    $LastWrenchLogoPictureBoxnLbl                          = New-Object system.Windows.Forms.Label
+	$LastWrenchLogoPictureBoxnLbl.text                     = "Name: "
+	$LastWrenchLogoPictureBoxnLbl.width                    = 270
+	$LastWrenchLogoPictureBoxnLbl.height                   = 20
+	$LastWrenchLogoPictureBoxnLbl.location                 = New-Object System.Drawing.Point(10,100)
+	$LastWrenchLogoPictureBoxnLbl.Font                     = 'Microsoft Sans Serif,8.25'
+	#$LastWrenchLogoPictureBoxnLbl = createItem "Label" 10 70 270 20 ("Last WrenchLogoPictureBoxn: " + $pc.LastWrenchLogoPictureBoxnDate) $PCFactsForm
 	$OSLbl                          = New-Object system.Windows.Forms.Label
 	$OSLbl.text                     = ("OS: " + $pc.OperatingSystem + " " + $pc.OperatingSystemServicePack)
 	$OSLbl.width                    = 270
@@ -1573,7 +1575,7 @@ function newUserPassword{
 				$pw = ConvertTo-SecureString $NewPWBox.Text -AsPlainText -Force
 				Set-ADAccountPassword $global:UserID -Reset -NewPassword $pw	
 				if ($ChangePWLoginCheck.Checked -eq $true){
-					Set-ADUser $global:UserID -ChangePasswordAtLogon:$true
+					Set-ADUser $global:UserID -ChangePasswordAtWrenchLogoPictureBoxn:$true
 				}
 				$newPWForm.Close()
 			}catch{
