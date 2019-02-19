@@ -10,8 +10,92 @@
 #			and to allow easy manipulation of those objects. A toolkit built
 #			to ease help desk support and work more efficiently 
 ###############################################################################
-#Load Vairables from Enviroment File
-. "$PSScriptRoot\wrench_env.ps1"
+#Load Variables from Wrench configuration File
+#"$PSScriptRoot\wrench_env.ps1"
+$configFile = "$PSScriptRoot\wrench_env.ps1"
+if(Test-Path $configFile) {
+	Try {
+		#Load config appsettings
+		$global:WrenchSettings = @{}
+		$config = [xml](get-content $configFile)
+		foreach ($addNode in $config.configuration.appsettings.add) {
+			if ($addNode.Value.Contains(',')) {
+				# Array case
+				$value = $addNode.Value.Split(',')
+					for ($i = 0; $i -lt $value.length; $i++) { 
+						$value[$i] = $value[$i].Trim() 
+					}
+			}
+			else {
+				# Scalar case
+				$value = $addNode.Value
+			}
+		$global:WrenchSettings[$addNode.Key] = $value
+		}
+	}
+	Catch [system.exception]{
+	}
+}
+
+#Make function to pass variables too
+
+
+If (-Not([string]::IsNullOrWhiteSpace($WrenchSettings["IconLocation"]))) {
+	$IconLocation = Resolve-Path -Path $WrenchSettings["IconLocation"] # IconLocation.path
+}
+If (-Not([string]::IsNullOrWhiteSpace($WrenchSettings["LogoLocation"]))) {
+	$LogoLocation = Resolve-Path -Path $WrenchSettings["LogoLocation"]
+}
+If (-Not([string]::IsNullOrWhiteSpace($WrenchSettings["PSInfoLocation"]))) {
+	$PSInfoLocation = Resolve-Path -Path $WrenchSettings["PSInfoLocation"] 
+}
+If (-Not([string]::IsNullOrWhiteSpace($WrenchSettings["PSExecLocation"]))) {
+	$PSExecLocation = Resolve-Path -Path $WrenchSettings["PSExecLocation"]]
+}
+If (-Not([string]::IsNullOrWhiteSpace($WrenchSettings["SmartCtlLocation"]))) {
+	$SmartCtlLocation = Resolve-Path -Path $WrenchSettings["SmartCtlLocation"]
+}
+If (-Not([string]::IsNullOrWhiteSpace($WrenchSettings["SCCMRemoteLocation"]))) {
+	$SCCMRemoteLocation = Resolve-Path -Path $WrenchSettings["SCCMRemoteLocation"]
+}
+If (-Not([string]::IsNullOrWhiteSpace($WrenchSettings["RenameComputerLocation"]))) {
+	$RenameComputerLocation = Resolve-Path -Path $WrenchSettings["RenameComputerLocation"]
+}
+If (-Not([string]::IsNullOrWhiteSpace($WrenchSettings["ClientCenterLocation"]))) {
+	$ClientCenterLocation = Resolve-Path -Path $WrenchSettings["ClientCenterLocation"]
+}
+If (-Not([string]::IsNullOrWhiteSpace($WrenchSettings["VPNSiteUrl"]))) {
+	$IconLocation = Resolve-Path -Path $WrenchSettings["VPNSiteUrl"]] #FixThis how to handle websites
+}
+If (-Not([string]::IsNullOrWhiteSpace($WrenchSettings["SCCMSiteDataFile"]))) {
+	$CSCCMSiteDataFile = Resolve-Path -Path $WrenchSettings["SCCMSiteDataFile"]
+}
+If (-Not([string]::IsNullOrWhiteSpace($WrenchSettings["SCCMSiteServer"]))) {
+	[String]$SCCMSiteServer = $WrenchSettings["SCCMSiteServer"]
+}	# can only be 3 letter or numbers
+If (-Not([string]::IsNullOrWhiteSpace($WrenchSettings["SCCMNameSpace"]))) {
+	$SCCMNameSpace = Resolve-Path -Path $WrenchSettings["SCCMNameSpace"]
+} #remove when not needed FIXTHIS
+If (-Not([string]::IsNullOrWhiteSpace($WrenchSettings["Domain"]))) {
+	[String]$Domain =  $WrenchSettings["Domain"]
+}
+If (-Not([string]::IsNullOrWhiteSpace(WrenchSettings["SCCMSiteCode"]))) {
+	[String]$SCCMSiteCode = $WrenchSettings["SCCMSiteCode"]
+}
+
+#$PSInfoLocation  = $WrenchSettings["PSInfoLocation"] 
+#$PSExecLocation  = $WrenchSettings["PSExecLocation"]
+#$SmartCtlLocation = $WrenchSettings["SmartCtlLocation"]
+#$SCCMRemoteLocation 		= $WrenchSettings["SCCMRemoteLocation"]
+#$RenameComputerLocation		= $WrenchSettings["RenameComputerLocation"]
+#$ClientCenterLocation 		= $WrenchSettings["ClientCenterLocation"]
+#$VPNSiteUrl					= $WrenchSettings["VPNSiteUrl"]
+#$SCCMSiteDataFile 			= $WrenchSettings["SCCMSiteDataFile"]
+#$SCCMSiteServer 			= $WrenchSettings["SCCMSiteServer"]
+#$SCCMNameSpace 				= $WrenchSettings["SCCMNameSpace"]
+#$Domain 					= $WrenchSettings["Domain"]
+#$SCCMSiteCode 				= $WrenchSettings["SCCMSiteCode"]
+
 
 ### First two functions force script to be ran as admin ###
 function IsAdministrator{
@@ -1087,7 +1171,7 @@ function UserIDByPCName{
 		$global:UserID = "-"
 	}else{
 		$variantID = ($global:PCName).Substring(0,7)
-		$variantname = "$variantID" + "*"
+		$variantname = "$variantID" + "*"  # Remove $SCCMNamespace replace with 
 		$UserName = @(((Get-WmiObject -Class SMS_UserMachineRelationship -namespace "root\sms\$SCCMNameSpace" -computer $SCCMSiteServer -filter "ResourceName='$global:PCName' and Types='1' and IsActive='1' and Sources='4'").UniqueUserName).substring($Domain.length+1))
 		$SamAccounts=foreach ($name in $UserName){@((get-aduser -f {SamAccountName -like $name}).SamAccountName)}
 		$UPN= foreach ($Account in $SamAccounts){@((get-aduser -f {SamAccountName -like $name}).UserPrincipalName)}
@@ -1389,12 +1473,12 @@ function extraPCFacts{
 	$OULabel.location                 			= New-Object System.Drawing.Point(10,40)
 	$OULabel.Font                     			= 'Microsoft Sans Serif,8.25'
 	#$OULabel = createItem "Label" 10 40 270 30 ("OU: " + ($pc.CanonicalName.Substring(($pc.CanonicalName).IndexOf('/')))) $PCFactsForm
-    $LastLogonLbl         		= New-Object system.Windows.Forms.Label
-	$LastLogonLbl.text     	= ("Last Logon: " + $pc.LastLogonDate)
-	$LastLogonLbl.width    	= 270
-	$LastLogonLbl.height   	= 20
-	$LastLogonLbl.location 	= New-Object System.Drawing.Point(10,70)
-	$LastLogonLbl.Font     	= 'Microsoft Sans Serif,8.25'
+    $LastLogonLbl         						= New-Object system.Windows.Forms.Label
+	$LastLogonLbl.text     						= ("Last Logon: " + $pc.LastLogonDate)
+	$LastLogonLbl.width    						= 270
+	$LastLogonLbl.height   						= 20
+	$LastLogonLbl.location 						= New-Object System.Drawing.Point(10,70)
+	$LastLogonLbl.Font     						= 'Microsoft Sans Serif,8.25'
 	#$LastWrenchLogoPictureBoxLabel = createItem "Label" 10 70 270 20 ("Last WrenchLogoPictureBoxn: " + $pc.LastLogonDate) $PCFactsForm
 	$OSLabel                          			= New-Object system.Windows.Forms.Label
 	$OSLabel.text                     			= ("OS: " + $pc.OperatingSystem + " " + $pc.OperatingSystemServicePack)
@@ -1580,30 +1664,30 @@ function extraPCFacts{
 function viewGroups($ADObjectType){
 	$GroupForm = createForm "Groups" 250 300 "CenterScreen" "Fixed3D" $false $false $true
 
-	$GroupList                        		= New-Object system.Windows.Forms.ListBox
-	$GroupList.text                   		= "" # Starts Empty. Is this needed.
-	$GroupList.width                 		= 210
-	$GroupList.height                 		= 180
-	$GroupList.location               		= New-Object System.Drawing.Point(10,10)
-	$GroupList.HorizontalScrollbar 			= $true
+	$GroupList                        			= New-Object system.Windows.Forms.ListBox
+	$GroupList.text                   			= "" # Starts Empty. Is this needed.
+	$GroupList.width                 			= 210
+	$GroupList.height                 			= 180
+	$GroupList.location               			= New-Object System.Drawing.Point(10,10)
+	$GroupList.HorizontalScrollbar 				= $true
 	$GroupList.DataSource = @((getGroups($ADObjectType)).SamAccountName | Sort-Object )
 	#$GroupList = createItem "ListBox" 10 10 210 180 "" $GroupForm
 
-	$AddGroupButton                         = New-Object system.Windows.Forms.Button
-	$AddGroupButton.text                    = "Add to Group"
-	$AddGroupButton.width                   = 210
-	$AddGroupButton.height                  = 30
-	$AddGroupButton.location                = New-Object System.Drawing.Point(10,190)
-	$AddGroupButton.Font                    = 'Microsoft Sans Serif,8.25'
+	$AddGroupButton                         	= New-Object system.Windows.Forms.Button
+	$AddGroupButton.text                    	= "Add to Group"
+	$AddGroupButton.width                   	= 210
+	$AddGroupButton.height                  	= 30
+	$AddGroupButton.location                	= New-Object System.Drawing.Point(10,190)
+	$AddGroupButton.Font                    	= 'Microsoft Sans Serif,8.25'
 	$AddGroupButton.Add_Click({ addGroup $ADObjectType})	
 	#$AddGroupButton = createItem "Button" 10 190 210 30 "Add to Group" $GroupForm
 	
-	$RemoveGroupButton                  	= New-Object system.Windows.Forms.Button
-	$RemoveGroupButton.text            		= "Remove from Group"
-	$RemoveGroupButton.width           		= 210
-	$RemoveGroupButton.height          		= 30
-	$RemoveGroupButton.location      		= New-Object System.Drawing.Point(10,225)
-	$RemoveGroupButton.Font             	= 'Microsoft Sans Serif,8.25'
+	$RemoveGroupButton                  		= New-Object system.Windows.Forms.Button
+	$RemoveGroupButton.text            			= "Remove from Group"
+	$RemoveGroupButton.width           			= 210
+	$RemoveGroupButton.height          			= 30
+	$RemoveGroupButton.location      			= New-Object System.Drawing.Point(10,225)
+	$RemoveGroupButton.Font             		= 'Microsoft Sans Serif,8.25'
 	$RemoveGroupButton.Add_Click({ removeGroup $ADObjectType})
 	#$RemoveGroupButton = createItem "Button" 10 225 210 30 "Remove from Group" $GroupForm
 	$GroupForm.controls.AddRange(@($GroupList,$AddGroupButton,$RemoveGroupButton))
@@ -1916,9 +2000,9 @@ function populateLoggedUser{
 			@(Get-WmiObject -Class Win32_ComputerSystem -ComputerName $PCName -erroraction silentlycontinue)[0].UserName
 		} -Arg $global:PCName
 	}
-	$LoggedOnUserLabel.Font = $NonUnderlineFont
-	$LoggedOnUserLabel.ForeColor = "black"
-	$LoggedOnUserLabel.Text = "Logged in user: Please wait..."
+	$LoggedOnUserLabel.Font 					= $NonUnderlineFont
+	$LoggedOnUserLabel.ForeColor 				= "black"
+	$LoggedOnUserLabel.Text 					= "Logged in user: Please wait..."
 	$DetailsTimer.start()
 }
 function populatePCType{
@@ -1946,9 +2030,9 @@ function populateMAC{
 			getmac /s $PCName /nh
 		} -Arg $global:PCName
 	}
-	MACLabel.Font = $NonUnderlineFont
-	MACLabel.ForeColor = "black"
-	MACLabel.Text = "Mac: Please wait..."
+	MACLabel.Font 								= $NonUnderlineFont
+	MACLabel.ForeColor 							= "black"
+	MACLabel.Text 								= "Mac: Please wait..."
 	$DetailsTimer.start()
 }
 function populateMem{
@@ -1961,9 +2045,9 @@ function populateMem{
 			(((Get-WmiObject -Class WIn32_PhysicalMemory -ComputerName $PCName).speed) | Measure-Object -min ).minimum
 		} -Arg $global:PCName
 	}
-	$MemoryLabel.Font = $NonUnderlineFont
-	$MemoryLabel.ForeColor = "black"
-	$MemoryLabel.Text = "Memory: Please wait..."
+	$MemoryLabel.Font 							= $NonUnderlineFont
+	$MemoryLabel.ForeColor 						= "black"
+	$MemoryLabel.Text 							= "Memory: Please wait..."
 	$DetailsTimer.start()
 }
 function populateDrive{
