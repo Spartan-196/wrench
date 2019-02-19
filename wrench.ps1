@@ -502,16 +502,17 @@ $HDriveLabel,$OULabel,$NewLocalPowerShellWindowLabel))
 
 # Add Textboxes to MainForm 
 $mainForm.controls.AddRange(@($UserNameTextbox,$IPAddressTextbox,
-$PCNameTextbox,$OUTextbox,$UserIDTextbox,$PhoneNumberLabel,$PhoneNamberTextBox,
-$HDriveTextbox,$LockedOutUserTextbox)) 
+$PCNameTextbox,$UserIDTextbox,$PhoneNumberLabel,$PhoneNamberTextBox,
+$HDriveTextbox,$LockedOutUserTextbox,$OUTextbox)) 
 
 # Add Buttons to MainForm
 $mainForm.controls.AddRange(@($UserNameSearchButton,$UserIDButton,
 $IPAddressSearchButton,$LockedOutUserButton,$SCCMRemoteControlButton,
-$UserDetailsButton,$UserOUGroupsButton,$ChangePasswordButton,$PowerShellRemoteButton,
+$UserDetailsButton,$UserOUGroupsButton,$ChangePasswordButton,
 $RDPButton,$ExpandButton,$PCSearchButton,$PCDetailsButton,$PCOUGroups,
-$ComputerManagementButton,$RenameButton,$SCCMClientCenterButton,$ViewRemotePCCDrive,
-$ViewRemotePCCDrive,$GroupPolicyButton,$TelnetPCButton,$RenameButton,$MSRemoteAssistanceButton))
+$ComputerManagementButton,$SCCMClientCenterButton,
+$ViewRemotePCCDrive,$GroupPolicyButton,$TelnetPCButton,$RenameButton,
+$MSRemoteAssistanceButton,$PowerShellRemoteButton))
 
 # Add Other Controls that are not defined above
 $mainForm.controls.AddRange(@($KeepWrenchTopMostCheckbox,$WrenchLogoPictureBox))
@@ -530,11 +531,6 @@ $GroupPolicyButton.width                   		= 122
 $GroupPolicyButton.height                  		= 20
 $GroupPolicyButton.location                		= New-Object System.Drawing.Point(290,25)
 $GroupPolicyButton.Font                    		= 'Microsoft Sans Serif,8.25'
-$GroupPolicyButton.Add_Click({ pullGroupPolicy })
-
-$GroupPolicyTimer 								= New-Object System.Windows.Forms.Timer
-$GroupPolicyTimer.Interval 						= 2000
-$GroupPolicyTimer.add_tick({ checkGP })
 
 $TelnetPCButton                         		= New-Object system.Windows.Forms.Button
 $TelnetPCButton.text                    		= "Telnet"
@@ -542,7 +538,6 @@ $TelnetPCButton.width                  			= 122
 $TelnetPCButton.height                  		= 20
 $TelnetPCButton.location                		= New-Object System.Drawing.Point(290,55)
 $TelnetPCButton.Font                    		= 'Microsoft Sans Serif,8.25'
-$TelnetPCButton.Add_Click({ runTelnet })
 
 $RenameButton                         			= New-Object system.Windows.Forms.Button
 $RenameButton.text                    			= "Rename PC"
@@ -550,7 +545,6 @@ $RenameButton.width                   			= 122
 $RenameButton.height                  			= 20
 $RenameButton.location                			= New-Object System.Drawing.Point(290,85)
 $RenameButton.Font                    			= 'Microsoft Sans Serif,8.25'
-$RenameButton.Add_Click({ runRename })
 
 $SCCMClientCenterButton                         = New-Object system.Windows.Forms.Button
 $SCCMClientCenterButton.text                    = "Client Center"
@@ -558,7 +552,6 @@ $SCCMClientCenterButton.width                   = 122
 $SCCMClientCenterButton.height                  = 20
 $SCCMClientCenterButton.location                = New-Object System.Drawing.Point(290,115)
 $SCCMClientCenterButton.Font                    = 'Microsoft Sans Serif,8.25'
-$SCCMClientCenterButton.Add_Click({ openClientCenter })	
 
 $MSRemoteAssistanceButton                     	= New-Object system.Windows.Forms.Button
 $MSRemoteAssistanceButton.text                 	= "MS Remote Assist"
@@ -566,6 +559,16 @@ $MSRemoteAssistanceButton.width                	= 122
 $MSRemoteAssistanceButton.height              	= 20
 $MSRemoteAssistanceButton.location              = New-Object System.Drawing.Point(290,145)
 $MSRemoteAssistanceButton.Font                 	= 'Microsoft Sans Serif,8.25'
+
+$GroupPolicyTimer 								= New-Object System.Windows.Forms.Timer
+$GroupPolicyTimer.Interval 						= 2000
+
+# Form 'MainForm' Events
+$GroupPolicyButton.Add_Click({ pullGroupPolicy })
+$GroupPolicyTimer.add_tick({ checkGP })
+$TelnetPCButton.Add_Click({ runTelnet })
+$RenameButton.Add_Click({ runRename })
+$SCCMClientCenterButton.Add_Click({ openClientCenter })
 $MSRemoteAssistanceButton.Add_Click({ openMSRA })
 
 #Labels
