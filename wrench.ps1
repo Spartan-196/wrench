@@ -551,15 +551,15 @@ if ($correctPSVersion -eq $true -AND $rsatInstalled -eq $true){
 		$matches = @()
 		if ($commaindex -gt 0){
 			$search = $name + "*"
-			$matches = @((Get-ADUser -f {name -like $search}).name)
+			$matches = @((Get-ADUser -Filter {name -like $search}).name)
 		}else{
 			if($spaceindex -gt 0){
 				$firstname = $name.substring(0, $spaceindex)
 				$lastname = $name.substring($spaceindex)
 				$firstname += "*"
-				$firstnamematches = @((Get-ADUser -f {GivenName -like $firstname}).name)
+				$firstnamematches = @((Get-ADUser -Filter {GivenName -like $firstname}).name)
 				$lastname+= "*"
-				$lastnamematches = @((Get-ADUser -f {Surname -like $lastname}).name)
+				$lastnamematches = @((Get-ADUser -Filter {Surname -like $lastname}).name)
 				ForEach ($fname in $firstnamematches){
 					ForEach ($lname in $lastnamematches){
 						if($fname -eq $lname){
@@ -569,8 +569,8 @@ if ($correctPSVersion -eq $true -AND $rsatInstalled -eq $true){
 				}
 			}else{
 				$search = $name + "*"
-				$firstnamematches = @((Get-ADUser -f {GivenName -like $search}).name)
-				$lastnamematches = @((Get-ADUser -f {Surname -like $search}).name)
+				$firstnamematches = @((Get-ADUser -Filter {GivenName -like $search}).name)
+				$lastnamematches = @((Get-ADUser -Filter {Surname -like $search}).name)
 				if (($firstnamematches | Measure-Object).count -gt 0){
 					$matches += $firstnamematches
 				}
@@ -592,7 +592,7 @@ if ($correctPSVersion -eq $true -AND $rsatInstalled -eq $true){
 	}
 	function pickID{
 		$variantname = "$UserID" + "*"
-		$ids = @((get-aduser -f {SamAccountName -like $variantname}).SamAccountName)
+		$ids = @((Get-ADUser -Filter {SamAccountName -like $variantname}).SamAccountName)
 		if ($ids.length -eq 1){
 			$global:UserID = $ids[0]
 			$true
@@ -626,15 +626,15 @@ if ($correctPSVersion -eq $true -AND $rsatInstalled -eq $true){
 			$matches = @()
 			if ($commaindex -gt 0){
 				$search = $name + "*"
-				$matches = Get-ADUser -f {name -like $search}
+				$matches = Get-ADUser -Filter {name -like $search}
 			}else{
 				if($spaceindex -gt 0){
 					$firstname = $name.substring(0, $spaceindex)
 					$lastname = $name.substring($spaceindex)
 					$firstname += "*"
-					$firstnamematches = @(Get-ADUser -f {GivenName -like $firstname})
+					$firstnamematches = @(Get-ADUser -Filter {GivenName -like $firstname})
 					$lastname+= "*"
-					$lastnamematches = @(Get-ADUser -f {Surname -like $lastname})
+					$lastnamematches = @(Get-ADUser -Filter {Surname -like $lastname})
 					ForEach ($fname in $firstnamematches){
 						ForEach ($lname in $lastnamematches){
 							if($fname.sid -eq $lname.sid){
@@ -644,8 +644,8 @@ if ($correctPSVersion -eq $true -AND $rsatInstalled -eq $true){
 					}
 				}else{
 					$search = $name + "*"
-					$firstnamematches = @(Get-ADUser -f {GivenName -like $search})
-					$lastnamematches = @(Get-ADUser -f {Surname -like $search})
+					$firstnamematches = @(Get-ADUser -Filter {GivenName -like $search})
+					$lastnamematches = @(Get-ADUser -Filter {Surname -like $search})
 					$matches = $firstnamematches + $lastnamematches
 				}
 			}
@@ -662,10 +662,10 @@ if ($correctPSVersion -eq $true -AND $rsatInstalled -eq $true){
 		}else{
 		 #if($UserIDBox.Text -contains "@"){
 			$variantname = "$UserID" + "*"
-			#$ids = @((get-aduser -f {UserPrincipalName -like $variantname}).UserPrincipalName)
+			#$ids = @((Get-ADUser -Filter {UserPrincipalName -like $variantname}).UserPrincipalName)
 			#}else{
 			#	variantname = "$UserID" + "*"
-				$ids = @((get-aduser -f {SamAccountName -like $variantname}).SamAccountName)
+				$ids = @((Get-ADUser -Filter {SamAccountName -like $variantname}).SamAccountName)
 				if ($ids[0].length -lt 1){
 					$global:validID = $False
 				}else{
@@ -708,7 +708,7 @@ if ($correctPSVersion -eq $true -AND $rsatInstalled -eq $true){
 	}
 	function IDByLastName{
 		$variantname = "$Name" + "*"
-		$ID = @((get-aduser -f {name -like $variantname}).SamAccountName)
+		$ID = @((Get-ADUser -Filter {name -like $variantname}).SamAccountName)
 		if($ID.length -eq 1){
 			$global:UserID = $ID[0]
 			$true
@@ -812,8 +812,8 @@ if ($correctPSVersion -eq $true -AND $rsatInstalled -eq $true){
 			$variantID = ($global:PCName).Substring(0,7)
 			$variantname = "$variantID" + "*"
 			$UserName = @(((Get-WmiObject -Class SMS_UserMachineRelationship -namespace "root\sms\$SCCMNameSpace" -computer $SCCMSiteServer -filter "ResourceName='$global:PCName' and Types='1' and IsActive='1' and Sources='4'").UniqueUserName).substring($Domain.length+1))
-			$SamAccounts=foreach ($name in $UserName){@((get-aduser -f {SamAccountName -like $name}).SamAccountName)}
-			$UPN= foreach ($Account in $SamAccounts){@((get-aduser -f {SamAccountName -like $name}).UserPrincipalName)}
+			$SamAccounts=foreach ($name in $UserName){@((Get-ADUser -Filter {SamAccountName -like $name}).SamAccountName)}
+			$UPN= foreach ($Account in $SamAccounts){@((Get-ADUser -Filter {SamAccountName -like $name}).UserPrincipalName)}
 			
 			if ($UserName.length -eq 1){
 				$global:UserID = $UserName[0]
