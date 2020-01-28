@@ -20,7 +20,7 @@ If you're looking to deploy this to multiple users, we've found it easiest to ke
 ### Requirements
 The computer Wrench is being ran on also must be running PowerShell 3.0 or greater, as some of the array functionality will break on Powershell 2. 
 
-There is also a hotfix needed to allow unlocking of accounts on a Windows 7 PC, as the Powershell unlocking call is different than the standard Windows one. One or both of these may be needed, they are KB2506143, [KB2577917](https://support.microsoft.com/en-us/help/2577917/unlocking-a-user-account-fails-when-using-adac-or-the-unlock-adaccount)
+There is also a hotfix needed to allow unlocking of accounts on a Windows 7 PC, as the Powershell unlocking call is different than the standard Windows one. One or both of these may be needed, they are [KB2506143](https://support.microsoft.com/en-us/help/2506143/description-of-windows-management-framework-3-0-for-windows-7-sp1-and), [KB2577917](https://support.microsoft.com/en-us/help/2577917/unlocking-a-user-account-fails-when-using-adac-or-the-unlock-adaccount)
 
 ## Using Wrench
 
